@@ -1,0 +1,8 @@
+# Python
+__pycache__/
+*.pyc
+
+# verify_course.py 生成的 QA 截图（可随时重建）
+assets/home-preview.png
+assets/labs-preview.png
+assets/classification-preview.png

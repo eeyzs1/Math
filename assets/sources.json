@@ -1,0 +1,30 @@
+{
+  "discrete": [
+    "Oscar Levin：Discrete Mathematics — An Open Introduction",
+    "https://discrete.openmathbooks.org/dmoi4.html"
+  ],
+  "pre": [
+    "OpenStax：Precalculus 2e",
+    "https://openstax.org/details/books/precalculus-2e"
+  ],
+  "linear": [
+    "Jim Hefferon：Linear Algebra",
+    "https://hefferon.net/linearalgebra/"
+  ],
+  "calculus": [
+    "OpenStax：Calculus Volume 1",
+    "https://openstax.org/details/books/calculus-volume-1"
+  ],
+  "statistics": [
+    "OpenStax：Introductory Statistics 2e",
+    "https://openstax.org/details/books/introductory-statistics-2e"
+  ],
+  "ode": [
+    "MIT OCW：Differential Equations",
+    "https://ocw.mit.edu/courses/18-03sc-differential-equations-fall-2011/"
+  ],
+  "topology": [
+    "MIT OCW：Introduction to Topology",
+    "https://ocw.mit.edu/courses/18-901-introduction-to-topology-fall-2004/"
+  ]
+}

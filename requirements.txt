@@ -1,0 +1,2 @@
+# 运行 python tools/verify_course.py 所需依赖（课程页面本身无需任何依赖）
+playwright>=1.40
