@@ -20,7 +20,7 @@ count={'total':len(rows),'major':len(major),'middle':len(middle),'subject_leaf':
 (root/'assets/classification-audit.json').write_text(json.dumps(count,indent=2),encoding='utf-8')
 
 def page(title,body):
- return f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(title)}</title><link rel="stylesheet" href="../assets/style.css"></head><body><main><nav><a href="../index.html">数学地图</a><a href="../reference/classification.html">完整分类</a><a href="../reference/curriculum.html">分级课程总纲</a></nav>{body}</main></body></html>'''
+ return f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(title)}</title><link rel="stylesheet" href="../assets/style.css"></head><body><main><nav><a href="../index.html">数学地图</a><a href="../reference/classification.html">完整分类</a><a href="../reference/curriculum.html">分级课程总纲</a><a href="../reference/concepts.html">核心概念</a></nav>{body}</main></body></html>'''
 
 # Preserve official descriptions; no unverified machine-translated research vocabulary.
 index='<header><p class="tag">MSC2020 / 完整源文件索引</p><h1>数学研究分类索引</h1><p>一级中文名称请对照 README；本页保留官方英文分类名与说明，避免把未经核对的专业术语翻译当成权威译名。</p></header>'
@@ -192,6 +192,36 @@ for folder,title,subs,pre,source,lessons in course:
  overview+=f'<a class="card" href="../{folder}/curriculum.html"><h3>{E(title)}</h3><p>L0 入门 → L1 核心 → L2 证明 → L3 专题 → L4 研究训练</p></a>'
 overview+='</div><footer><p>这是教学分级，不是大学统一课程标准；具体顺序会随方向和你的学习反馈调整。</p></footer>'
 (root/'reference/curriculum.html').write_text(page('分级课程总纲 · 数学理解课',overview),encoding='utf-8')
+# 核心概念自查清单：数据在 assets/concepts.json（手工维护）；勾选进度存浏览器 localStorage。
+concepts=json.loads((root/'assets/concepts.json').read_text(encoding='utf-8'))
+assert set(concepts)=={m[0] for m in course},'concepts.json 的模块键与课程数据不一致'
+cp='<header><p class="tag">CONCEPT CHECKLIST</p><h1>核心概念自查清单</h1><p>对应 36 节课，每项按“能解释、能推导、能迁移”口径自查：先闭卷作答，做到再勾选；次日、3 天、7 天后回看重做。勾选只保存在本机浏览器，不上传、不写入仓库。</p><p id="total" aria-live="polite"></p><button id="reset" type="button">清空全部勾选记录</button></header>'
+for folder,title,subs,pre,source,lessons in course:
+ n=concepts[folder]
+ assert len(n)==len(lessons),f'{folder} 的概念条目数与课程数不一致'
+ cp+=f'<section class="panel" data-module="{folder}"><h2>{E(title)} <span class="muted" data-count></span></h2><p><a href="../{folder}/index.html">分支首页</a> · <a href="../{folder}/curriculum.html">分级路线</a></p>'
+ for lesson,c in zip(lessons,n):
+  items=''.join(f'<li><label><input type="checkbox" id="{folder}-{c["file"]}-{i}"> {E(t)}</label></li>' for i,t in enumerate(c['items'],1))
+  cp+=f'<div class="concept"><h3><a href="../{folder}/lessons/{c["file"]}.html">{int(c["file"]):02d} · {E(lesson[0])}</a> <span class="muted" data-count></span></h3><ul>{items}</ul></div>'
+ cp+='</section>'
+cp+=r'''<footer><p>清单覆盖现有 36 节正文课；L1–L4 的更高阶目标见<a href="curriculum.html">分级课程总纲</a>。勾选是自评快照，不等于掌握：以能否闭卷重做、讲清条件和给出自己的例子为准。</p></footer>
+<script>
+'use strict';
+const KEY='math-concepts-v1';let state={};
+try{state=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}};
+function refresh(){let total=0,done=0;
+for(const sec of document.querySelectorAll('[data-module]')){let sd=0,st=0;
+for(const d of sec.querySelectorAll('.concept')){let ld=0,lt=0;
+for(const b of d.querySelectorAll('input')){b.checked=!!state[b.id];total++;st++;lt++;if(b.checked){done++;sd++;ld++}}
+d.querySelector('[data-count]').textContent=ld+'/'+lt}
+sec.querySelector('[data-count]').textContent=sd+'/'+st}
+document.getElementById('total').textContent='总进度：'+done+' / '+total+' 项'}
+for(const b of document.querySelectorAll('.concept input'))b.addEventListener('change',()=>{state[b.id]=b.checked;save();refresh()});
+document.getElementById('reset').addEventListener('click',()=>{if(confirm('清空全部勾选记录？')){state={};save();refresh()}});
+refresh();
+</script>'''
+(root/'reference/concepts.html').write_text(page('核心概念自查清单 · 数学理解课',cp),encoding='utf-8')
 # Make the new work visible while keeping the existing entry page and README intact.
 p=root/'index.html';s=p.read_text(encoding='utf-8')
 marker='<section class="panel" id="extended-atlas"><h2>完整分类与长期路线</h2><p><a href="reference/classification.html">打开MSC2020完整源文件分类索引</a> · <a href="reference/curriculum.html">查看各分支从基础到研究训练的总纲</a></p><p>分类索引可按编码或英文关键词搜索。分级路线为规划，高阶正文尚未写完。</p></section>'
@@ -203,9 +233,10 @@ p=root/'README.md';s=p.read_text(encoding='utf-8');section=f'''
 - [完整 MSC2020 分类索引](reference/classification.html)：收入官网下载 CSV 的全部 **{count["total"]:,} 条编码记录**，包含{count["major"]}个大类、{count["middle"]}个中类、{count["subject_leaf"]:,}个专题末级条目和{count["general_leaf"]}个通用末级条目；已与官方 TeX 的全部标签集合核对一致。保留英文专业名，可离线搜索编码或关键词。分类名称完整收录不等于对应教程已经完成。
 - **计数说明**：[官网介绍](https://msc2020.org/)写63个大类、529个中类、6,022个末级类；当前下载文件实测计数不同。本项目报告源文件实测结果，未自行补造分类。审计结果在 `assets/classification-audit.json`。
 - [分级课程总纲](reference/curriculum.html)：每个模块都有 L0 入门、L1 本科核心、L2 高阶与证明、L3 研究生专题、L4 研究训练的目标与验收要求。以上是**待展开的教学规划**，现有正文仍为{sum(len(m[-1]) for m in course)}节。
+- [核心概念自查清单](reference/concepts.html)：36 节课逐项“能解释 / 能推导 / 能迁移”自评，勾选进度仅保存在本机浏览器（localStorage）。
 - 研究训练意味着在特定方向读论文、复现证明或算法、提出问题和接受反馈。没有覆盖全部数学的“大师结业线”，读完资料也不能保证原创研究能力。
 
-重建：先运行 `python tools/build_course.py`，再运行 `python tools/extend_atlas.py`；验证先 `pip install -r requirements.txt`，再运行 `python tools/verify_course.py`（需要 Playwright 与本机 Chrome/Chromium）。分级课程内容在 `tools/extend_atlas.py` 中维护；`MISSION.md`、`NOTES.md`、`RESOURCES.md` 与 `learning-records/` 为手工维护文档，重建不会覆盖。
+重建：先运行 `python tools/build_course.py`，再运行 `python tools/extend_atlas.py`；验证先 `pip install -r requirements.txt`，再运行 `python tools/verify_course.py`（需要 Playwright 与本机 Chrome/Chromium）。分级课程内容在 `tools/extend_atlas.py` 中维护；`MISSION.md`、`NOTES.md`、`RESOURCES.md`、`assets/concepts.json`（概念清单数据）与 `learning-records/` 为手工维护文档，重建不会覆盖。
 '''
 if '## 完整分类与从基础到研究的课程规划' in s:s=s.split('## 完整分类与从基础到研究的课程规划')[0].rstrip()
 p.write_text(s+'\n'+section,encoding='utf-8')

@@ -44,6 +44,14 @@ with sync_playwright() as p:
  for folder in root.glob('[0-9][0-9]-*'):
   page.goto((folder/'curriculum.html').as_uri())
   assert page.locator('article').count()==5
+ page.goto((root/'reference/concepts.html').as_uri())
+ assert page.locator('[data-module]').count()==18
+ assert page.locator('.concept input').count()==115
+ page.on('dialog',lambda d:d.accept())
+ page.locator('.concept input').first.check()
+ assert page.locator('#total').inner_text().startswith('总进度：1 /')
+ page.locator('#reset').click()
+ assert page.locator('#total').inner_text().startswith('总进度：0 /')
  assert not errors,errors
  browser.close()
-print('PASS: local links, browser JS, sliders including endpoints, answer reveal, mobile overflow')
+print('PASS: local links, browser JS, sliders including endpoints, answer reveal, mobile overflow, concept checklist')

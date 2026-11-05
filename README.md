@@ -46,7 +46,7 @@
 
 用 15–25 分钟完成一课：读直觉 → 手推例题 → 独立写练习 → 看解析 → 用自己的话复述。次日、3 天后、7 天后不看答案重做；复习时混合一个旧分支的题。每周建议 3 次学习、1 次复习，速度以能解释为准。
 
-[交互实验室](reference/labs.html) 提供割线趋近切线、线性变换面积、二项分布和步长稳定性实验；每个实验都有预测问题与解释。[符号速查](reference/glossary.html) 用于随时复习。
+[交互实验室](reference/labs.html) 提供割线趋近切线、线性变换面积、二项分布和步长稳定性实验；每个实验都有预测问题与解释。[符号速查](reference/glossary.html) 用于随时复习；学完一课后到[核心概念清单](reference/concepts.html)逐项勾选自评。
 
 ## 当前内容与边界
 
@@ -137,6 +137,7 @@
 - [完整 MSC2020 分类索引](reference/classification.html)：收入官网下载 CSV 的全部 **6,603 条编码记录**，包含63个大类、534个中类、5,503个专题末级条目和503个通用末级条目；已与官方 TeX 的全部标签集合核对一致。保留英文专业名，可离线搜索编码或关键词。分类名称完整收录不等于对应教程已经完成。
 - **计数说明**：[官网介绍](https://msc2020.org/)写63个大类、529个中类、6,022个末级类；当前下载文件实测计数不同。本项目报告源文件实测结果，未自行补造分类。审计结果在 `assets/classification-audit.json`。
 - [分级课程总纲](reference/curriculum.html)：每个模块都有 L0 入门、L1 本科核心、L2 高阶与证明、L3 研究生专题、L4 研究训练的目标与验收要求。以上是**待展开的教学规划**，现有正文仍为36节。
+- [核心概念自查清单](reference/concepts.html)：36 节课逐项“能解释 / 能推导 / 能迁移”自评，勾选进度仅保存在本机浏览器（localStorage）。
 - 研究训练意味着在特定方向读论文、复现证明或算法、提出问题和接受反馈。没有覆盖全部数学的“大师结业线”，读完资料也不能保证原创研究能力。
 
-重建：先运行 `python tools/build_course.py`，再运行 `python tools/extend_atlas.py`；验证先 `pip install -r requirements.txt`，再运行 `python tools/verify_course.py`（需要 Playwright 与本机 Chrome/Chromium）。分级课程内容在 `tools/extend_atlas.py` 中维护；`MISSION.md`、`NOTES.md`、`RESOURCES.md` 与 `learning-records/` 为手工维护文档，重建不会覆盖。
+重建：先运行 `python tools/build_course.py`，再运行 `python tools/extend_atlas.py`；验证先 `pip install -r requirements.txt`，再运行 `python tools/verify_course.py`（需要 Playwright 与本机 Chrome/Chromium）。分级课程内容在 `tools/extend_atlas.py` 中维护；`MISSION.md`、`NOTES.md`、`RESOURCES.md`、`assets/concepts.json`（概念清单数据）与 `learning-records/` 为手工维护文档，重建不会覆盖。

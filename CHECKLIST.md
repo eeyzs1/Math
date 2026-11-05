@@ -8,7 +8,7 @@
 |---|---|---|
 | 生成器 | `tools/build_course.py`、`tools/extend_atlas.py` | 直接改，改完重建 |
 | 生成的页面 | `index.html`、`NN-*/`（含 lessons、curriculum）、`reference/*.html`、`README.md`、`assets/style.css`、`assets/widgets.js`、`assets/course.json`、`assets/sources.json`、`assets/classification-audit.json` | **不要手改**，改生成器后重建 |
-| 手工维护 | `MISSION.md`、`NOTES.md`、`RESOURCES.md`、`learning-records/`、`CHECKLIST.md` | 直接改，重建不会覆盖 |
+| 手工维护 | `MISSION.md`、`NOTES.md`、`RESOURCES.md`、`learning-records/`、`CHECKLIST.md`、`assets/concepts.json`（核心概念清单数据） | 直接改，重建不会覆盖 |
 | 源数据 | `assets/msc2020.csv`（latin1）、`assets/msc2020.tex`（UTF-8） | 替换官方下载文件，保持原编码 |
 | 验证 | `tools/verify_course.py`、`requirements.txt` | 直接改 |
 
@@ -23,6 +23,7 @@
 ## 新增一节课
 
 - [ ] 在 `tools/build_course.py` 对应模块的数据元组末尾追加 `(标题, 直觉与定义, 推导例题, 练习, 解析)`
+- [ ] 在 `assets/concepts.json` 为新课程追加概念条目（3–4 项，按“能解释/能推导/能迁移”口径；`extend_atlas.py` 会断言条目数与课程数一致）
 - [ ] 无需改任何计数或导航：上一课/下一课链接、"N 节课"文案、首页与 README 的模块/课数都是动态生成
 - [ ] 走固定流程重建 + 验证 + 提交
 
