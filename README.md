@@ -56,7 +56,7 @@
 
 先检索并读完 [teach skill](https://github.com/mattpocock/skills/blob/main/skills/productivity/teach/SKILL.md)，借鉴短课、反馈、间隔检索与学习记录设计。此处按用户要求把课程放在各分支目录内。skill 只在本次读取使用，没有全局安装。
 
-- [学习使命](MISSION.md)、[教学偏好](NOTES.md)、[资料来源](RESOURCES.md)。
+- [学习使命](MISSION.md)、[教学偏好](NOTES.md)、[资料来源](RESOURCES.md)、[维护清单](CHECKLIST.md)。
 - `learning-records/` 保存你日后提交的真实学习反馈。
 - `assets/` 保存共享样式、脚本与课程数据。
 - 修改 `tools/build_course.py` 后运行 `python tools/build_course.py` 可重建课程；不要同时手动修改生成的课程页面。
