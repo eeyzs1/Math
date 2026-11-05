@@ -46,7 +46,7 @@ with sync_playwright() as p:
   assert page.locator('article').count()==5
  page.goto((root/'reference/concepts.html').as_uri())
  assert page.locator('[data-module]').count()==18
- assert page.locator('.concept input').count()==115
+ assert page.locator('.concept input').count()==175
  page.on('dialog',lambda d:d.accept())
  page.locator('.concept input').first.check()
  assert page.locator('#total').inner_text().startswith('总进度：1 /')
