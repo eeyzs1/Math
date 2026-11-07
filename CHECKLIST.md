@@ -47,10 +47,11 @@
 ## verify_course.py 自动覆盖的范围
 
 - 全站本地链接目标存在（rglob 所有 HTML 的 href/src）
-- labs 四个滑块的端点值（h=0.01、a=0/−2、p=0/1、step=1.2）输出无 NaN
+- labs 六个滑块的端点值（h=0.01、a=0/−2、p=0/1、step=1.2、n=1/50、x0=0/±2.5）输出无 NaN
 - 答案 `<details>` 可展开；390px 视口无横向溢出
-- classification：63 大类、6006 条目、编码精确搜索、无结果、清空恢复、hash 深链定位
+- classification：大类/条目数与 `assets/classification-audit.json` 动态核对、编码精确搜索、无结果、清空恢复、hash 深链定位
 - 每个模块 curriculum 页恰有 5 级；页面 JS 无未捕获报错
+- concepts 清单的模块数与勾选项数从 `assets/concepts.json` 动态核对
 - 输出 3 张 QA 截图到 `assets/`（已 gitignore，勿提交）
 
 ## 已知遗留（低优先级，按需处理）
@@ -58,5 +59,5 @@
 - [ ] 全站无 `<meta name="description">`（离线使用无影响；若公网部署，在两个生成器的 `page()` 模板补）
 - [ ] 分支页的 `../RESOURCES.md` 链接在浏览器中会以纯文本打开（可接受；或改为 HTML 页）
 - [ ] classification 个别条目残留 TeX 字面量（如 `\{For ...\}`），属官方源数据内容
-- [ ] 无实验的页面也加载 `widgets.js`（2.7KB、defer，影响可忽略）
-- [ ] labs 的二项分布实验无基线坐标轴（柱形直接落在底边）
+- [ ] 无实验的页面也加载 `widgets.js`（约 4KB、defer，影响可忽略）
+- [ ] labs 的二项分布实验无基线坐标轴（柱形直接落在底边）；05/04 新课的可视化实验（特征值方向、投影）尚未做

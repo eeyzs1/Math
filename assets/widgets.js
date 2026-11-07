@@ -19,6 +19,19 @@ function render(){
  const scale=Math.max(1,...arr.map(x=>Math.abs(x[1]))),pos=(t,v)=>[45+t*52,155-v/scale*120];let exact=[];for(let t=0;t<=10;t+=.05)exact.push(pos(t,Math.exp(-2*t)));
  $('euler-svg').innerHTML=axes(45,155)+path(exact,'#086a67')+path(arr.map(([t,v])=>pos(t,v)),'#bd6029')+`<text x="40" y="25">纵轴范围约 ±${scale.toFixed(2)}；横轴 t=0…10</text>`;
  $('step-out').textContent=`h=${step.toFixed(1)}；单步倍率=${(1-2*step).toFixed(2)}；末步 t=${arr.at(-1)[0].toFixed(1)}，y≈${v.toFixed(5)}`;
+ if($('n')){const nn=+$('n').value,groups=2000,means=[];for(let g=0;g<groups;g++){let s=0;for(let i=0;i<nn;i++)s+=Math.random()<.5?0:1;means.push(s/nn);}
+  const bins=40,hist=new Array(bins).fill(0);for(const m of means)hist[Math.min(bins-1,Math.floor(m*bins))]++;
+  const mx=Math.max(...hist),bw=540/bins,sd=Math.sqrt(.25/nn);let bars='';hist.forEach((h,i)=>{bars+=`<rect x="${30+i*bw}" y="${270-h/mx*230}" width="${bw-2}" height="${h/mx*230}" fill="#086a67"><title>区间 ${(i/bins).toFixed(2)}–${((i+1)/bins).toFixed(2)}：${h} 组</title></rect>`});
+  const pk=groups*(1/bins)/(sd*Math.sqrt(2*Math.PI)),curve=[];for(let i=0;i<=120;i++){const x=i/120,d=groups*(1/bins)/(sd*Math.sqrt(2*Math.PI))*Math.exp(-((x-.5)**2)/(2*sd*sd));curve.push([30+x*540,270-d/pk*230]);}
+  $('clt-svg').innerHTML=axes(30,270)+path(curve,'#5f7470','6 5')+bars+'<text x="30" y="25">正面比例直方图（2000 组）与理论正态密度（虚线）</text>';
+  const mo=means.reduce((a,b)=>a+b,0)/groups,ms=Math.sqrt(means.reduce((a,b)=>a+(b-mo)**2,0)/groups);
+  $('n-out').textContent=`n=${nn}；理论 σ=√(0.25/n)=${sd.toFixed(4)}；样本 σ=${ms.toFixed(4)}；样本均值≈${mo.toFixed(3)}`;}
+ if($('x0')){const f=x=>x**3-2*x+2,fp=x=>3*x*x-2,px=v=>30+(v+2.5)/5*540,py=v=>270-(Math.max(-0.9,Math.min(8,v))/8)*230;
+  let x=+$('x0').value,lines='',dots='',list=[x];for(let i=0;i<8&&Math.abs(x)<=3;i++){const y=f(x),d=fp(x);if(Math.abs(d)<1e-6)break;const xn=x-y/d;lines+=path([[px(x),py(y)],[px(xn),270]],'#bd6029','4 4');dots+=`<circle cx="${px(x)}" cy="${py(y)}" r="5" fill="#bd6029"/>`;x=xn;list.push(x);}
+  const curve=[];for(let t=-2.5;t<=2.51;t+=.05)curve.push([px(t),py(f(t))]);
+  $('newton-svg').innerHTML=axes(300,270)+path(curve,'#086a67')+lines+dots+'<text x="30" y="25">f(x)=x³−2x+2 的牛顿迭代：切线零点作为下一步</text>';
+  const tail=list.slice(0,5).map(v=>v.toFixed(3)).join(' → '),y4=list.length>4?f(list[4]):f(list[list.length-1]);
+  $('x0-out').textContent=`迭代：${tail}${list.length>5?' → …':''}；f(x₄)=${y4.toFixed(4)}`;}
 }
 for(const el of document.querySelectorAll('input[type=range]'))el.addEventListener('input',render);render();
 // 打印时自动展开全部折叠解析，打印后还原（新版浏览器已不受 details>*{display:block} 影响）。

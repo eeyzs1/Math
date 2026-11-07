@@ -2,6 +2,7 @@ from playwright.sync_api import sync_playwright
 from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlparse,unquote
+import json
 root=Path(__file__).resolve().parents[1]
 class Links(HTMLParser):
  def handle_starttag(self,t,attrs):
@@ -19,7 +20,7 @@ with sync_playwright() as p:
  page=browser.new_page(viewport={'width':1280,'height':900});errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
  page.goto((root/'index.html').as_uri());page.screenshot(path=str(root/'assets/home-preview.png'),full_page=True)
  page.goto((root/'reference/labs.html').as_uri());page.screenshot(path=str(root/'assets/labs-preview.png'),full_page=True)
- for id,value in [('h','0.01'),('a','0'),('a','-2'),('p','0'),('p','1'),('step','1.2')]:
+ for id,value in [('h','0.01'),('a','0'),('a','-2'),('p','0'),('p','1'),('step','1.2'),('n','1'),('n','50'),('x0','0'),('x0','-2.5'),('x0','2.5')]:
   page.locator('#'+id).evaluate('(el,v)=>{el.value=v;el.dispatchEvent(new Event("input"))}',value)
   assert 'NaN' not in page.locator('main').inner_text()
  assert '1.000000' in page.locator('#p-out').inner_text()
@@ -27,8 +28,9 @@ with sync_playwright() as p:
  page.set_viewport_size({'width':390,'height':844});page.goto((root/'reference/labs.html').as_uri())
  assert page.evaluate('document.documentElement.scrollWidth<=window.innerWidth')
  page.goto((root/'reference/classification.html').as_uri())
- assert page.locator('.major').count()==63
- assert page.locator('.entry').count()==6006
+ audit=json.loads((root/'assets/classification-audit.json').read_text(encoding='utf-8'))
+ assert page.locator('.major').count()==audit['major']
+ assert page.locator('.entry').count()==audit['subject_leaf']+audit['general_leaf']
  page.locator('#search').fill('11A05')
  page.wait_for_function("document.querySelectorAll('.entry:not([hidden])').length===1")
  assert page.locator('[id="11A05"]').is_visible()
@@ -45,8 +47,9 @@ with sync_playwright() as p:
   page.goto((folder/'curriculum.html').as_uri())
   assert page.locator('article').count()==5
  page.goto((root/'reference/concepts.html').as_uri())
- assert page.locator('[data-module]').count()==18
- assert page.locator('.concept input').count()==295
+ concepts=json.loads((root/'assets/concepts.json').read_text(encoding='utf-8'))
+ assert page.locator('[data-module]').count()==len(concepts)
+ assert page.locator('.concept input').count()==sum(len(c['items']) for v in concepts.values() for c in v)
  page.on('dialog',lambda d:d.accept())
  page.locator('.concept input').first.check()
  assert page.locator('#total').inner_text().startswith('总进度：1 /')

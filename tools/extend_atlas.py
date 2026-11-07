@@ -24,7 +24,7 @@ def page(title,body):
 
 # Preserve official descriptions; no unverified machine-translated research vocabulary.
 index='<header><p class="tag">MSC2020 / 完整源文件索引</p><h1>数学研究分类索引</h1><p>一级中文名称请对照 README；本页保留官方英文分类名与说明，避免把未经核对的专业术语翻译当成权威译名。</p></header>'
-index+=f'''<section class="panel"><h2>范围与核对结果</h2><p>已逐条收入官方下载 CSV 的 {len(rows):,} 条记录，并核对 TeX 标签集合完全相同：{len(major)} 个大类、{len(middle)} 个中类、{len(leaves):,} 个专题末级条目和 {len(general)} 个通用末级条目。通用条目包括综述、历史、教材、软件等，不应被当成独立知识分支。</p><p>官网介绍页写的是 63 / 529 / 6,022；与当前下载文件的实际计数存在差异。本页采用下载文件的实际计数。这里的“完整”指所下载 CSV 与 TeX 的全部编码一致覆盖，不表示数学存在一份永远完备的分类。</p><p>分类索引不是已完成教程列表。现有教程正文仍为36节；研究专题大多尚未编写。</p></section>'''
+index+=f'''<section class="panel"><h2>范围与核对结果</h2><p>已逐条收入官方下载 CSV 的 {len(rows):,} 条记录，并核对 TeX 标签集合完全相同：{len(major)} 个大类、{len(middle)} 个中类、{len(leaves):,} 个专题末级条目和 {len(general)} 个通用末级条目。通用条目包括综述、历史、教材、软件等，不应被当成独立知识分支。</p><p>官网介绍页写的是 63 / 529 / 6,022；与当前下载文件的实际计数存在差异。本页采用下载文件的实际计数。这里的“完整”指所下载 CSV 与 TeX 的全部编码一致覆盖，不表示数学存在一份永远完备的分类。</p><p>分类索引不是已完成教程列表。现有教程正文仍为{sum(len(m[-1]) for m in course)}节；研究专题大多尚未编写。</p></section>'''
 index+='''<section class="panel"><label for="search"><b>按编码或英文关键词筛选</b></label><input id="search" type="search" placeholder="例如 11A / prime / topology" style="display:block;width:100%;padding:12px;font:inherit"><output id="search-count" aria-live="polite">输入关键词可搜索全部条目</output><p>搜索会展开匹配条目。清空后可按大类、中类逐级浏览。浏览器查找时，请先展开相应大类。</p></section><div id="tree">'''
 for m in major:
  prefix=m['code'][:2]
@@ -175,7 +175,7 @@ checks=[
 '能重建关键定理的证明，辨别假设不可删的地方，并完成综合题。',
 '能读教材或专题讲义，补齐省略步骤，做出可核查的专题报告。',
 '能读懂选定方向论文、复现已有结果并接受同行反馈；是否产生原创结果需真实研究检验。']
-overview='<header><h1>从基础到研究训练：课程总纲</h1><p>这是课程设计，不是“全部教程已写完”的声明。36节入门正文已经可读；本页的高阶单元尚未编写。分类索引中的6000余条记录也不等于6000门互不相关的课程。</p></header>'
+overview=f'<header><h1>从基础到研究训练：课程总纲</h1><p>这是课程设计，不是“全部教程已写完”的声明。{sum(len(m[-1]) for m in course)}节入门正文已经可读；本页的高阶单元尚未编写。分类索引中的6000余条记录也不等于6000门互不相关的课程。</p></header>'
 overview+='''<section class="panel"><h2>“大师”怎样理解</h2><p>没有公认的“大师课程结业线”。本项目把可检查的上限设为某一方向的研究准备与初步研究训练：能读论文、补证明、复现结果、提出小问题并接受反馈。数学各方向跨度很大，通常需要建立广泛基础后选择少数方向深入。</p><p>升级依据是作品与解题证据，不是浏览进度。读完一课不自动等于掌握，完成总纲也不等于完成教材。</p><h2>课程正文的完成标准</h2><p>每个主题应有：明确先修和目标、概念直觉、准确的定义、定理条件、必要证明、至少一个完整例题、基础与迁移练习、提示与完整解析、常见错误、可信来源。适合可视化的主题另加可操控图形，并说明图形不能替代证明。</p></section><h2>各方向的分级路径</h2><div class="grid">'''
 for folder,title,subs,pre,source,lessons in course:
  text=f'<header><h1>{E(title)}：分级课程路线</h1><p>本分支现有 {len(lessons)} 节入门短课。以下每级包含多个待展开主题，不能把两节课视为L0或L1已全部完成。</p><p>入门先修：{E(pre)}</p><a href="index.html">阅读现有课程正文</a></header>'
@@ -195,7 +195,7 @@ overview+='</div><footer><p>这是教学分级，不是大学统一课程标准�
 # 核心概念自查清单：数据在 assets/concepts.json（手工维护）；勾选进度存浏览器 localStorage。
 concepts=json.loads((root/'assets/concepts.json').read_text(encoding='utf-8'))
 assert set(concepts)=={m[0] for m in course},'concepts.json 的模块键与课程数据不一致'
-cp='<header><p class="tag">CONCEPT CHECKLIST</p><h1>核心概念自查清单</h1><p>对应 36 节课，每项按“能解释、能推导、能迁移”口径自查：先闭卷作答，做到再勾选；次日、3 天、7 天后回看重做。勾选只保存在本机浏览器，不上传、不写入仓库。</p><p id="total" aria-live="polite"></p><button id="reset" type="button">清空全部勾选记录</button></header>'
+cp=f'<header><p class="tag">CONCEPT CHECKLIST</p><h1>核心概念自查清单</h1><p>对应 {sum(len(m[-1]) for m in course)} 节课，每项按“能解释、能推导、能迁移”口径自查：先闭卷作答，做到再勾选；次日、3 天、7 天后回看重做。勾选只保存在本机浏览器，不上传、不写入仓库。</p><p id="total" aria-live="polite"></p><button id="reset" type="button">清空全部勾选记录</button></header>'
 for folder,title,subs,pre,source,lessons in course:
  n=concepts[folder]
  assert len(n)==len(lessons),f'{folder} 的概念条目数与课程数不一致'
@@ -204,7 +204,7 @@ for folder,title,subs,pre,source,lessons in course:
   items=''.join(f'<li><label><input type="checkbox" id="{folder}-{c["file"]}-{i}"> {E(t)}</label></li>' for i,t in enumerate(c['items'],1))
   cp+=f'<div class="concept"><h3><a href="../{folder}/lessons/{c["file"]}.html">{int(c["file"]):02d} · {E(lesson[0])}</a> <span class="muted" data-count></span></h3><ul>{items}</ul></div>'
  cp+='</section>'
-cp+=r'''<footer><p>清单覆盖现有 36 节正文课；L1–L4 的更高阶目标见<a href="curriculum.html">分级课程总纲</a>。勾选是自评快照，不等于掌握：以能否闭卷重做、讲清条件和给出自己的例子为准。</p></footer>
+cp+=r'''<footer><p>清单覆盖现有 __N__ 节正文课；L1–L4 的更高阶目标见<a href="curriculum.html">分级课程总纲</a>。勾选是自评快照，不等于掌握：以能否闭卷重做、讲清条件和给出自己的例子为准。</p></footer>
 <script>
 'use strict';
 const KEY='math-concepts-v1';let state={};
@@ -221,6 +221,7 @@ for(const b of document.querySelectorAll('.concept input'))b.addEventListener('c
 document.getElementById('reset').addEventListener('click',()=>{if(confirm('清空全部勾选记录？')){state={};save();refresh()}});
 refresh();
 </script>'''
+cp=cp.replace('__N__',str(sum(len(m[-1]) for m in course)))
 (root/'reference/concepts.html').write_text(page('核心概念自查清单 · 数学理解课',cp),encoding='utf-8')
 # Make the new work visible while keeping the existing entry page and README intact.
 p=root/'index.html';s=p.read_text(encoding='utf-8')
@@ -233,7 +234,7 @@ p=root/'README.md';s=p.read_text(encoding='utf-8');section=f'''
 - [完整 MSC2020 分类索引](reference/classification.html)：收入官网下载 CSV 的全部 **{count["total"]:,} 条编码记录**，包含{count["major"]}个大类、{count["middle"]}个中类、{count["subject_leaf"]:,}个专题末级条目和{count["general_leaf"]}个通用末级条目；已与官方 TeX 的全部标签集合核对一致。保留英文专业名，可离线搜索编码或关键词。分类名称完整收录不等于对应教程已经完成。
 - **计数说明**：[官网介绍](https://msc2020.org/)写63个大类、529个中类、6,022个末级类；当前下载文件实测计数不同。本项目报告源文件实测结果，未自行补造分类。审计结果在 `assets/classification-audit.json`。
 - [分级课程总纲](reference/curriculum.html)：每个模块都有 L0 入门、L1 本科核心、L2 高阶与证明、L3 研究生专题、L4 研究训练的目标与验收要求。以上是**待展开的教学规划**，现有正文仍为{sum(len(m[-1]) for m in course)}节。
-- [核心概念自查清单](reference/concepts.html)：36 节课逐项“能解释 / 能推导 / 能迁移”自评，勾选进度仅保存在本机浏览器（localStorage）。
+- [核心概念自查清单](reference/concepts.html)：{sum(len(m[-1]) for m in course)} 节课逐项“能解释 / 能推导 / 能迁移”自评，勾选进度仅保存在本机浏览器（localStorage）。
 - 研究训练意味着在特定方向读论文、复现证明或算法、提出问题和接受反馈。没有覆盖全部数学的“大师结业线”，读完资料也不能保证原创研究能力。
 
 重建：先运行 `python tools/build_course.py`，再运行 `python tools/extend_atlas.py`；验证先 `pip install -r requirements.txt`，再运行 `python tools/verify_course.py`（需要 Playwright 与本机 Chrome/Chromium）。分级课程内容在 `tools/extend_atlas.py` 中维护；`MISSION.md`、`NOTES.md`、`RESOURCES.md`、`assets/concepts.json`（概念清单数据）与 `learning-records/` 为手工维护文档，重建不会覆盖。
