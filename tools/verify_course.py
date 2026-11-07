@@ -20,7 +20,7 @@ with sync_playwright() as p:
  page=browser.new_page(viewport={'width':1280,'height':900});errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
  page.goto((root/'index.html').as_uri());page.screenshot(path=str(root/'assets/home-preview.png'),full_page=True)
  page.goto((root/'reference/labs.html').as_uri());page.screenshot(path=str(root/'assets/labs-preview.png'),full_page=True)
- for id,value in [('h','0.01'),('a','0'),('a','-2'),('p','0'),('p','1'),('step','1.2'),('n','1'),('n','50'),('x0','0'),('x0','-2.5'),('x0','2.5')]:
+ for id,value in [('h','0.01'),('a','0'),('a','-2'),('p','0'),('p','1'),('step','1.2'),('n','1'),('n','50'),('x0','0'),('x0','-2.5'),('x0','2.5'),('ea','2'),('ea','-2'),('eb','1.5'),('eb','0'),('ed','-1'),('ed','2')]:
   page.locator('#'+id).evaluate('(el,v)=>{el.value=v;el.dispatchEvent(new Event("input"))}',value)
   assert 'NaN' not in page.locator('main').inner_text()
  assert '1.000000' in page.locator('#p-out').inner_text()

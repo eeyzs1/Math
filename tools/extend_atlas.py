@@ -20,7 +20,8 @@ count={'total':len(rows),'major':len(major),'middle':len(middle),'subject_leaf':
 (root/'assets/classification-audit.json').write_text(json.dumps(count,indent=2),encoding='utf-8')
 
 def page(title,body):
- return f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(title)}</title><link rel="stylesheet" href="../assets/style.css"></head><body><main><nav><a href="../index.html">数学地图</a><a href="../reference/classification.html">完整分类</a><a href="../reference/curriculum.html">分级课程总纲</a><a href="../reference/concepts.html">核心概念</a></nav>{body}</main></body></html>'''
+ # 打印时展开折叠项：内联脚本，无需外部 JS。
+ return f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(title)}</title><meta name="description" content="{E(title)}：数学理解课的参考页面（分类索引、分级路线或概念自查），可离线使用。"><link rel="stylesheet" href="../assets/style.css"></head><body><main><nav><a href="../index.html">数学地图</a><a href="../reference/classification.html">完整分类</a><a href="../reference/curriculum.html">分级课程总纲</a><a href="../reference/concepts.html">核心概念</a></nav>{body}</main><script>'use strict';let printed=[];addEventListener('beforeprint',()=>{{printed=[...document.querySelectorAll('details:not([open])')];printed.forEach(d=>d.open=true)}});addEventListener('afterprint',()=>{{printed.forEach(d=>d.open=false);printed=[]}});</script></body></html>'''
 
 # Preserve official descriptions; no unverified machine-translated research vocabulary.
 index='<header><p class="tag">MSC2020 / 完整源文件索引</p><h1>数学研究分类索引</h1><p>一级中文名称请对照 README；本页保留官方英文分类名与说明，避免把未经核对的专业术语翻译当成权威译名。</p></header>'
@@ -128,7 +129,7 @@ paths={
 '复现一项方法研究：理论条件、模拟和真实数据验证；分析覆盖率、偏差与失效情形'],
 '11-differential-equations':[
 '微分方程、初值、指数增长、方向场、平衡与简单数值解',
-'一阶与二阶线性ODE、方程组、存在唯一性、相平面与稳定性',
+'一阶与二阶线性ODE、可分离方程、方程组、存在唯一性、相平面、稳定性与差分方程入门',
 '热/波/Laplace方程、边界与初值、Fourier方法、变分与弱解入门',
 '按方向选择非线性PDE、动力系统、分岔混沌、遍历、积分或差分方程',
 '选择一个具体方程，证明存在性、估计或长期行为的一个结果；核对解空间与边界条件'],
@@ -141,7 +142,7 @@ paths={
 '13-optimization':[
 '目标、变量、约束、可行域、局部与全局最优；简单梯度迭代',
 '凸集与凸函数、线性规划、对偶、最优性条件、KKT适用条件',
-'整数规划、组合优化、非线性优化、动态规划；变分与控制基础',
+'整数规划、组合优化、非线性优化、动态规划；变分与控制基础；博弈与互动决策入门',
 '按方向选择凸分析、随机优化、最优控制、鲁棒控制或运筹调度',
 '在清晰假设下证明算法收敛或控制性质，并以基准问题比较性能与失败范围'],
 '14-computation':[

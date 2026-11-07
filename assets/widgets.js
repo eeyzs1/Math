@@ -13,7 +13,7 @@ function render(){
  $('a-out').textContent=`a=${a.toFixed(1)}；det(A)=${a.toFixed(1)}；面积=${Math.abs(a).toFixed(1)}`;
  let p=+$('p').value, bars='',sum=0;function choose(n,k){let c=1;for(let j=1;j<=k;j++)c=c*(n-j+1)/j;return c;}
  for(let k=0;k<=10;k++){let v=choose(10,k)*p**k*(1-p)**(10-k);sum+=v;bars+=`<rect x="${40+k*48}" y="${270-v*230}" width="32" height="${v*230}" fill="#086a67"><title>k=${k}，概率=${v.toFixed(5)}</title></rect><text x="${45+k*48}" y="295">${k}</text>`;}
- $('prob-svg').innerHTML=bars+'<text x="30" y="25">概率（纵轴 0–1）；横轴：正面次数 k</text>';
+ $('prob-svg').innerHTML='<path d="M25 270H580" stroke="#5f7470" fill="none"/>'+bars+'<text x="30" y="25">概率（纵轴 0–1）；横轴：正面次数 k</text>';
  $('p-out').textContent=`p=${p.toFixed(2)}；期望=${(10*p).toFixed(2)}；方差=${(10*p*(1-p)).toFixed(2)}；概率和=${sum.toFixed(6)}`;
  let step=+$('step').value;if(!(step>0))step=0.1;let arr=[[0,1]],v=1;for(let j=1;j*step<=10+1e-9;j++){v*=1-2*step;arr.push([j*step,v]);}
  const scale=Math.max(1,...arr.map(x=>Math.abs(x[1]))),pos=(t,v)=>[45+t*52,155-v/scale*120];let exact=[];for(let t=0;t<=10;t+=.05)exact.push(pos(t,Math.exp(-2*t)));
@@ -32,9 +32,13 @@ function render(){
   $('newton-svg').innerHTML=axes(300,270)+path(curve,'#086a67')+lines+dots+'<text x="30" y="25">f(x)=x³−2x+2 的牛顿迭代：切线零点作为下一步</text>';
   const tail=list.slice(0,5).map(v=>v.toFixed(3)).join(' → '),y4=list.length>4?f(list[4]):f(list[list.length-1]);
   $('x0-out').textContent=`迭代：${tail}${list.length>5?' → …':''}；f(x₄)=${y4.toFixed(4)}`;}
+ if($('ea')){const aa=+$('ea').value,bb=+$('eb').value,dd=+$('ed').value,T=aa+dd,R=Math.sqrt((aa-dd)**2+4*bb*bb),l1=(T+R)/2,l2=(T-R)/2;
+  const cx=170,cy=160,s=42,pX=(x,y)=>[cx+x*s,cy-y*s];
+  let v1=[bb,l1-aa];if(Math.hypot(v1[0],v1[1])<1e-9)v1=[1,0];const n1=Math.hypot(v1[0],v1[1]),u1=[v1[0]/n1,v1[1]/n1],u2=[-u1[1],u1[0]];
+  const circle=[],ellipse=[];for(let i=0;i<=60;i++){const t=i/60*2*Math.PI,x=Math.cos(t),y=Math.sin(t);circle.push(pX(x,y));ellipse.push(pX(aa*x+bb*y,bb*x+dd*y));}
+  $('eigen-svg').innerHTML=path(circle,'#5f7470','6 5')+path(ellipse,'#086a67')+path([pX(-l1*u1[0],-l1*u1[1]),pX(l1*u1[0],l1*u1[1])],'#bd6029')+path([pX(-l2*u2[0],-l2*u2[1]),pX(l2*u2[0],l2*u2[1])],'#bd6029','4 4')+'<text x="30" y="25">灰虚线：单位圆；绿实线：它的像（椭圆）；橙线：特征方向，长度=λ</text>';
+  $('e-out').textContent=`A=[[${aa.toFixed(1)},${bb.toFixed(1)}],[${bb.toFixed(1)},${dd.toFixed(1)}]]；λ₁=${l1.toFixed(3)}、λ₂=${l2.toFixed(3)}；det=${(aa*dd-bb*bb).toFixed(3)}=λ₁λ₂；面积倍率=|det|=${Math.abs(aa*dd-bb*bb).toFixed(3)}`;}
 }
 for(const el of document.querySelectorAll('input[type=range]'))el.addEventListener('input',render);render();
-// 打印时自动展开全部折叠解析，打印后还原（新版浏览器已不受 details>*{display:block} 影响）。
-let printed=[];
-addEventListener('beforeprint',()=>{printed=[...document.querySelectorAll('details:not([open])')];printed.forEach(d=>d.open=true)});
-addEventListener('afterprint',()=>{printed.forEach(d=>d.open=false);printed=[]});
+// 打印展开/还原逻辑已内联进每页模板 page()；本文件只负责实验室渲染。
+// （保留以下空行结构以便 diff 追溯。）
