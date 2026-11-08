@@ -9,8 +9,11 @@
 | 生成器 | `tools/build_course.py`、`tools/extend_atlas.py` | 直接改，改完重建 |
 | 生成的页面 | `index.html`、`NN-*/`（含 lessons、curriculum）、`reference/*.html`、`README.md`、`assets/style.css`、`assets/widgets.js`、`assets/course.json`、`assets/sources.json`、`assets/classification-audit.json` | **不要手改**，改生成器后重建 |
 | 手工维护 | `MISSION.md`、`NOTES.md`、`RESOURCES.md`、`learning-records/`、`CHECKLIST.md`、`assets/concepts.json`（核心概念清单数据） | 直接改，重建不会覆盖 |
+| 英文版生成器 | `tools/build_course_en.py`、`tools/extend_atlas_en.py`（页面模板；数据来自 `assets/course.en.json`） | 直接改模板，改完按下方英文流程重建 |
+| 英文版生成页面 | 各目录 `*.en.html`（index/curriculum/lessons）、`reference/*.en.html`、`assets/widgets.en.js` | **不要手改**，改生成器或数据后重建 |
+| 英文版手工维护 | `README.en.md`、`MISSION.en.md`、`NOTES.en.md`、`RESOURCES.en.md`、`CHECKLIST.en.md`、`REVIEW.en.md`、`learning-records/README.en.md`、`assets/course.en.json`、`assets/concepts.en.json` | 直接改；术语标准见 `tools/en-src/GLOSSARY.md` |
 | 源数据 | `assets/msc2020.csv`（latin1）、`assets/msc2020.tex`（UTF-8） | 替换官方下载文件，保持原编码 |
-| 验证 | `tools/verify_course.py`、`requirements.txt` | 直接改 |
+| 验证 | `tools/verify_course.py`、`tools/verify_course_en.py`、`requirements.txt` | 直接改 |
 
 ## 每次改动后的固定流程
 
@@ -19,6 +22,15 @@
 - [ ] `python tools/verify_course.py` 全绿（首次先 `pip install -r requirements.txt`）
 - [ ] 浏览器抽查：`index.html` 首页、任一课程页、`reference/labs.html` 拖滑块、`reference/classification.html` 搜索
 - [ ] `git add -A && git commit && git push`
+
+## 英文版（*.en.html / *.en.md）重建与同步
+
+- [ ] 中文课程内容改动（`tools/build_course.py` 数据或 `assets/concepts.json`）后，同步修改 `assets/course.en.json` / `assets/concepts.en.json` 的对应条目，再重建英文版
+- [ ] `python tools/build_course_en.py`（读取 `assets/course.en.json` 与 `RESOURCES.en.md`，生成全部 `*.en.html` 与 `assets/widgets.en.js`）
+- [ ] `python tools/extend_atlas_en.py`（生成分级路线、分类索引与概念自查的英文页；不改动中文页面）
+- [ ] `python tools/verify_course_en.py` 全绿（课数与中文版一致、内部链接存在、英文文件无中文字符残留）
+- [ ] 浏览器抽查 `index.en.html`、任一 `.en.html` 课程页、`reference/labs.en.html`
+- [ ] 术语以 `tools/en-src/GLOSSARY.md` 为准；英文数据与中文数据结构逐字段对应，改一处须同步另一处
 
 ## 新增一节课
 

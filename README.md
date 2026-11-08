@@ -2,7 +2,7 @@
 
 目标：增强数学素养，理解概念为什么这样定义、结论为什么成立，并能用它们解释问题。
 
-双击打开 [HTML 学习首页](index.html)。所有讲解、图形和交互均可离线使用，无需安装依赖；外部教材需要联网。推荐现代 Chrome、Edge 或 Firefox。
+双击打开 [HTML 学习首页](index.html)。所有讲解、图形和交互均可离线使用，无需安装依赖；外部教材需要联网。推荐现代 Chrome、Edge 或 Firefox。每个页面导航栏右端可在中英文之间切换；英文版入口 [index.en.html](index.en.html)，说明文档见 [README.en.md](README.en.md)。
 
 ## 如何划分数学
 

@@ -1,0 +1,1160 @@
+{
+ "00-preparation": [
+  {
+   "file": "01",
+   "items": [
+    "Can explain why the order of operations and the rules for parentheses are what make valid transformations possible (the distributive law)",
+    "Can carry out mixed four-operation arithmetic with negative numbers and justify the sign rules",
+    "Can use order-of-magnitude estimation to check whether a computed result is reasonable"
+   ]
+  },
+  {
+   "file": "02",
+   "items": [
+    "Can explain that a fraction is both a \"share of a whole\" and a division, and can test equality of fractions by cross-multiplication",
+    "Can compute 2/3+1/4 using a common denominator and explain why multiplication and division need no common denominator",
+    "Can derive and explain \"dividing by a fraction equals multiplying by its reciprocal\""
+   ]
+  },
+  {
+   "file": "03",
+   "items": [
+    "Can explain percentages as proportions with denominator 100: a 20% increase means multiplying by 1.2",
+    "Can compute \"rise 20%, then fall 20%\" and explain that the two steps use different bases (100→120→96)",
+    "Can derive the general formula: an increase of r followed by a decrease of r leaves an overall factor of 1−r²",
+    "Can redo closed-book: 80 yuan first drops 25%, then rises 25%"
+   ]
+  },
+  {
+   "file": "04",
+   "items": [
+    "Can explain that reversible transformations preserve the solution set, and that moving a term across the equals sign is shorthand for adding the same quantity to both sides",
+    "Can solve 3x+4=13, stating at each step which transformation was used",
+    "Can solve −2x>6 and explain why dividing by a negative number reverses the inequality",
+    "Can represent solution sets of the form x≤2 and 2≤x<5 on the number line"
+   ]
+  },
+  {
+   "file": "05",
+   "items": [
+    "Can state the definition of a function: every input in the domain has exactly one output",
+    "Can explain why f(x)=1/x must exclude 0 over the real numbers",
+    "Can distinguish \"evaluating f(−2)\" from \"solving the equation f(x)=4\" as problems in opposite directions",
+    "Can explain, closed-book, why \"each input has a unique output\" does not imply \"each output comes from only one input\""
+   ]
+  },
+  {
+   "file": "06",
+   "items": [
+    "Can derive the rule for multiplying powers with the same base by counting factors",
+    "Can explain why zero, negative, and fractional exponents are defined the way they are",
+    "Can compute 2⁻²×2⁵ and 27^(2/3) and name the laws used"
+   ]
+  },
+  {
+   "file": "07",
+   "items": [
+    "Can define the logarithm as the inverse of the exponential function",
+    "Can derive the product rule (products become sums) and the power rule (exponents move out front) from the laws of exponents",
+    "Can use the quotient rule (quotients become differences) to estimate log₁₀5"
+   ]
+  },
+  {
+   "file": "08",
+   "items": [
+    "Can define sin and cos via the unit circle and explain the period 2π",
+    "Can explain that sin²θ+cos²θ=1 is precisely the equation of the unit circle",
+    "Can read off the trigonometric values for 30°, 45°, and 60° from the unit circle"
+   ]
+  }
+ ],
+ "01-foundations": [
+  {
+   "file": "01",
+   "items": [
+    "Can describe sets using ∈, ⊆, union, intersection, and difference",
+    "Can define maps, together with injections, surjections, and bijections",
+    "Can show that f(x)=2x (integers → even numbers) is a bijection and explain the role of the codomain"
+   ]
+  },
+  {
+   "file": "02",
+   "items": [
+    "Can state universal propositions using ∀",
+    "Can explain that one counterexample suffices to refute, while verifying any number of examples proves nothing",
+    "Can prove that n²+n=n(n+1) is always even (of two consecutive integers, one must be even)",
+    "Can correct the proposition \"every prime is odd\" and justify the correction"
+   ]
+  },
+  {
+   "file": "03",
+   "items": [
+    "Can write out the converse, inverse, and contrapositive of P⇒Q and identify the pairs that share truth values",
+    "Can reproduce the key chain of the proof by contradiction that √2 is irrational",
+    "Can prove \"if n² is even then n is even\" via the contrapositive"
+   ]
+  },
+  {
+   "file": "04",
+   "items": [
+    "Can list the two indispensable steps of induction: the base case and the induction step",
+    "Can write out the full inductive proof of 1+…+n=n(n+1)/2 (including the induction hypothesis and the step)",
+    "Can prove independently that the sum of the first n positive odd numbers is n²",
+    "Can point out why \"writing only the result, without hypothesis or step\" does not count as a proof by induction"
+   ]
+  },
+  {
+   "file": "05",
+   "items": [
+    "Can state the three conditions of an equivalence relation: reflexive, symmetric, and transitive",
+    "Can classify congruence, similarity, and equality of absolute values as equivalence relations",
+    "Can describe equivalence classes and quotient sets, giving Z/3 as an example"
+   ]
+  },
+  {
+   "file": "06",
+   "items": [
+    "Can distinguish recursive definition (building objects) from inductive proof (proving properties)",
+    "Can solve the first-order geometric recurrence aₙ=raₙ₋₁",
+    "Can find aₙ=aₙ₋₁+2n−1 by \"compute the first few terms — conjecture — verify by induction\""
+   ]
+  },
+  {
+   "file": "07",
+   "items": [
+    "Can define \"two infinite sets have the same size\" via bijections, and explain n↔2n",
+    "Can carry out Cantor's diagonal argument to prove that the reals in [0,1) are uncountable",
+    "Can transfer the diagonal argument to 0-1 sequences and to the halting problem"
+   ]
+  }
+ ],
+ "02-algebra": [
+  {
+   "file": "01",
+   "items": [
+    "Can distinguish the effects of reversible and irreversible transformations on the solution set",
+    "Can use x²=x to show why dividing both sides by x loses the zero solution",
+    "Can solve (x−2)(x+3)=0 and explain the hypothesis behind \"if a product is zero, then some factor is zero\"",
+    "Can explain why this property cannot be extended unconditionally to arbitrary algebraic structures"
+   ]
+  },
+  {
+   "file": "02",
+   "items": [
+    "Can factor common polynomials using extraction of common factors, the difference of squares, and perfect squares",
+    "Can derive the quadratic formula by completing the square",
+    "Can use the discriminant to determine the number of real roots, and solve 2x²−4x−6=0"
+   ]
+  },
+  {
+   "file": "03",
+   "items": [
+    "Can define i and carry out addition, subtraction, multiplication, and division of complex numbers (division via the conjugate)",
+    "Can solve equations with negative discriminant, such as x²+2x+5=0",
+    "Can explain why the complex roots of a real-coefficient equation come in conjugate pairs"
+   ]
+  },
+  {
+   "file": "04",
+   "items": [
+    "Can recite the four group axioms: closure, associativity, identity element, inverse element",
+    "Can verify that the rotations {0°,120°,240°} of an equilateral triangle satisfy the group axioms",
+    "Can show that {0°,120°} does not form a group: composing yields 240°, violating closure",
+    "Can give an example showing that groups do not require commutativity"
+   ]
+  },
+  {
+   "file": "05",
+   "items": [
+    "Can state the criterion for a subgroup and test the set of even integers and the set of odd integers",
+    "Can define homomorphism and kernel, with an example of each",
+    "Can explain \"the kernel is trivial if and only if the map is injective\""
+   ]
+  },
+  {
+   "file": "06",
+   "items": [
+    "Can define rings and ideals",
+    "Can explain the relationship between the quotient ring Z/nZ and modular arithmetic",
+    "Can explain why Z/5 is a field while Z/6 is not"
+   ]
+  },
+  {
+   "file": "07",
+   "items": [
+    "Can define cosets and explain \"either identical or disjoint, and all of the same size\"",
+    "Can state Lagrange's theorem and compute the coset decomposition of Z/6 with H={0,3}",
+    "Can prove that a group of prime order has no nontrivial subgroups and must be cyclic"
+   ]
+  },
+  {
+   "file": "08",
+   "items": [
+    "Can perform division with remainder for polynomials and write f(x)=(x−c)q(x)+r",
+    "Can use the Remainder Theorem r=f(c) to find the remainder quickly",
+    "Can explain \"c is a root ⟺ (x−c) divides f\" and deduce that a polynomial of degree n has at most n roots"
+   ]
+  }
+ ],
+ "03-number-theory": [
+  {
+   "file": "01",
+   "items": [
+    "Can state gcd(a,b)=gcd(b,a−qb) together with its common-divisor argument",
+    "Can compute by hand the full division-with-remainder chains for gcd(48,18)=6 and gcd(84,30)=6",
+    "Can explain \"the remainders strictly decrease, so the process must terminate\""
+   ]
+  },
+  {
+   "file": "02",
+   "items": [
+    "Can define prime numbers and state the Fundamental Theorem of Arithmetic",
+    "Can reproduce the idea of Euclid's proof that there are infinitely many primes",
+    "Can compute the gcd from a prime factorization and check it against the Euclidean algorithm"
+   ]
+  },
+  {
+   "file": "03",
+   "items": [
+    "Can define congruence a≡b (mod m): m divides a−b",
+    "Can explain that congruences can be added and multiplied but that cancellation needs conditions (the mod 6 counterexample 2×1≡2×4)",
+    "Can use the cycling of final digits to find 7¹⁰⁰ mod 10 = 1"
+   ]
+  },
+  {
+   "file": "04",
+   "items": [
+    "Can state Fermat's Little Theorem and Euler's generalization",
+    "Can understand the theorem from the viewpoint \"the residue classes form a group, and its order is φ(n)\"",
+    "Can compute 3²⁰⁰ mod 7"
+   ]
+  },
+  {
+   "file": "05",
+   "items": [
+    "Can obtain the Bézout identity by back-substitution in the Euclidean algorithm",
+    "Can decide the solvability of ax+by=c (the gcd divides c) and write down the general solution",
+    "Can find modular inverses (such as 7⁻¹ mod 31) and solve linear congruences"
+   ]
+  },
+  {
+   "file": "06",
+   "items": [
+    "Can solve systems of congruences by substituting one congruence into the next",
+    "Can state the structural meaning of Z/mn≅Z/m×Z/n",
+    "Can solve x≡1 (mod 2), x≡2 (mod 3)"
+   ]
+  },
+  {
+   "file": "07",
+   "items": [
+    "Can define quadratic residues and explain that modulo p they account for exactly half",
+    "Can list the set of residues mod 7, {1,2,4}, and the set of residues mod 11",
+    "Can use Euler's criterion a^((p−1)/2) to decide whether an element is a square"
+   ]
+  }
+ ],
+ "04-linear-algebra": [
+  {
+   "file": "01",
+   "items": [
+    "Can write the linear combination av+bw and define the span",
+    "Can determine that (1,1) and (2,2) span only a line and can never reach (1,0)",
+    "Can interpret \"linearly dependent\" as \"the new direction adds no degrees of freedom\""
+   ]
+  },
+  {
+   "file": "02",
+   "items": [
+    "Can solve 2×2 systems by elimination",
+    "Can name the three cases for solutions and their geometric counterparts (intersecting, parallel, coincident)",
+    "Can connect uniqueness of the solution to the nonzero coefficients remaining after elimination"
+   ]
+  },
+  {
+   "file": "03",
+   "items": [
+    "Can explain the matrix as notation for a linear map and verify A(x+y)=Ax+Ay",
+    "Can compute matrix-times-vector products and products of small matrices",
+    "Can explain that the noncommutativity of matrix multiplication reflects the order of composing maps"
+   ]
+  },
+  {
+   "file": "04",
+   "items": [
+    "Can explain the geometric meaning of the determinant det(A)=ad−bc: the scale factor of oriented area",
+    "Can compute det[[1,2],[2,4]]=0 and explain why the transformation is not invertible",
+    "Can give two different inputs that this matrix maps to the same output",
+    "Can explain how multiplicativity, det(AB)=det(A)det(B), makes det a group homomorphism"
+   ]
+  },
+  {
+   "file": "05",
+   "items": [
+    "Can define linear independence and basis",
+    "Can verify that (1,1,0),(0,1,1),(1,0,1) form a basis of R³",
+    "Can explain that dimension is well defined because of the replacement lemma"
+   ]
+  },
+  {
+   "file": "06",
+   "items": [
+    "Can define the kernel and the image of a linear map",
+    "Can state the rank–nullity theorem and explain how the two dimensions trade off",
+    "Can verify dim ker+dim im=n for a projection map"
+   ]
+  },
+  {
+   "file": "07",
+   "items": [
+    "Can define eigenvalues, eigenvectors, and the characteristic polynomial (the 2×2 case)",
+    "Can compute the eigenvalues and eigenvectors of A=[[3,1],[0,2]] and check them",
+    "Can explain the geometric meaning of the 90° rotation matrix having only the complex eigenvalues ±i"
+   ]
+  },
+  {
+   "file": "08",
+   "items": [
+    "Can define inner products, lengths, and orthogonality",
+    "Can phrase least squares as \"projection onto the column space\" and connect it to the normal equations AᵀAx=Aᵀb",
+    "Can use the Pythagorean theorem to explain why the residual is perpendicular to the fitting plane"
+   ]
+  },
+  {
+   "file": "09",
+   "items": [
+    "Can define bilinear forms and alternating forms",
+    "Can prove that an alternating bilinear form in two dimensions must be a multiple of det",
+    "Can state the axiomatic characterization of the determinant (linear in the columns, skew-symmetric, det I=1)"
+   ]
+  }
+ ],
+ "05-geometry": [
+  {
+   "file": "01",
+   "items": [
+    "Can define congruence and similarity, along with the AA criterion",
+    "Can decompose a right triangle into two similar triangles using the altitude to the hypotenuse",
+    "Can derive a²=c·p from similarity ratios and deduce the Pythagorean theorem"
+   ]
+  },
+  {
+   "file": "02",
+   "items": [
+    "Can write down the distance formula between two points from the Pythagorean theorem",
+    "Can derive the equation of a circle (x−a)²+(y−b)²=r² and write the circle with center (2,−1) and radius 3",
+    "Can decide by substitution whether the point (5,−1) lies on the circle"
+   ]
+  },
+  {
+   "file": "03",
+   "items": [
+    "Can define the curvature of a circle of radius R as 1/R and explain that its unit is the reciprocal of length",
+    "Can compare the curvatures for radius 2 and radius 10 and explain why the larger circle looks more like a line",
+    "Can compute that when the radius triples, the curvature becomes κ/3"
+   ]
+  },
+  {
+   "file": "04",
+   "items": [
+    "Can distinguish ellipses, hyperbolas, and parabolas by their definitions (including nondegeneracy conditions)",
+    "Can read off a, b, c and the eccentricity from the standard equation",
+    "Can find the asymptotes of a hyperbola"
+   ]
+  },
+  {
+   "file": "05",
+   "items": [
+    "Can distinguish rigid motions, similarity transformations, and affine transformations by their invariants",
+    "Can show that a shear preserves area but not angles",
+    "Can state \"identifying a class of transformations = finding its invariants\""
+   ]
+  },
+  {
+   "file": "06",
+   "items": [
+    "Can state the inscribed angle theorem and its corollary (an angle subtending a diameter is a right angle)",
+    "Can describe a circular-arc locus via \"a fixed angle subtended by a fixed segment\"",
+    "Can explain the relationship between \"the median to the hypotenuse is half the hypotenuse\" and the circumscribed circle"
+   ]
+  },
+  {
+   "file": "07",
+   "items": [
+    "Can state the law of sines and the law of cosines, and explain their relation to the Pythagorean theorem",
+    "Can solve the SAS triangle (a=5, b=7, C=60°) and check with the other theorem",
+    "Can measure a distance across a river using a baseline plus two angles"
+   ]
+  },
+  {
+   "file": "08",
+   "items": [
+    "Can convert between parametric equations and Cartesian coordinates and find tangent vectors",
+    "Can convert the polar equation r=2cosθ to Cartesian coordinates",
+    "Can explain \"choosing a coordinate system is choosing a symmetry\""
+   ]
+  },
+  {
+   "file": "09",
+   "items": [
+    "Can explain the projective viewpoint that \"parallel lines meet at a point at infinity\"",
+    "Can compute the cross-ratio of four collinear points",
+    "Can use the projection t↦1/t to verify the invariance of the cross-ratio (the 4/3 example)"
+   ]
+  }
+ ],
+ "06-analysis": [
+  {
+   "file": "01",
+   "items": [
+    "Can state the definitions of limits and continuity in epsilon–delta form",
+    "Can compute the limit of (x²−1)/(x−1) at x=1 and explain why it does not depend on the value at that point",
+    "Can write down a choice of δ that verifies lim(x→3)x²=9"
+   ]
+  },
+  {
+   "file": "02",
+   "items": [
+    "Can write the difference quotient definition [f(x+h)−f(x)]/h and explain the meaning of h→0",
+    "Can derive 2x as the derivative of f(x)=x² from the definition",
+    "Can find the derivative 3 of f(x)=3x+2 from the definition",
+    "Can distinguish \"the function value 1\" from \"the slope 2\" at x=1"
+   ]
+  },
+  {
+   "file": "03",
+   "items": [
+    "Can apply the product, quotient, and chain rules together with the basic derivatives (eˣ, ln x, sin x)",
+    "Can compute composite derivatives such as d/dt(100e^(0.1t)) and d/dt(x′(t)²)=2x′x″",
+    "Can use the Mean Value Theorem to prove that a function whose derivative is identically zero is constant"
+   ]
+  },
+  {
+   "file": "04",
+   "items": [
+    "Can explain the definite integral as the limit of a sum of signed areas of small rectangles",
+    "Can compute ∫₀²x dx=2 via F(b)−F(a) and check it against the area of the triangle",
+    "Can explain the difference between ∫₋₁¹x dx=0 and the total area 1 enclosed by the curve and the horizontal axis"
+   ]
+  },
+  {
+   "file": "05",
+   "items": [
+    "Can integrate composite integrands by substitution",
+    "Can compute ∫te^t dt and ∫₀¹xe^x dx by integration by parts",
+    "Can state the mnemonic for choosing u and the mechanism of \"each application of parts lowers the degree by one\""
+   ]
+  },
+  {
+   "file": "06",
+   "items": [
+    "Can describe the \"hole\" in the rationals at √2",
+    "Can state the least-upper-bound (supremum) property",
+    "Can explain the difference between \"bounded above\" and \"has a supremum\""
+   ]
+  },
+  {
+   "file": "07",
+   "items": [
+    "Can write the sum formula and the convergence condition for the geometric series (mind the starting index of the sum)",
+    "Can prove that the harmonic series diverges",
+    "Can use grouping by 2ᵏ to show that Σ1/n² converges"
+   ]
+  },
+  {
+   "file": "08",
+   "items": [
+    "Can state both parts of the Fundamental Theorem of Calculus",
+    "Can evaluate definite integrals using antiderivatives",
+    "Can explain why integrating |x| requires piecewise treatment"
+   ]
+  },
+  {
+   "file": "09",
+   "items": [
+    "Can define partial derivatives (freezing one variable) and compute both partials of f=x²y",
+    "Can write down the gradient and identify the direction of steepest ascent and the steepest slope",
+    "Can use the two-variable chain rule on u=f(x−ct) to verify u_tt=c²u_xx"
+   ]
+  }
+ ],
+ "07-topology": [
+  {
+   "file": "01",
+   "items": [
+    "Can define open sets and closed sets and give examples (open intervals and closed intervals)",
+    "Can restate continuity as \"the preimage of an open set is open\"",
+    "Can use the open-set criterion to explain why a step function is discontinuous at its jump point"
+   ]
+  },
+  {
+   "file": "02",
+   "items": [
+    "Can define a homeomorphism: a continuous bijection whose inverse map is also continuous",
+    "Can verify that f(x)=eˣ is a homeomorphism ℝ→ℝ⁺ (including the continuity of ln)",
+    "Can list the three things to check in order to verify that f(x)=2x is a homeomorphism"
+   ]
+  },
+  {
+   "file": "03",
+   "items": [
+    "Can define disconnectedness as \"a union of two nonempty disjoint relatively open sets\"",
+    "Can split (0,1)∪(2,3) apart according to the definition",
+    "Can use the Intermediate Value Theorem to explain why a continuous function taking −1 and 1 must pass through 0, and when this fails"
+   ]
+  },
+  {
+   "file": "04",
+   "items": [
+    "Can state the metric axioms and give three examples (Euclidean, discrete, sup)",
+    "Can explain why xⁿ does not converge to a continuous function under the sup metric",
+    "Can analyze which sequences converge under the discrete metric"
+   ]
+  },
+  {
+   "file": "05",
+   "items": [
+    "Can define compactness via open covers",
+    "Can state the Heine–Borel theorem (bounded + closed)",
+    "Can explain why [0,∞) is not compact and give a counterexample function"
+   ]
+  },
+  {
+   "file": "06",
+   "items": [
+    "Can define loops, homotopy, and the fundamental group π₁",
+    "Can compute the fundamental groups of the circle and of the punctured plane (both Z)",
+    "Can use π₁ to distinguish the line from the circle, and show that the figure eight gives a nonabelian group"
+   ]
+  }
+ ],
+ "08-combinatorics": [
+  {
+   "file": "01",
+   "items": [
+    "Can state the pigeonhole principle and use it to draw existence conclusions",
+    "Can use inclusion–exclusion to count unions such as \"multiples of 2 or 3\"",
+    "Can explain the add-subtract rule for the overlapping terms in inclusion–exclusion"
+   ]
+  },
+  {
+   "file": "02",
+   "items": [
+    "Can distinguish ordered n!/(n−k)! from unordered C(n,k)=n!/[k!(n−k)!]",
+    "Can explain the overcounting that forces combinations to divide by k!",
+    "Can compute C(6,3)=20 and 6×5×4=120 and state the assumptions behind each"
+   ]
+  },
+  {
+   "file": "03",
+   "items": [
+    "Can state the handshaking lemma: sum of degrees = 2×number of edges",
+    "Can use the parity of the degree sum to rule out the degree sequence 3,3,3,2",
+    "Can explain that \"the degree sum is even\" is only a necessary condition, not a sufficient one"
+   ]
+  },
+  {
+   "file": "04",
+   "items": [
+    "Can solve first-order geometric recurrences",
+    "Can describe why the Fibonacci ratio tends to the golden ratio",
+    "Can handle aₙ=2aₙ₋₁+n via the \"compute — conjecture — prove\" workflow"
+   ]
+  },
+  {
+   "file": "05",
+   "items": [
+    "Can state the equivalent characterizations of a tree (n−1 edges, unique paths, no cycles)",
+    "Can find a spanning tree by breaking cycles",
+    "Can prove that a connected graph on n vertices has at least n−1 edges"
+   ]
+  },
+  {
+   "file": "06",
+   "items": [
+    "Can encode a sequence as a formal power series",
+    "Can explain that multiplying generating functions corresponds to the convolution of coefficients",
+    "Can use 1/(1−x)² to argue that the coefficients are 1,2,3,…"
+   ]
+  },
+  {
+   "file": "07",
+   "items": [
+    "Can expand (a+b)ⁿ and interpret the coefficients by counting \"choices of factors\"",
+    "Can prove Pascal's recurrence C(n,k)=C(n−1,k−1)+C(n−1,k)",
+    "Can use a flip-pairing argument to explain that even and odd subsets each number 2ⁿ⁻¹"
+   ]
+  },
+  {
+   "file": "08",
+   "items": [
+    "Can state the existence condition for an Eulerian circuit and apply it to the Seven Bridges problem",
+    "Can define the chromatic number and prove that a graph with χ=2 contains no triangle",
+    "Can distinguish \"degree parity\" and \"coloring\" as two independent global properties"
+   ]
+  }
+ ],
+ "09-probability": [
+  {
+   "file": "01",
+   "items": [
+    "Can write the conditional probability P(A|B)=P(A∩B)/P(B) and explain the requirement P(B)>0",
+    "Can compute that both \"greater than 3 given even\" and \"even given greater than 3\" equal 2/3",
+    "Can explain the order of operations: \"first shrink the sample space, then count\""
+   ]
+  },
+  {
+   "file": "02",
+   "items": [
+    "Can distinguish independence (P(A∩B)=P(A)P(B)) from mutual exclusivity (empty intersection)",
+    "Can explain why two mutually exclusive events of positive probability cannot be independent (the 1/36≠0 counterexample)",
+    "Can use complementary events and inclusion–exclusion to compute \"at least one head in two coin tosses\" =3/4"
+   ]
+  },
+  {
+   "file": "03",
+   "items": [
+    "Can write Bayes' rule and the law of total probability (including the partition condition)",
+    "Can compute the posterior probability after a positive test for a rare disease and explain the base-rate effect",
+    "Can explain that updating on a repeat test requires \"conditional independence given the disease status\", and compute the posterior after a repeat test ≈0.8"
+   ]
+  },
+  {
+   "file": "04",
+   "items": [
+    "Can define random variables, probability mass functions, and expectation",
+    "Can use linearity to compute the expectation of the sum of two dice without listing the full distribution",
+    "Can explain, when the expectation is negative, the different meanings of \"long-run average\" and \"single-play outcome\""
+   ]
+  },
+  {
+   "file": "05",
+   "items": [
+    "Can write the probability mass functions, expectations, and variances of the binomial and geometric distributions",
+    "Can compute P(X≥8) for Bin(10,0.5) and P(T=3) for the geometric distribution",
+    "Can explain the 68/95 rule for the normal distribution and the role of standardization",
+    "Can use memorylessness to explain that \"after already waiting 3 rounds, the expected remaining wait is still 6\""
+   ]
+  },
+  {
+   "file": "06",
+   "items": [
+    "Can obtain marginal distributions from a joint distribution",
+    "Can state that independence is equivalent to \"joint = product of marginals\"",
+    "Can construct and explain an example with Cov=0 that is nevertheless not independent"
+   ]
+  },
+  {
+   "file": "07",
+   "items": [
+    "Can state the meaning of the law of large numbers (frequencies stabilize)",
+    "Can use the central limit theorem to estimate the 1/√n order of fluctuations (finite variance required)",
+    "Can estimate a reasonable range of deviation for 10000 coin tosses"
+   ]
+  },
+  {
+   "file": "08",
+   "items": [
+    "Can define the Markov property and write the transition matrix of a two-state chain",
+    "Can compute the probability of returning to the origin in 4 steps of a one-dimensional random walk, C(4,2)/16",
+    "Can find the stationary distribution of a two-state chain and explain \"forgetting the initial state\""
+   ]
+  },
+  {
+   "file": "09",
+   "items": [
+    "Can describe the √n fluctuations of a random walk and the scaling limit (variance held at 1)",
+    "Can explain why Brownian motion is continuous but nowhere differentiable",
+    "Can explain that noise accumulates like √t while drift accumulates like t"
+   ]
+  }
+ ],
+ "10-statistics": [
+  {
+   "file": "01",
+   "items": [
+    "Can compute the mean and the median separately and say what question each answers",
+    "Can explain the gap between the mean 20 and the median 3 in 1,2,3,4,90",
+    "Can predict how each of the two changes once 90 is replaced by 900"
+   ]
+  },
+  {
+   "file": "02",
+   "items": [
+    "Can compute the mean, variance, and standard deviation of a data set",
+    "Can use the 1,2,3,4,90 example to show the effect of extreme values on the standard deviation",
+    "Can explain that the 68% rule is exact only for the normal distribution and merely a rough rule of thumb for unimodal symmetric distributions"
+   ]
+  },
+  {
+   "file": "03",
+   "items": [
+    "Can list the three explanations of a correlation: causation, common cause, and selection mechanism",
+    "Can use the ice cream–drowning example to explain a common cause (temperature)",
+    "Can describe why a randomized controlled trial balances confounders"
+   ]
+  },
+  {
+   "file": "04",
+   "items": [
+    "Can define unbiasedness",
+    "Can correctly interpret the frequentist meaning of a 95% confidence interval and the conditions for its validity",
+    "Can explain why the t distribution replaces the normal when σ is unknown (including the reason for the n−1 correction)"
+   ]
+  },
+  {
+   "file": "05",
+   "items": [
+    "Can set up a null hypothesis and a significance level",
+    "Can interpret the p-value correctly (it is not the probability that H₀ is true) and distinguish one-sided from two-sided tests",
+    "Can make a coin-test decision from a binomial tail probability, and state the Type II error and the power"
+   ]
+  },
+  {
+   "file": "06",
+   "items": [
+    "Can write the least squares objective and the closed-form solution b=Cov/Var",
+    "Can compute the slope and intercept of a three-point example by hand",
+    "Can discuss the trade-off between squared loss and absolute loss, and the \"projection\" geometric view"
+   ]
+  },
+  {
+   "file": "07",
+   "items": [
+    "Can contrast the frequentist and Bayesian views of a parameter",
+    "Can carry out the update with a Beta prior via \"posterior ∝ likelihood × prior\"",
+    "Can explain that with a large sample the prior's influence is diluted and the two schools converge"
+   ]
+  }
+ ],
+ "11-differential-equations": [
+  {
+   "file": "01",
+   "items": [
+    "Can solve y′=ky to get y=y₀eᵏᵗ and explain the role of the initial value",
+    "Can verify that the solution satisfies the equation and the initial value (by differentiating and checking)",
+    "Can discuss the solution of y′=−2y, y(0)=3 and its long-term behavior"
+   ]
+  },
+  {
+   "file": "02",
+   "items": [
+    "Can recognize separable equations and carry out the separation of variables",
+    "Can solve the logistic equation y′=y(1−y) to obtain the S-shaped solution",
+    "Can solve Newton's law of cooling and show that the temperature difference decays exponentially"
+   ]
+  },
+  {
+   "file": "03",
+   "items": [
+    "Can draw and read the direction field of y′=f(t,y), tracing solution curves along the field",
+    "Can state the conditions of the existence and uniqueness theorem (including the role of ∂f/∂y) and what it means",
+    "Can use y′=y² to illustrate finite-time blow-up and the local nature of the theorem, and use uniqueness to explain why solution curves never cross"
+   ]
+  },
+  {
+   "file": "04",
+   "items": [
+    "Can define the equilibrium point of an autonomous equation via f(y*)=0",
+    "Can analyze the two equilibria of y′=y(1−y) and their respective stability",
+    "Can use y(t)=y(0)e⁻ᵗ to show that 0 is an attracting equilibrium"
+   ]
+  },
+  {
+   "file": "05",
+   "items": [
+    "Can recognize the standard form of a first-order linear equation",
+    "Can compute the integrating factor and solve by integration",
+    "Can fix the constant from the initial value and check by substituting back"
+   ]
+  },
+  {
+   "file": "06",
+   "items": [
+    "Can write the general solution for the three cases from the characteristic equation",
+    "Can explain the reason for the extra factor of t at a repeated root",
+    "Can match the damping regimes with the types of roots"
+   ]
+  },
+  {
+   "file": "07",
+   "items": [
+    "Can convert a second-order equation into a first-order system and write it in matrix form v′=Av",
+    "Can classify equilibria by eigenvalues: node, saddle, spiral, center",
+    "Can explain that simple harmonic oscillation corresponds to a center (concentric elliptical trajectories)"
+   ]
+  },
+  {
+   "file": "08",
+   "items": [
+    "Can define a bifurcation and draw the bifurcation diagram of x′=r−x²",
+    "Can analyze the birth and annihilation of equilibria as r sweeps past 0",
+    "Can explain the transcritical bifurcation of the logistic equation x′=rx−x² (the two equilibria exchange stability at r=0)"
+   ]
+  },
+  {
+   "file": "09",
+   "items": [
+    "Can write down the Logistic map and test the stability of a fixed point (|f′|<1)",
+    "Can compute that the iteration for r=2 converges to 0.5",
+    "Can describe the period-doubling route to chaos (period 2 at r=3.2)"
+   ]
+  },
+  {
+   "file": "10",
+   "items": [
+    "Can state what it means to be ergodic: the time average equals the space (ensemble) average",
+    "Can explain why irrational rotations are ergodic while rational rotations are not",
+    "Can connect ergodicity with the \"forgetting of the initial state\" in Markov chains"
+   ]
+  }
+ ],
+ "12-numerical": [
+  {
+   "file": "01",
+   "items": [
+    "Can explain the binary-representation reason why 0.1+0.2≠0.3",
+    "Can explain how cancellation when subtracting nearly equal numbers amplifies relative error",
+    "Can describe how the order of floating-point summation affects the result, and the practice of equality testing with a tolerance"
+   ]
+  },
+  {
+   "file": "02",
+   "items": [
+    "Can state the conditions under which the Intermediate Value Theorem guarantees a root inside an interval with a sign change",
+    "Can carry out two bisection iterations for f(x)=x²−2 by hand",
+    "Can compute that after n bisections the interval has length 2⁻ⁿ and the midpoint error is at most 2⁻⁽ⁿ⁺¹⁾"
+   ]
+  },
+  {
+   "file": "03",
+   "items": [
+    "Can write down Euler's method yₙ₊₁=yₙ+h·f(tₙ,yₙ)",
+    "Can compute two steps of y′=y with h=0.5, obtaining 1.5 and 2.25, and compare with e",
+    "Can use the one-step factor (1−2h) of y′=−2y to explain the oscillation at h=1 and the divergence for h>1"
+   ]
+  },
+  {
+   "file": "04",
+   "items": [
+    "Can derive Newton's iteration formula and explain its quadratic convergence",
+    "Can demonstrate the accelerating convergence of the iteration for √2",
+    "Can give a counterexample where the iteration cycles without converging and describe remedies"
+   ]
+  },
+  {
+   "file": "05",
+   "items": [
+    "Can write down the trapezoidal rule and Simpson's rule",
+    "Can state their error orders O(h²) and O(h⁴)",
+    "Can explain \"order of accuracy = the degree of polynomials that are integrated exactly\""
+   ]
+  },
+  {
+   "file": "06",
+   "items": [
+    "Can construct an interpolating polynomial from Lagrange basis functions and verify that it passes through the given points",
+    "Can distinguish the appropriate use cases of interpolation and regression",
+    "Can describe the Runge phenomenon and how splines counter it"
+   ]
+  },
+  {
+   "file": "07",
+   "items": [
+    "Can define the condition number and distinguish an \"ill-conditioned problem\" from an \"unstable algorithm\"",
+    "Can estimate, in a 2×2 ill-conditioned example, the factor by which input error is amplified into output error",
+    "Can explain why \"a small residual does not mean an accurate solution\""
+   ]
+  }
+ ],
+ "13-optimization": [
+  {
+   "file": "01",
+   "items": [
+    "Can state the three elements of optimization: variables, objective function, and constraints",
+    "Can solve min (x−2)² subject to 0≤x≤1, obtaining x=1",
+    "Can explain the trap of mechanically setting the derivative to zero and landing on an infeasible point"
+   ]
+  },
+  {
+   "file": "02",
+   "items": [
+    "Can write the gradient descent iteration x_new=x−ηf′(x) (one dimension first)",
+    "Can derive the iteration factor (1−2η) for f(x)=x² and the convergence condition 0<η<1",
+    "Can compute the first two iterations for η=0.25 and x₀=4, obtaining 2 and 1"
+   ]
+  },
+  {
+   "file": "03",
+   "items": [
+    "Can define convex sets and convex functions",
+    "Can prove that \"a local minimum is a global minimum\"",
+    "Can determine the convexity of common functions and identify inflection points"
+   ]
+  },
+  {
+   "file": "04",
+   "items": [
+    "Can write a linear program in standard form and recognize the feasible region as a polyhedron",
+    "Can state that \"a bounded optimum is attained at a vertex\"",
+    "Can solve a two-dimensional linear program graphically and verify optimality at a vertex"
+   ]
+  },
+  {
+   "file": "05",
+   "items": [
+    "Can write the dual of a linear program and verify strong duality (equal optimal values)",
+    "Can use shadow prices to predict the sensitivity to right-hand-side perturbations",
+    "Can state the role of the KKT conditions in constrained nonlinear optimization"
+   ]
+  },
+  {
+   "file": "06",
+   "items": [
+    "Can define a Nash equilibrium: no player profits from deviating alone",
+    "Can verify that the prisoner's dilemma equilibrium is worse than mutual cooperation",
+    "Can find the mixed-strategy equilibrium of matching pennies (1/2 each)"
+   ]
+  }
+ ],
+ "14-computation": [
+  {
+   "file": "01",
+   "items": [
+    "Can explain that O(n) is an asymptotic upper bound, not a running time in seconds",
+    "Can state that when the input doubles, the work of linear/quadratic algorithms grows by about 2×/4×, together with the assumptions involved",
+    "Can distinguish worst-case from average-case analysis"
+   ]
+  },
+  {
+   "file": "02",
+   "items": [
+    "Can compute the self-information −log₂p, measured in bits",
+    "Can explain why a fair coin yields 1 bit and one outcome out of four equally likely ones yields 2 bits",
+    "Can explain that entropy is maximal at p=1/2 and that bias toward one outcome makes it more predictable"
+   ]
+  },
+  {
+   "file": "03",
+   "items": [
+    "Can model a two-state decision problem with a transition table",
+    "Can explain how the \"even number of 1s\" automaton runs",
+    "Can argue that {aⁿbⁿ} exceeds the power of finite automata"
+   ]
+  },
+  {
+   "file": "04",
+   "items": [
+    "Can distinguish the definitions of P and NP",
+    "Can explain the asymmetry between \"fast to verify\" and \"fast to solve\"",
+    "Can state the NP-complete status of SAT and what it entails"
+   ]
+  },
+  {
+   "file": "05",
+   "items": [
+    "Can describe RSA's key generation and its encryption/decryption workflow",
+    "Can explain where ed≡1 (mod φ(n)) comes from (Euler's theorem and the modular inverse)",
+    "Can lay out the logical chain of \"factoring n breaks RSA\""
+   ]
+  },
+  {
+   "file": "06",
+   "items": [
+    "Can explain nearest-codeword decoding and how the minimum distance determines error-correcting capability",
+    "Can describe the parity-based error-locating mechanism of the Hamming (7,4) code",
+    "Can compare the code rates of the repetition and Hamming codes and explain the trade-off"
+   ]
+  }
+ ],
+ "15-mathematical-physics": [
+  {
+   "file": "01",
+   "items": [
+    "Can check that the two sides of a physical equation agree in dimension",
+    "Can compute the dimension M/T² of the spring constant k and conclude that √(m/k) is a time",
+    "Can explain that dimensional correctness does not guarantee a correct formula, but a dimensional error certainly makes the formula wrong"
+   ]
+  },
+  {
+   "file": "02",
+   "items": [
+    "Can derive the simple harmonic solution and ω=√(k/m) from F=ma and F=−kx",
+    "Can determine the amplitude from the initial conditions and verify that the solution satisfies the equation",
+    "Can discuss the amplitude-independence of the period (isochronism) and the effect of the parameters"
+   ]
+  },
+  {
+   "file": "03",
+   "items": [
+    "Can write the energy E=mx′²/2+kx²/2 of an undamped spring and verify that E′=0",
+    "Can compute E′=−cx′²≤0 once damping is added and interpret its meaning",
+    "Can distinguish deriving conservation from the law of motion from assuming conservation as an extra guess"
+   ]
+  },
+  {
+   "file": "04",
+   "items": [
+    "Can state the relation F=−V′ between a conservative force and the potential energy",
+    "Can find v(x) from energy conservation without solving the equation",
+    "Can analyze V=x⁴/4 qualitatively (accessible region and turning points)"
+   ]
+  },
+  {
+   "file": "05",
+   "items": [
+    "Can write down the one-dimensional wave equation and explain the meaning of the wave speed c",
+    "Can verify that f(x−ct) is a solution and explain linear superposition",
+    "Can use the d'Alembert solution to describe an initial shape splitting and propagating"
+   ]
+  },
+  {
+   "file": "06",
+   "items": [
+    "Can write down Newton's law of cooling equation and its explicit solution",
+    "Can solve cooling problems in half-life terms (independent of the initial value)",
+    "Can explain the reasoning for inferring the \"time of death\" backward"
+   ]
+  },
+  {
+   "file": "07",
+   "items": [
+    "Can write down the standing-wave modes of a string fixed at both ends",
+    "Can explain how the boundary conditions sift out discrete frequencies",
+    "Can explain that \"confinement leads to quantization\" is a geometric effect of boundary conditions"
+   ]
+  },
+  {
+   "file": "08",
+   "items": [
+    "Can state Coulomb's law and the geometric origin of the inverse square (4πr²)",
+    "Can estimate the ratio of electric to gravitational force as ≈10³⁹ and explain why matter is neutral",
+    "Can analyze forces from multiple charges using the superposition principle and symmetry"
+   ]
+  },
+  {
+   "file": "09",
+   "items": [
+    "Can write down the Galilean transformation and explain that velocities compose as u+v",
+    "Can state the conflict between the principle of relativity and the invariance of the speed of light",
+    "Can explain how the Lorentz transformation resolves the conflict (time is no longer absolute)"
+   ]
+  },
+  {
+   "file": "10",
+   "items": [
+    "Can derive the continuity equation from conservation of mass + the divergence theorem",
+    "Can explain the hyperbolic structure shared by strings and sound waves (u_tt=c²u_xx)",
+    "Can explain linearization: for small disturbances, discard the higher-order terms"
+   ]
+  }
+ ],
+ "16-modeling": [
+  {
+   "file": "01",
+   "items": [
+    "Can list a model's variables, units, parameters, assumptions, and scope of validity",
+    "Can identify the assumptions hidden in N′=rN: a constant growth rate and unlimited resources",
+    "Can explain that \"a good fit does not mean a correct mechanism\", and that models must be tested against new data"
+   ]
+  },
+  {
+   "file": "02",
+   "items": [
+    "Can follow the full workflow \"problem → variables → assumptions → fitting → validation → scope of validity\"",
+    "Can explain why the logistic and exponential models are unidentifiable when N≪K",
+    "Can explain that model selection rests on new data and mechanism, not on goodness of fit"
+   ]
+  },
+  {
+   "file": "03",
+   "items": [
+    "Can describe the workflow of a one-parameter sensitivity analysis",
+    "Can compute, for P=100 and n=2, the compound-interest results for r=0.1 and r=0.2 (121 vs 144)",
+    "Can point out that long-term extrapolation is most sensitive to the growth-rate assumption"
+   ]
+  },
+  {
+   "file": "04",
+   "items": [
+    "Can use scaling substitutions to reduce the parameters of an equation",
+    "Can derive the universal curve u′=u(1−u) for the logistic equation",
+    "Can explain why mass drops out of the projectile problem"
+   ]
+  },
+  {
+   "file": "05",
+   "items": [
+    "Can distinguish interpolation from extrapolation",
+    "Can explain the mechanism by which too many parameters lead to overfitting",
+    "Can connect \"unidentifiable model\" with overfitting"
+   ]
+  },
+  {
+   "file": "06",
+   "items": [
+    "Can contrast fully mixed models with network propagation models",
+    "Can state the friendship paradox and its significance for epidemic surveillance",
+    "Can explain the structural reason why \"immunizing friends\" is more effective"
+   ]
+  },
+  {
+   "file": "07",
+   "items": [
+    "Can distinguish positive from negative feedback and their fates (self-reinforcing vs self-stabilizing)",
+    "Can judge stability or instability from \"the number of signs in the loop\"",
+    "Can draw the causal loops of price adjustment and bank runs"
+   ]
+  }
+ ],
+ "17-history": [
+  {
+   "file": "01",
+   "items": [
+    "Can describe which boundary of the operations each extension ℕ→ℤ→ℚ→ℝ→ℂ repaired",
+    "Can decide, within a specified number system, the solvability of x+3=1, x²=2, and x²+1=0",
+    "Can explain that \"saying 'no solution' requires first specifying which number system\""
+   ]
+  },
+  {
+   "file": "02",
+   "items": [
+    "Can divide the labor: definitions stipulate terminology, axioms supply assumptions, theorems follow by logic",
+    "Can use the fact that a spherical triangle's angle sum is >180° to show that \"different premises give different conclusions\"",
+    "Can explain why diagrams and authority cannot serve as proof"
+   ]
+  },
+  {
+   "file": "03",
+   "items": [
+    "Can describe the logical difficulty of operating with infinitesimals (Berkeley's criticism)",
+    "Can explain how ε-δ (including the punctured condition 0<|x−a|) uses finite language to \"bypass\" infinitesimals",
+    "Can appreciate the mathematical strategy of \"restating instead of forcing a solution\""
+   ]
+  },
+  {
+   "file": "04",
+   "items": [
+    "Can explain the special status of the fifth postulate",
+    "Can give the difference between the spherical model and hyperbolic intuition (with a remark on the rigor of elliptic geometry)",
+    "Can explain how geometry went from \"necessary truth\" to \"a choice of models\""
+   ]
+  },
+  {
+   "file": "05",
+   "items": [
+    "Can distinguish the answers of logicism, formalism, and intuitionism to \"the foundations of mathematics\"",
+    "Can state the meaning of Gödel's incompleteness theorems",
+    "Can connect the diagonal method across Cantor, the halting problem, and Gödel"
+   ]
+  },
+  {
+   "file": "06",
+   "items": [
+    "Can read a theorem in four steps: hypotheses, uses, counterexamples, and one's own examples",
+    "Can restructure a proof into a communication format of \"strategy first, then steps\"",
+    "Can explain why checkability is the core of mathematical communication"
+   ]
+  }
+ ]
+}

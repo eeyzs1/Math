@@ -19,9 +19,10 @@ assert len(rows)==len(major)+len(middle)+len(general)+len(leaves)
 count={'total':len(rows),'major':len(major),'middle':len(middle),'subject_leaf':len(leaves),'general_leaf':len(general)}
 (root/'assets/classification-audit.json').write_text(json.dumps(count,indent=2),encoding='utf-8')
 
-def page(title,body):
+def page(title,body,en=''):
  # 打印时展开折叠项：内联脚本，无需外部 JS。
- return f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(title)}</title><meta name="description" content="{E(title)}：数学理解课的参考页面（分类索引、分级路线或概念自查），可离线使用。"><link rel="stylesheet" href="../assets/style.css"></head><body><main><nav><a href="../index.html">数学地图</a><a href="../reference/classification.html">完整分类</a><a href="../reference/curriculum.html">分级课程总纲</a><a href="../reference/concepts.html">核心概念</a></nav>{body}</main><script>'use strict';let printed=[];addEventListener('beforeprint',()=>{{printed=[...document.querySelectorAll('details:not([open])')];printed.forEach(d=>d.open=true)}});addEventListener('afterprint',()=>{{printed.forEach(d=>d.open=false);printed=[]}});</script></body></html>'''
+ e=f'<a href="{en}">English</a>' if en else ''
+ return f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(title)}</title><meta name="description" content="{E(title)}：数学理解课的参考页面（分类索引、分级路线或概念自查），可离线使用。"><link rel="stylesheet" href="../assets/style.css"></head><body><main><nav><a href="../index.html">数学地图</a><a href="../reference/classification.html">完整分类</a><a href="../reference/curriculum.html">分级课程总纲</a><a href="../reference/concepts.html">核心概念</a>{e}</nav>{body}</main><script>'use strict';let printed=[];addEventListener('beforeprint',()=>{{printed=[...document.querySelectorAll('details:not([open])')];printed.forEach(d=>d.open=true)}});addEventListener('afterprint',()=>{{printed.forEach(d=>d.open=false);printed=[]}});</script></body></html>'''
 
 # Preserve official descriptions; no unverified machine-translated research vocabulary.
 index='<header><p class="tag">MSC2020 / 完整源文件索引</p><h1>数学研究分类索引</h1><p>一级中文名称请对照 README；本页保留官方英文分类名与说明，避免把未经核对的专业术语翻译当成权威译名。</p></header>'
@@ -58,7 +59,7 @@ input.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(filter,
 function revealHash(){if(!location.hash)return;let target;try{target=document.getElementById(decodeURIComponent(location.hash.slice(1)))}catch(e){return}if(target){for(let p=target.parentElement;p;p=p.parentElement)if(p.tagName==='DETAILS')p.open=true;if(target.tagName==='DETAILS')target.open=true;requestAnimationFrame(()=>target.scrollIntoView());}}
 window.addEventListener('hashchange',revealHash);revealHash();
 </script>'''
-(root/'reference/classification.html').write_text(page('MSC2020 完整分类索引 · 数学理解课',index),encoding='utf-8')
+(root/'reference/classification.html').write_text(page('MSC2020 完整分类索引 · 数学理解课',index,en='classification.en.html'),encoding='utf-8')
 # Every stage is a curriculum objective, not an automatically generated claim of mastery.
 paths={
 '00-preparation':[
@@ -185,14 +186,14 @@ for folder,title,subs,pre,source,lessons in course:
   if i>0:text+='<p>进入前：通过前一级的独立解题或报告验收；若跨入其他方向，还需补相应分析、代数、概率或领域知识。</p>'
   text+='</article>'
  text+='<footer><p>不要按清单盲目跳级。每次学习后记录哪些题能独立解决、哪些证明仍需要提示，再确定下一课。研究阶段宜加入读书组或接受专业指导。</p></footer>'
- (root/folder/'curriculum.html').write_text(page(title+'分级课程 · 数学理解课',text),encoding='utf-8')
+ (root/folder/'curriculum.html').write_text(page(title+'分级课程 · 数学理解课',text,en='curriculum.en.html'),encoding='utf-8')
  p=root/folder/'index.html';s=p.read_text(encoding='utf-8')
  marker='<p class="curriculum-link"><a href="curriculum.html">查看从入门到研究训练的分级路线 →</a></p>'
  if 'class="curriculum-link"' not in s:s=s.replace('</header>',marker+'</header>',1)
  p.write_text(s,encoding='utf-8')
  overview+=f'<a class="card" href="../{folder}/curriculum.html"><h3>{E(title)}</h3><p>L0 入门 → L1 核心 → L2 证明 → L3 专题 → L4 研究训练</p></a>'
 overview+='</div><footer><p>这是教学分级，不是大学统一课程标准；具体顺序会随方向和你的学习反馈调整。</p></footer>'
-(root/'reference/curriculum.html').write_text(page('分级课程总纲 · 数学理解课',overview),encoding='utf-8')
+(root/'reference/curriculum.html').write_text(page('分级课程总纲 · 数学理解课',overview,en='curriculum.en.html'),encoding='utf-8')
 # 核心概念自查清单：数据在 assets/concepts.json（手工维护）；勾选进度存浏览器 localStorage。
 concepts=json.loads((root/'assets/concepts.json').read_text(encoding='utf-8'))
 assert set(concepts)=={m[0] for m in course},'concepts.json 的模块键与课程数据不一致'
@@ -223,7 +224,7 @@ document.getElementById('reset').addEventListener('click',()=>{if(confirm('清�
 refresh();
 </script>'''
 cp=cp.replace('__N__',str(sum(len(m[-1]) for m in course)))
-(root/'reference/concepts.html').write_text(page('核心概念自查清单 · 数学理解课',cp),encoding='utf-8')
+(root/'reference/concepts.html').write_text(page('核心概念自查清单 · 数学理解课',cp,en='concepts.en.html'),encoding='utf-8')
 # Make the new work visible while keeping the existing entry page and README intact.
 p=root/'index.html';s=p.read_text(encoding='utf-8')
 marker='<section class="panel" id="extended-atlas"><h2>完整分类与长期路线</h2><p><a href="reference/classification.html">打开MSC2020完整源文件分类索引</a> · <a href="reference/curriculum.html">查看各分支从基础到研究训练的总纲</a></p><p>分类索引可按编码或英文关键词搜索。分级路线为规划，高阶正文尚未写完。</p></section>'
