@@ -1,3 +1,46 @@
+# Repository Review and Fixes (2026-11-13)
+
+This pass inspected the 18-module, 139-lesson course, bilingual generators, offline labs and maintenance workflow. **73 content fields across 53 lessons** were corrected in both editions. Fourteen self-check descriptions were revised and thirteen condition/counterexample checks appended, for 440 items per edition. Fixes live in the maintained sources and the HTML has been regenerated.
+
+## Resolved findings
+
+| Priority | Location | Finding and fix |
+|---|---|---|
+| P1 | Course generators | Raw inequalities such as 0<y<1 were interpreted as HTML tags and silently disappeared. A shared inline renderer escapes mathematical text while retaining supported links. Validation compares every lesson field with visible generated text. |
+| P1 | 05-05, 08-04, 13-03, 15-08 | Corrected affine area invariance, the Fibonacci ratio limit, reversed convexity of x³, and the nonzero-force claim for equal charges at a triangle center. Added the correct reasoning. |
+| P1 | 11-10 | Irrational rotations have no periodic orbits from rational starting points. Continuous observables are equidistributed for every start, a stronger conclusion than the general almost-everywhere ergodic theorem. [Lecture notes](https://math.uchicago.edu/~sfilip/teaching/2020_01_11_dynamics_and_rigidity.pdf). |
+| P2 | Basic and advanced prerequisites | Added domain restrictions for fractions, powers and logarithms; ring conventions; odd-prime/nonzero-residue assumptions; finite-dimensional, continuity, differentiability and metric hypotheses. Repaired the projection proof and missing R in a circle derivative, eigenvalue sign conventions, same-side versus opposite-side inscribed angles, and fixed-basepoint homotopy. |
+| P2 | Probability, statistics, ODE | Distinguished marginal from conditional independence, standardization from normality, stationarity from convergence, and time averages from stepwise distributions. Added LLN/CLT and t-interval assumptions; retained equilibrium solutions and absolute logarithms in separation. |
+| P2 | 11-09, 13-05 | Periodic windows invalidate universal chaos beyond r=3.57. KKT necessity requires constraint qualifications; convexity gives sufficiency and Slater's condition yields an optimality characterization. [Dynamics notes](https://ocw.mit.edu/courses/12-820-turbulence-in-the-ocean-and-atmosphere-spring-2006/43a1cd0c6869de8ef3b05d0f2c836ece_ch2.pdf), [Boyd slides](https://web.stanford.edu/~boyd/cvxbook/bv_cvxslides.pdf). |
+| P2 | Numerical and applied topics | Separated algebraic precision from quadrature order, used consistent norms, specified matching-pennies payoffs and generalized Sudoku size, corrected Hamming bit order, and clarified degree-biased sampling, feedback stability, overfitting and incompleteness hypotheses. |
+| P2 | RSA | Factoring is sufficient for key recovery, without a claim of equivalence to every attack. CRT completes correctness for arbitrary message representatives. Raw RSA is distinguished from encoded schemes. [RFC 8017](https://www.rfc-editor.org/rfc/rfc8017.html). |
+| P2 | Labs | The histogram and normal curve previously had separate peak normalization. Both now use one density scale. Newton curves use true coordinates and viewport clipping, with convergence/cycle/escape status. Semiaxis lengths are |λ|. |
+| P2 | Browser behavior | Each slider now updates its own experiment; resampling is explicit. Checklists handle malformed or unavailable storage and support validated JSON backups across editions. Existing item IDs are preserved. |
+| P2 | Templates and classification | Fixed literal {printjs} placeholders in 161 English pages and made printing repeatable without losing folded state. Hash navigation now clears conflicting search filters. |
+| P2 | Tooling | Corrected the translation splitter's repository root and Windows-only lesson detection. Shared validation checks paths, URL fragments, duplicate IDs, text freshness and bilingual checkbox identities. |
+
+## Added maintenance support
+
+- `python tools/build_all.py` rebuilds both editions in dependency order.
+- `python tools/verify_course.py --static-only` needs no third-party packages.
+- Full browser checks cover both languages, numerical/SVG semantics, backup transfer, corrupt or blocked storage, printing, search, and all 364 pages at 320px width.
+- Linux GitHub Actions rebuilds and rejects stale or uncommitted generated files before browser verification.
+- [CONTRIBUTING.md](CONTRIBUTING.md) documents source ownership, commands, backup format and stable checkbox IDs. Automated browser checks are not proofs of every mathematical claim; mathematical review remains necessary.
+
+## Local verification
+
+```sh
+python tools/build_all.py
+python -m unittest discover -s tests
+python tools/verify_course.py --static-only
+python tools/verify_course_en.py
+python tools/verify_course.py
+```
+
+The course remains 139 introductory lessons; higher stages are plans. Existing learning records do not imply mastery. Earlier review history follows; its counts and test scope describe the versions reviewed at the time.
+
+---
+
 # Knowledge-Completeness Review (2026-11-07)
 
 > **Fix log (completed the same day, 2026-11-07)**: A1–A13 all fixed (erroneous text, missing conditions, lesson order, and prerequisite declarations); **31 new lessons** (96→127), covering all 8 repository-wide gaps of B1 and the entry-level gaps of B2 for each module; every B3 prerequisite break resolved with a new lesson or an in-text pointer; all 14 cross-links of section C landed; the Notation Reference went from 9 to 37 entries; two new lab experiments, "Sampling Distributions (CLT)" and "Newton Iteration" (4→6); RESOURCES gained advanced-reading lists for five directions (every link verified); verify_course.py's count assertions now read values dynamically; branch-page subfield copy corrected. `python tools/build_course.py && python tools/extend_atlas.py && python tools/verify_course.py` all green.

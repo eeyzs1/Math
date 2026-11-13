@@ -1,73 +1,39 @@
 # 维护 Checklist
 
-本仓库一半是生成物、一半是手工文档。先分清，再动手。
+文件归属、完整命令与备份格式见 [CONTRIBUTING.md](CONTRIBUTING.md)。本表用于每次修改后的快速核对。
 
-## 文件归属速查
+## 课程或概念改动
 
-| 类别 | 文件 | 怎么改 |
-|---|---|---|
-| 生成器 | `tools/build_course.py`、`tools/extend_atlas.py` | 直接改，改完重建 |
-| 生成的页面 | `index.html`、`NN-*/`（含 lessons、curriculum）、`reference/*.html`、`README.md`、`assets/style.css`、`assets/widgets.js`、`assets/course.json`、`assets/sources.json`、`assets/classification-audit.json` | **不要手改**，改生成器后重建 |
-| 手工维护 | `MISSION.md`、`NOTES.md`、`RESOURCES.md`、`learning-records/`、`CHECKLIST.md`、`assets/concepts.json`（核心概念清单数据） | 直接改，重建不会覆盖 |
-| 英文版生成器 | `tools/build_course_en.py`、`tools/extend_atlas_en.py`（页面模板；数据来自 `assets/course.en.json`） | 直接改模板，改完按下方英文流程重建 |
-| 英文版生成页面 | 各目录 `*.en.html`（index/curriculum/lessons）、`reference/*.en.html`、`assets/widgets.en.js` | **不要手改**，改生成器或数据后重建 |
-| 英文版手工维护 | `README.en.md`、`MISSION.en.md`、`NOTES.en.md`、`RESOURCES.en.md`、`CHECKLIST.en.md`、`REVIEW.en.md`、`learning-records/README.en.md`、`assets/course.en.json`、`assets/concepts.en.json` | 直接改；术语标准见 `tools/en-src/GLOSSARY.md` |
-| 源数据 | `assets/msc2020.csv`（latin1）、`assets/msc2020.tex`（UTF-8） | 替换官方下载文件，保持原编码 |
-| 验证 | `tools/verify_course.py`、`tools/verify_course_en.py`、`requirements.txt` | 直接改 |
+- [ ] 中文改 `tools/build_course.py`，英文同步 `assets/course.en.json`。
+- [ ] 同步 `assets/concepts.json` 与 `assets/concepts.en.json`；模块/课号/条目数对应，既有条目不重排，新条目追加。
+- [ ] 新课具备概念条件、完整例题、练习、解析和先修说明；新增模块还须同步两份 atlas 的 L0–L4 路线及 MSC 映射。
+- [ ] 交互逻辑改 `tools/static/*.js`，本地化文案改 `tools/site_common.py`，不直接改 `assets/*.js`。
 
-## 每次改动后的固定流程
+## 固定验证
 
-- [ ] `python tools/build_course.py`
-- [ ] `python tools/extend_atlas.py`（顺序不能反：build 会重写页面，extend 负责追加分类与分级路线）
-- [ ] `python tools/verify_course.py` 全绿（首次先 `pip install -r requirements.txt`）
-- [ ] 浏览器抽查：`index.html` 首页、任一课程页、`reference/labs.html` 拖滑块、`reference/classification.html` 搜索
-- [ ] `git add -A && git commit && git push`
+```sh
+python tools/build_all.py
+python -m unittest discover -s tests
+python tools/verify_course.py
+```
 
-## 英文版（*.en.html / *.en.md）重建与同步
+首次运行浏览器检查需 `python -m pip install -r requirements.txt` 与 `python -m playwright install chromium`。仅静态检查可用 `python tools/verify_course.py --static-only`，不需要 Playwright。`verify_course_en.py` 保留为英文静态检查入口。
 
-- [ ] 中文课程内容改动（`tools/build_course.py` 数据或 `assets/concepts.json`）后，同步修改 `assets/course.en.json` / `assets/concepts.en.json` 的对应条目，再重建英文版
-- [ ] `python tools/build_course_en.py`（读取 `assets/course.en.json` 与 `RESOURCES.en.md`，生成全部 `*.en.html` 与 `assets/widgets.en.js`）
-- [ ] `python tools/extend_atlas_en.py`（生成分级路线、分类索引与概念自查的英文页；不改动中文页面）
-- [ ] `python tools/verify_course_en.py` 全绿（课数与中文版一致、内部链接存在、英文文件无中文字符残留）
-- [ ] 浏览器抽查 `index.en.html`、任一 `.en.html` 课程页、`reference/labs.en.html`
-- [ ] 术语以 `tools/en-src/GLOSSARY.md` 为准；英文数据与中文数据结构逐字段对应，改一处须同步另一处
+- [ ] 全部验证通过，生成物与维护源文件一并检查差异。
+- [ ] 抽查首页、改动课程、实验室与概念清单；需要时检查导出/导入。
+- [ ] 再次重建不应引入额外差异；检查后按需要提交。CI 会验证 Linux 下重建一致性。
 
-## 新增一节课
+## 自动检查范围
 
-- [ ] 在 `tools/build_course.py` 对应模块的数据元组末尾追加 `(标题, 直觉与定义, 推导例题, 练习, 解析)`
-- [ ] 在 `assets/concepts.json` 为新课程追加概念条目（3–4 项，按“能解释/能推导/能迁移”口径；`extend_atlas.py` 会断言条目数与课程数一致）
-- [ ] 无需改任何计数或导航：上一课/下一课链接、"N 节课"文案、首页与 README 的模块/课数都是动态生成
-- [ ] 走固定流程重建 + 验证 + 提交
+- 双语模块、课程字段、概念课号/顺序与稳定 ID；正文与生成页可见文字一致。
+- 全站 HTML 本地链接、URL 解码后的目标和片段锚点、重复 ID、模板残留、英文翻译残留。
+- CSV/TeX 分类编码集合及审计计数，分类搜索与过滤后的 hash 深链。
+- 两语言全部实验端点、概率归一化、抽样均值/标准差、密度共用刻度、牛顿真实曲线、特征半轴。
+- 学习记录持久化、跨语言备份、非法备份不覆盖、损坏记录与存储不可用。
+- 打印前确实展开、重复事件后还原；全部 364 页在 320px 宽度无横向溢出。
 
-## 新增一个模块
+## 分类源数据更新
 
-- [ ] `build_course.py` 的 `data` 里加元组：`(目录名, 标题, 子领域；分号分隔, 先修, 教材key, 课程列表)`
-- [ ] 教材 key 必须在 `sources` 字典中（现有：discrete/pre/linear/calculus/statistics/ode/topology）；新增来源需同步补 `RESOURCES.md`（手工文档）
-- [ ] 目录名用 `NN-slug` 格式（两位数字前缀）
-- [ ] 若对应 MSC 研究大类：更新 `groups` 映射；`cn` 是"编码→译名"字典，与 CSV 大类集合有断言核对，错配会直接报错
-- [ ] 在 `tools/extend_atlas.py` 的 `paths` 里为新模块加 5 级分级路线（L0–L4）
-- [ ] 检查 README"推荐学习路径"一节是否需要把新模块挂进某条路线（该段在 build 模板里，不是手写正文）
-- [ ] 固定流程重建 + 验证 + 提交
-
-## 更新 MSC2020 源数据
-
-- [ ] 替换 `assets/msc2020.csv` 与 `assets/msc2020.tex`
-- [ ] `build_course.py` 会断言 `cn` 字典与 CSV 63 个大类集合一致；`extend_atlas.py` 会断言 CSV 编码与 TeX label 集合一致——任一失败先核对数据再改映射
-- [ ] `assets/classification-audit.json` 与 README 计数自动重算；若总数变化，`tools/verify_course.py` 里 `.major==63`、`.entry==6006` 等断言需同步更新
-- [ ] README"计数说明"里官网宣称数（63/529/6,022）与实测数的差异描述是否仍成立
-
-## verify_course.py 自动覆盖的范围
-
-- 全站本地链接目标存在（rglob 所有 HTML 的 href/src）
-- labs 七个实验滑块的端点值（h=0.01、a=0/−2、p=0/1、step=1.2、n=1/50、x0=0/±2.5、ea/eb/ed 端点）输出无 NaN
-- 答案 `<details>` 可展开；390px 视口无横向溢出
-- classification：大类/条目数与 `assets/classification-audit.json` 动态核对、编码精确搜索、无结果、清空恢复、hash 深链定位
-- 每个模块 curriculum 页恰有 5 级；页面 JS 无未捕获报错
-- concepts 清单的模块数与勾选项数从 `assets/concepts.json` 动态核对
-- 输出 3 张 QA 截图到 `assets/`（已 gitignore，勿提交）
-
-## 已知遗留（低优先级，按需处理）
-
-- [ ] classification 个别条目残留 TeX 字面量（如 `\{For ...\}`），属官方源数据内容，保持原样
-
-已解决的旧遗留：全站已补 `<meta name="description">`；分支页书目链接改为生成的 `reference/resources.html`（源仍为手工维护的 `RESOURCES.md`）；labs 二项图已加基线轴；`widgets.js` 只在实验室页加载（打印展开逻辑内联进每页模板）；04 特征值课的配套实验（圆变椭圆）已上线。
+- [ ] CSV 保留 latin1，TeX 使用 UTF-8；核对分类集合与两语映射后重建。
+- [ ] 计数从文件动态生成，无需手改验证器；核对 README 中引用的官网说明是否仍准确。
+- [ ] 原始分类描述中的 TeX 字面量按官方内容保留；页面编码完整不等于相应教材已经完成。

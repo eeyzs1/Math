@@ -13,6 +13,10 @@ for(const major of majors){
  major.el.hidden=!majorVisible;major.el.open=!!q&&majorVisible;}
  document.getElementById('search-count').textContent=q?`Matched ${matched} leaf entries (including matches on parent class names)`:'All classes shown; expand level by level';}
 input.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(filter,120)});
-function revealHash(){if(!location.hash)return;let target;try{target=document.getElementById(decodeURIComponent(location.hash.slice(1)))}catch(e){return}if(target){for(let p=target.parentElement;p;p=p.parentElement)if(p.tagName==='DETAILS')p.open=true;if(target.tagName==='DETAILS')target.open=true;requestAnimationFrame(()=>target.scrollIntoView());}}
+function revealHash(){if(!location.hash)return;let target;try{target=document.getElementById(decodeURIComponent(location.hash.slice(1)))}catch(e){return}if(target){if(input.value){input.value='';clearTimeout(timer);filter();}for(let p=target.parentElement;p;p=p.parentElement)if(p.tagName==='DETAILS')p.open=true;if(target.tagName==='DETAILS')target.open=true;requestAnimationFrame(()=>target.scrollIntoView());}}
 window.addEventListener('hashchange',revealHash);revealHash();
-</script></main><script>'use strict';let printed=[];addEventListener('beforeprint',()=>{printed=[...document.querySelectorAll('details:not([open])')];printed.forEach(d=>d.open=true)});addEventListener('afterprint',()=>{printed.forEach(d=>d.open=false);printed=[]});</script></body></html>
+</script></main><script>(()=>{'use strict';let printed=null;
+addEventListener('beforeprint',()=>{if(printed!==null)return;
+printed=[...document.querySelectorAll('details:not([open])')];printed.forEach(d=>d.open=true)});
+addEventListener('afterprint',()=>{if(printed===null)return;
+printed.forEach(d=>d.open=false);printed=null});})();</script></body></html>

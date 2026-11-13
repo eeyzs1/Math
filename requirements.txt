@@ -1,2 +1,2 @@
-# 运行 python tools/verify_course.py 所需依赖（课程页面本身无需任何依赖）
+# Browser verification only; reading the offline course and --static-only need no packages.
 playwright>=1.40

@@ -1,6 +1,7 @@
 """Build the complete source-file classification index and staged curriculum.
 The curriculum is a plan; it must never be counted as authored lessons.
 """
+from site_common import PRINT_SCRIPT, script_source, concept_controls
 from pathlib import Path
 import csv, re, json, html, collections
 root=Path(__file__).resolve().parents[1]
@@ -22,7 +23,7 @@ count={'total':len(rows),'major':len(major),'middle':len(middle),'subject_leaf':
 def page(title,body,en=''):
  # 打印时展开折叠项：内联脚本，无需外部 JS。
  e=f'<a href="{en}">English</a>' if en else ''
- return f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(title)}</title><meta name="description" content="{E(title)}：数学理解课的参考页面（分类索引、分级路线或概念自查），可离线使用。"><link rel="stylesheet" href="../assets/style.css"></head><body><main><nav><a href="../index.html">数学地图</a><a href="../reference/classification.html">完整分类</a><a href="../reference/curriculum.html">分级课程总纲</a><a href="../reference/concepts.html">核心概念</a>{e}</nav>{body}</main><script>'use strict';let printed=[];addEventListener('beforeprint',()=>{{printed=[...document.querySelectorAll('details:not([open])')];printed.forEach(d=>d.open=true)}});addEventListener('afterprint',()=>{{printed.forEach(d=>d.open=false);printed=[]}});</script></body></html>'''
+ return f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{E(title)}</title><meta name="description" content="{E(title)}：数学理解课的参考页面（分类索引、分级路线或概念自查），可离线使用。"><link rel="stylesheet" href="../assets/style.css"></head><body><main><nav><a href="../index.html">数学地图</a><a href="../reference/classification.html">完整分类</a><a href="../reference/curriculum.html">分级课程总纲</a><a href="../reference/concepts.html">核心概念</a>{e}</nav>{body}</main>{PRINT_SCRIPT}</body></html>'''
 
 # Preserve official descriptions; no unverified machine-translated research vocabulary.
 index='<header><p class="tag">MSC2020 / 完整源文件索引</p><h1>数学研究分类索引</h1><p>一级中文名称请对照 README；本页保留官方英文分类名与说明，避免把未经核对的专业术语翻译当成权威译名。</p></header>'
@@ -56,7 +57,7 @@ for(const major of majors){
  major.el.hidden=!majorVisible;major.el.open=!!q&&majorVisible;}
  document.getElementById('search-count').textContent=q?`匹配 ${matched} 个末级条目（包括所属大类或中类名称匹配）`:'已显示所有分类，可逐级展开';}
 input.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(filter,120)});
-function revealHash(){if(!location.hash)return;let target;try{target=document.getElementById(decodeURIComponent(location.hash.slice(1)))}catch(e){return}if(target){for(let p=target.parentElement;p;p=p.parentElement)if(p.tagName==='DETAILS')p.open=true;if(target.tagName==='DETAILS')target.open=true;requestAnimationFrame(()=>target.scrollIntoView());}}
+function revealHash(){if(!location.hash)return;let target;try{target=document.getElementById(decodeURIComponent(location.hash.slice(1)))}catch(e){return}if(target){if(input.value){input.value='';clearTimeout(timer);filter();}for(let p=target.parentElement;p;p=p.parentElement)if(p.tagName==='DETAILS')p.open=true;if(target.tagName==='DETAILS')target.open=true;requestAnimationFrame(()=>target.scrollIntoView());}}
 window.addEventListener('hashchange',revealHash);revealHash();
 </script>'''
 (root/'reference/classification.html').write_text(page('MSC2020 完整分类索引 · 数学理解课',index,en='classification.en.html'),encoding='utf-8')
@@ -197,7 +198,7 @@ overview+='</div><footer><p>这是教学分级，不是大学统一课程标准�
 # 核心概念自查清单：数据在 assets/concepts.json（手工维护）；勾选进度存浏览器 localStorage。
 concepts=json.loads((root/'assets/concepts.json').read_text(encoding='utf-8'))
 assert set(concepts)=={m[0] for m in course},'concepts.json 的模块键与课程数据不一致'
-cp=f'<header><p class="tag">CONCEPT CHECKLIST</p><h1>核心概念自查清单</h1><p>对应 {sum(len(m[-1]) for m in course)} 节课，每项按“能解释、能推导、能迁移”口径自查：先闭卷作答，做到再勾选；次日、3 天、7 天后回看重做。勾选只保存在本机浏览器，不上传、不写入仓库。</p><p id="total" aria-live="polite"></p><button id="reset" type="button">清空全部勾选记录</button></header>'
+cp=f'<header><p class="tag">CONCEPT CHECKLIST</p><h1>核心概念自查清单</h1><p>对应 {sum(len(m[-1]) for m in course)} 节课，每项按“能解释、能推导、能迁移”口径自查：先闭卷作答，做到再勾选；次日、3 天、7 天后回看重做。勾选只保存在本机浏览器，不上传、不写入仓库。</p><p id="total" aria-live="polite"></p>{concept_controls("zh")}</header>'
 for folder,title,subs,pre,source,lessons in course:
  n=concepts[folder]
  assert len(n)==len(lessons),f'{folder} 的概念条目数与课程数不一致'
@@ -207,23 +208,9 @@ for folder,title,subs,pre,source,lessons in course:
   cp+=f'<div class="concept"><h3><a href="../{folder}/lessons/{c["file"]}.html">{int(c["file"]):02d} · {E(lesson[0])}</a> <span class="muted" data-count></span></h3><ul>{items}</ul></div>'
  cp+='</section>'
 cp+=r'''<footer><p>清单覆盖现有 __N__ 节正文课；L1–L4 的更高阶目标见<a href="curriculum.html">分级课程总纲</a>。勾选是自评快照，不等于掌握：以能否闭卷重做、讲清条件和给出自己的例子为准。</p></footer>
-<script>
-'use strict';
-const KEY='math-concepts-v1';let state={};
-try{state=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
-const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}};
-function refresh(){let total=0,done=0;
-for(const sec of document.querySelectorAll('[data-module]')){let sd=0,st=0;
-for(const d of sec.querySelectorAll('.concept')){let ld=0,lt=0;
-for(const b of d.querySelectorAll('input')){b.checked=!!state[b.id];total++;st++;lt++;if(b.checked){done++;sd++;ld++}}
-d.querySelector('[data-count]').textContent=ld+'/'+lt}
-sec.querySelector('[data-count]').textContent=sd+'/'+st}
-document.getElementById('total').textContent='总进度：'+done+' / '+total+' 项'}
-for(const b of document.querySelectorAll('.concept input'))b.addEventListener('change',()=>{state[b.id]=b.checked;save();refresh()});
-document.getElementById('reset').addEventListener('click',()=>{if(confirm('清空全部勾选记录？')){state={};save();refresh()}});
-refresh();
-</script>'''
+<script defer src="../assets/concepts.js"></script>'''
 cp=cp.replace('__N__',str(sum(len(m[-1]) for m in course)))
+(root / 'assets/concepts.js').write_text(script_source('concepts', 'zh'), encoding='utf-8')
 (root/'reference/concepts.html').write_text(page('核心概念自查清单 · 数学理解课',cp,en='concepts.en.html'),encoding='utf-8')
 # Make the new work visible while keeping the existing entry page and README intact.
 p=root/'index.html';s=p.read_text(encoding='utf-8')
@@ -236,10 +223,10 @@ p=root/'README.md';s=p.read_text(encoding='utf-8');section=f'''
 - [完整 MSC2020 分类索引](reference/classification.html)：收入官网下载 CSV 的全部 **{count["total"]:,} 条编码记录**，包含{count["major"]}个大类、{count["middle"]}个中类、{count["subject_leaf"]:,}个专题末级条目和{count["general_leaf"]}个通用末级条目；已与官方 TeX 的全部标签集合核对一致。保留英文专业名，可离线搜索编码或关键词。分类名称完整收录不等于对应教程已经完成。
 - **计数说明**：[官网介绍](https://msc2020.org/)写63个大类、529个中类、6,022个末级类；当前下载文件实测计数不同。本项目报告源文件实测结果，未自行补造分类。审计结果在 `assets/classification-audit.json`。
 - [分级课程总纲](reference/curriculum.html)：每个模块都有 L0 入门、L1 本科核心、L2 高阶与证明、L3 研究生专题、L4 研究训练的目标与验收要求。以上是**待展开的教学规划**，现有正文仍为{sum(len(m[-1]) for m in course)}节。
-- [核心概念自查清单](reference/concepts.html)：{sum(len(m[-1]) for m in course)} 节课逐项“能解释 / 能推导 / 能迁移”自评，勾选进度仅保存在本机浏览器（localStorage）。
+- [核心概念自查清单](reference/concepts.html)：{sum(len(m[-1]) for m in course)} 节课逐项“能解释 / 能推导 / 能迁移”自评，勾选进度默认保存在本机浏览器（localStorage），支持 JSON 导出备份和跨浏览器、中英文版导入；无法保存时会提示。
 - 研究训练意味着在特定方向读论文、复现证明或算法、提出问题和接受反馈。没有覆盖全部数学的“大师结业线”，读完资料也不能保证原创研究能力。
 
-重建：先运行 `python tools/build_course.py`，再运行 `python tools/extend_atlas.py`；验证先 `pip install -r requirements.txt`，再运行 `python tools/verify_course.py`（需要 Playwright 与本机 Chrome/Chromium）。分级课程内容在 `tools/extend_atlas.py` 中维护；`MISSION.md`、`NOTES.md`、`RESOURCES.md`、`assets/concepts.json`（概念清单数据）与 `learning-records/` 为手工维护文档，重建不会覆盖。
+中英双版一键重建：`python tools/build_all.py`。无浏览器静态验证：`python tools/verify_course.py --static-only`。完整验证先运行 `python -m pip install -r requirements.txt`、`python -m playwright install chromium`，再运行 `python -m unittest discover -s tests` 与 `python tools/verify_course.py`；完整验证覆盖两种语言。维护方式见 [CHECKLIST.md](CHECKLIST.md)，审查修复记录见 [REVIEW.md](REVIEW.md)。分级课程内容在 `tools/extend_atlas.py` 中维护；`MISSION.md`、`NOTES.md`、`RESOURCES.md`、`assets/concepts.json`（概念清单数据）与 `learning-records/` 为手工维护文档，重建不会覆盖。
 '''
 if '## 完整分类与从基础到研究的课程规划' in s:s=s.split('## 完整分类与从基础到研究的课程规划')[0].rstrip()
 p.write_text(s+'\n'+section,encoding='utf-8')

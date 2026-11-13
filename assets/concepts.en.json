@@ -3,7 +3,7 @@
   {
    "file": "01",
    "items": [
-    "Can explain why the order of operations and the rules for parentheses are what make valid transformations possible (the distributive law)",
+    "Can use operation-order and parentheses conventions and distinguish notation from the distributive law",
     "Can carry out mixed four-operation arithmetic with negative numbers and justify the sign rules",
     "Can use order-of-magnitude estimation to check whether a computed result is reasonable"
    ]
@@ -48,7 +48,8 @@
    "items": [
     "Can derive the rule for multiplying powers with the same base by counting factors",
     "Can explain why zero, negative, and fractional exponents are defined the way they are",
-    "Can compute 2⁻²×2⁵ and 27^(2/3) and name the laws used"
+    "Can compute 2⁻²×2⁵ and 27^(2/3) and name the laws used",
+    "Can state the base restrictions for zero, negative and fractional powers"
    ]
   },
   {
@@ -56,7 +57,8 @@
    "items": [
     "Can define the logarithm as the inverse of the exponential function",
     "Can derive the product rule (products become sums) and the power rule (exponents move out front) from the laws of exponents",
-    "Can use the quotient rule (quotients become differences) to estimate log₁₀5"
+    "Can use the quotient rule (quotients become differences) to estimate log₁₀5",
+    "Can check the base and argument restrictions for real logarithms"
    ]
   },
   {
@@ -250,7 +252,8 @@
    "items": [
     "Can define quadratic residues and explain that modulo p they account for exactly half",
     "Can list the set of residues mod 7, {1,2,4}, and the set of residues mod 11",
-    "Can use Euler's criterion a^((p−1)/2) to decide whether an element is a square"
+    "Can use Euler's criterion a^((p−1)/2) to decide whether an element is a square",
+    "Can state the odd-prime, nonzero-residue and distinct-prime restrictions"
    ]
   }
  ],
@@ -366,7 +369,7 @@
    "file": "05",
    "items": [
     "Can distinguish rigid motions, similarity transformations, and affine transformations by their invariants",
-    "Can show that a shear preserves area but not angles",
+    "Can explain that a shear preserves area whereas general affine maps preserve area ratios",
     "Can state \"identifying a class of transformations = finding its invariants\""
    ]
   },
@@ -398,7 +401,7 @@
    "file": "09",
    "items": [
     "Can explain the projective viewpoint that \"parallel lines meet at a point at infinity\"",
-    "Can compute the cross-ratio of four collinear points",
+    "Can compute an ordered cross-ratio using directed differences and explain why distinct quadruples can share it",
     "Can use the projection t↦1/t to verify the invariance of the cross-ratio (the 4/3 example)"
    ]
   }
@@ -426,7 +429,8 @@
    "items": [
     "Can apply the product, quotient, and chain rules together with the basic derivatives (eˣ, ln x, sin x)",
     "Can compute composite derivatives such as d/dt(100e^(0.1t)) and d/dt(x′(t)²)=2x′x″",
-    "Can use the Mean Value Theorem to prove that a function whose derivative is identically zero is constant"
+    "Can use the Mean Value Theorem to prove that a function whose derivative is identically zero is constant",
+    "Can explain the interval assumption and the sign in F=−V′"
    ]
   },
   {
@@ -466,7 +470,8 @@
    "items": [
     "Can state both parts of the Fundamental Theorem of Calculus",
     "Can evaluate definite integrals using antiderivatives",
-    "Can explain why integrating |x| requires piecewise treatment"
+    "Can explain why integrating |x| requires piecewise treatment",
+    "Can state continuity as the sufficient hypothesis used for the fundamental theorem"
    ]
   },
   {
@@ -508,7 +513,8 @@
    "items": [
     "Can state the metric axioms and give three examples (Euclidean, discrete, sup)",
     "Can explain why xⁿ does not converge to a continuous function under the sup metric",
-    "Can analyze which sequences converge under the discrete metric"
+    "Can analyze which sequences converge under the discrete metric",
+    "Can explain identity of indiscernibles and why the sup distance must be finite"
    ]
   },
   {
@@ -557,7 +563,7 @@
    "file": "04",
    "items": [
     "Can solve first-order geometric recurrences",
-    "Can describe why the Fibonacci ratio tends to the golden ratio",
+    "Can explain the Fibonacci ratio limit using the dominant characteristic root",
     "Can handle aₙ=2aₙ₋₁+n via the \"compute — conjecture — prove\" workflow"
    ]
   },
@@ -590,7 +596,8 @@
    "items": [
     "Can state the existence condition for an Eulerian circuit and apply it to the Seven Bridges problem",
     "Can define the chromatic number and prove that a graph with χ=2 contains no triangle",
-    "Can distinguish \"degree parity\" and \"coloring\" as two independent global properties"
+    "Can distinguish \"degree parity\" and \"coloring\" as two independent global properties",
+    "Can use an edgeless graph to distinguish χ≤2 from χ=2"
    ]
   }
  ],
@@ -649,7 +656,8 @@
    "items": [
     "Can state the meaning of the law of large numbers (frequencies stabilize)",
     "Can use the central limit theorem to estimate the 1/√n order of fluctuations (finite variance required)",
-    "Can estimate a reasonable range of deviation for 10000 coin tosses"
+    "Can estimate a reasonable range of deviation for 10000 coin tosses",
+    "Can state the iid, integrability and finite positive variance assumptions"
    ]
   },
   {
@@ -657,7 +665,7 @@
    "items": [
     "Can define the Markov property and write the transition matrix of a two-state chain",
     "Can compute the probability of returning to the origin in 4 steps of a one-dimensional random walk, C(4,2)/16",
-    "Can find the stationary distribution of a two-state chain and explain \"forgetting the initial state\""
+    "Can find a stationary distribution and use a periodic chain to explain the conditions for distributional convergence"
    ]
   },
   {
@@ -699,7 +707,8 @@
    "items": [
     "Can define unbiasedness",
     "Can correctly interpret the frequentist meaning of a 95% confidence interval and the conditions for its validity",
-    "Can explain why the t distribution replaces the normal when σ is unknown (including the reason for the n−1 correction)"
+    "Can explain why the t distribution replaces the normal when σ is unknown (including the reason for the n−1 correction)",
+    "Can explain why an exact small-sample t interval requires independent normal observations"
    ]
   },
   {
@@ -741,7 +750,8 @@
    "items": [
     "Can recognize separable equations and carry out the separation of variables",
     "Can solve the logistic equation y′=y(1−y) to obtain the S-shaped solution",
-    "Can solve Newton's law of cooling and show that the temperature difference decays exponentially"
+    "Can solve Newton's law of cooling and show that the temperature difference decays exponentially",
+    "Can retain equilibrium solutions and use the logarithm of the absolute temperature difference"
    ]
   },
   {
@@ -797,7 +807,8 @@
    "items": [
     "Can write down the Logistic map and test the stability of a fixed point (|f′|<1)",
     "Can compute that the iteration for r=2 converges to 0.5",
-    "Can describe the period-doubling route to chaos (period 2 at r=3.2)"
+    "Can describe the period-doubling route to chaos (period 2 at r=3.2)",
+    "Can use periodic windows to refute chaos for every r>3.57"
    ]
   },
   {
@@ -805,7 +816,7 @@
    "items": [
     "Can state what it means to be ergodic: the time average equals the space (ensemble) average",
     "Can explain why irrational rotations are ergodic while rational rotations are not",
-    "Can connect ergodicity with the \"forgetting of the initial state\" in Markov chains"
+    "Can distinguish Markov time averages from stepwise distributional convergence and explain equidistribution for every irrational-rotation starting point and continuous observable"
    ]
   }
  ],
@@ -847,7 +858,7 @@
    "items": [
     "Can write down the trapezoidal rule and Simpson's rule",
     "Can state their error orders O(h²) and O(h⁴)",
-    "Can explain \"order of accuracy = the degree of polynomials that are integrated exactly\""
+    "Can distinguish algebraic precision (1,3) from composite convergence order (2,4) and state smoothness assumptions"
    ]
   },
   {
@@ -905,7 +916,7 @@
    "items": [
     "Can write the dual of a linear program and verify strong duality (equal optimal values)",
     "Can use shadow prices to predict the sensitivity to right-hand-side perturbations",
-    "Can state the role of the KKT conditions in constrained nonlinear optimization"
+    "Can explain KKT constraint qualifications, sufficiency for convex problems and Slater's condition"
    ]
   },
   {
@@ -955,7 +966,7 @@
    "items": [
     "Can describe RSA's key generation and its encryption/decryption workflow",
     "Can explain where ed≡1 (mod φ(n)) comes from (Euler's theorem and the modular inverse)",
-    "Can lay out the logical chain of \"factoring n breaks RSA\""
+    "Can explain why factoring n is sufficient to recover a key without claiming it is the only attack, and distinguish raw RSA from encoded schemes"
    ]
   },
   {
@@ -963,7 +974,8 @@
    "items": [
     "Can explain nearest-codeword decoding and how the minimum distance determines error-correcting capability",
     "Can describe the parity-based error-locating mechanism of the Hamming (7,4) code",
-    "Can compare the code rates of the repetition and Hamming codes and explain the trade-off"
+    "Can compare the code rates of the repetition and Hamming codes and explain the trade-off",
+    "Can decode the syndrome as (s₄s₂s₁)₂ and state the single-bit-error assumption"
    ]
   }
  ],
@@ -1029,7 +1041,8 @@
    "items": [
     "Can state Coulomb's law and the geometric origin of the inverse square (4πr²)",
     "Can estimate the ratio of electric to gravitational force as ≈10³⁹ and explain why matter is neutral",
-    "Can analyze forces from multiple charges using the superposition principle and symmetry"
+    "Can analyze forces from multiple charges using the superposition principle and symmetry",
+    "Can prove that equal charges give zero net force at the center of an equilateral triangle"
    ]
   },
   {
@@ -1094,15 +1107,15 @@
    "file": "06",
    "items": [
     "Can contrast fully mixed models with network propagation models",
-    "Can state the friendship paradox and its significance for epidemic surveillance",
-    "Can explain the structural reason why \"immunizing friends\" is more effective"
+    "Can derive the degree bias from sampling a uniform edge endpoint and explain why it is not a statement about every person",
+    "Can discuss the structural motivation for acquaintance immunization while checking sampling rules and transmission probabilities"
    ]
   },
   {
    "file": "07",
    "items": [
-    "Can distinguish positive from negative feedback and their fates (self-reinforcing vs self-stabilizing)",
-    "Can judge stability or instability from \"the number of signs in the loop\"",
+    "Can distinguish positive and negative feedback by sign without equating negative feedback with stability",
+    "Can use xₙ₊₁=−2xₙ to show that opposite-sign adjustment may diverge and discuss gain and delay",
     "Can draw the causal loops of price adjustment and bank runs"
    ]
   }
@@ -1144,7 +1157,7 @@
    "file": "05",
    "items": [
     "Can distinguish the answers of logicism, formalism, and intuitionism to \"the foundations of mathematics\"",
-    "Can state the meaning of Gödel's incompleteness theorems",
+    "Can state the consistency, effective axiomatizability and arithmetic-strength hypotheses of incompleteness",
     "Can connect the diagonal method across Cantor, the halting problem, and Gödel"
    ]
   },

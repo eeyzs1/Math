@@ -8,14 +8,14 @@
   [
    [
     "Integers, Negative Numbers, and Order of Operations",
-    "Among the four arithmetic operations, addition and subtraction share one precedence level and multiplication and division another; 'multiplication and division before addition and subtraction' is not an arbitrary convention — it is what makes expansions like a(b+c)=ab+ac work. Negative numbers complete subtraction so that it can always be performed: 3−5 can be worked out because −2 is introduced. Estimation starts with orders of magnitude: multiply the leading digits, add the digit counts; a result off by an order of magnitude is certainly wrong.",
+    "The order-of-operations convention evaluates multiplication and division before addition and subtraction, with equal-priority operations read left to right; parentheses override it. Thus 2+3×4 means 2+(3×4). This is a notation convention, not a consequence of the distributive law alone. Negative numbers keep subtraction inside the integers, as in 3−5=−2. Estimate size and order of magnitude before checking an exact result.",
     "Estimate 397×42 as 400×40=16000; the exact value is 16674, about 4% off. An order-of-magnitude check is enough to catch errors such as copying 16674 as 1667. With negative numbers, fix the sign first and the size second: (−3)×(−4)=12 — two flips of direction cancel each other.",
     "Without a calculator, estimate 0.5×3980÷19.9, and write down what each step replaces with an approximation.",
     "It is about 0.5×4000÷20=100. Replacing 3980 by 4000 and 19.9 by 20 pushes the two approximations in opposite directions, so the errors partly cancel. Estimation checks plausibility; it does not replace exact computation."
    ],
    [
     "Fractions: Another Name for Division",
-    "The fraction a/b denotes both 'a of b equal parts of 1' and the division a÷b. Equality is tested by cross-multiplication: a/b=c/d if and only if ad=bc. Addition and subtraction require a common denominator (converting to the same scale); multiplication and division do not: multiply numerators together and denominators together, and divide by multiplying by the reciprocal.",
+    "The fraction a/b denotes both 'a of b equal parts of 1' and the division a÷b. Equality is tested by cross-multiplication: a/b=c/d if and only if ad=bc. Addition and subtraction require a common denominator (converting to the same scale); multiplication and division do not: multiply numerators together and denominators together, and divide by multiplying by the reciprocal. Denominators b and d must be nonzero; dividing by a fraction also requires its numerator to be nonzero.",
     "For 2/3+1/4, convert to twelfths: 8/12+3/12=11/12. And 2/3×3/4=6/12=1/2 by direct multiplication. Dividing by 3/4 asks 'how many servings of 3/4 fit inside?', which equals multiplying by 4/3.",
     "Compute 3/5÷2/7, and explain why dividing by a fraction equals multiplying by its reciprocal.",
     "3/5×7/2=21/10. Let x=(3/5)÷(2/7); then (2/7)x=3/5, and multiplying both sides by 7/2 gives x=3/5×7/2. The reciprocal rule comes from 'division is the inverse of multiplication'."
@@ -43,14 +43,14 @@
    ],
    [
     "Powers and the Laws of Exponents",
-    "aⁿ is n copies of a multiplied together; the law aᵐ·aⁿ=aᵐ⁺ⁿ is a direct consequence of counting factors, not a formula to memorize. The zero exponent a⁰=1 keeps the law valid at m=0; negative exponents a⁻ⁿ=1/aⁿ preserve the addition law; and the fractional exponent a^(1/n)=ⁿ√a is forced by requiring (a^(1/n))ⁿ=a^(n·1/n).",
+    "aⁿ is n copies of a multiplied together; the law aᵐ·aⁿ=aᵐ⁺ⁿ is a direct consequence of counting factors, not a formula to memorize. The zero exponent a⁰=1 keeps the law valid at m=0; negative exponents a⁻ⁿ=1/aⁿ preserve the addition law; and the fractional exponent a^(1/n)=ⁿ√a is forced by requiring (a^(1/n))ⁿ=a^(n·1/n). Conditions matter: zero and negative integer exponents require a nonzero base. Here fractional powers and (aʳ)ˢ=aʳˢ are used for positive real bases. Negative bases need separate domain checks; fractional-power rules cannot be applied indiscriminately.",
     "2³·2⁴=2⁷=128 and 2⁵÷2³=2². Also 16^(1/2)=4 because 4²=16, and 8^(2/3)=(8^(1/3))²=2²=4.",
     "Use the laws of exponents to compute 2⁻²×2⁵ and 27^(2/3), naming the law used at each step.",
     "2⁻²×2⁵=2³=8 (multiplying powers of the same base adds the exponents; a negative exponent means a reciprocal). 27^(2/3)=(27^(1/3))²=3²=9 — take the cube root first, then square; the order is guaranteed by (aʳ)ˢ=aʳˢ."
    ],
    [
     "Logarithms: The Inverse of Exponentiation",
-    "log_a(x) answers 'a raised to what power equals x?' — it is the inverse of the exponential function: aʸ=x ⇔ y=log_a x. The exponent laws immediately give log(ab)=log a+log b (products become sums) and log(aⁿ)=n log a (powers come out front), plus the change-of-base formula log_b x=log_a x/log_a b.",
+    "log_a(x) answers 'a raised to what power equals x?' — it is the inverse of the exponential function: aʸ=x ⇔ y=log_a x. The exponent laws immediately give log(ab)=log a+log b (products become sums) and log(aⁿ)=n log a (powers come out front), plus the change-of-base formula log_b x=log_a x/log_a b. Real logarithms require a positive base different from 1 and a positive argument. Product and quotient rules require each argument to be positive; a change of base must use another positive base different from 1.",
     "log₂8=3, and log₂(8×16)=log₂128=7=3+4, mirroring 2³·2⁴=2⁷. Quotients become differences the same way: log(a/b)=log a−log b.",
     "Given log₁₀2≈0.301, estimate log₁₀5.",
     "Since 5=10/2, log₁₀5=log₁₀10−log₁₀2=1−0.301≈0.699. Turning division into subtraction is a direct corollary of the product rule — no new table needed."
@@ -138,7 +138,7 @@
    ],
    [
     "Factoring and the Quadratic Formula",
-    "Expanding and factoring are inverse processes, and the tool behind both is the distributive law: a(b+c)=ab+ac. Workhorse patterns: factoring out a common factor, the difference of squares a²−b²=(a+b)(a−b), and the perfect squares (a±b)². Applying completing the square to the quadratic equation ax²+bx+c=0 yields the quadratic formula, and the discriminant Δ=b²−4ac determines the number of real roots.",
+    "Expanding and factoring are inverse processes, and the tool behind both is the distributive law: a(b+c)=ab+ac. Workhorse patterns: factoring out a common factor, the difference of squares a²−b²=(a+b)(a−b), and the perfect squares (a±b)². Applying completing the square to the quadratic equation ax²+bx+c=0 yields the quadratic formula, and the discriminant Δ=b²−4ac determines the number of real roots. Here a, b, c are real and a≠0; otherwise the equation is not quadratic.",
     "x²−5x+6: completing the square gives x²−5x=(x−5/2)²−25/4, and moving the constant term yields (x−5/2)²=1/4, so x=2 or 3 — consistent with the factorization (x−2)(x−3).",
     "Solve 2x²−4x−6=0, and give the correspondence between the value of the discriminant and the number of real roots.",
     "Divide both sides by 2: x²−2x−3=0, so (x−3)(x+1)=0 and x=3 or −1. Here Δ=(−4)²−4×2×(−6)=64>0, so two distinct real roots; Δ=0 would give one double root; Δ<0 gives no real roots, with the solutions living in the complex numbers (the next lesson)."
@@ -160,13 +160,13 @@
    [
     "Subgroups and Homomorphisms",
     "A subgroup is a subset that is a group in its own right (it contains the identity element and is closed under the operation and under inverses); for example, the even integers form a subgroup of the additive group of the integers. A homomorphism f:G→H preserves the operation, f(ab)=f(a)f(b); the kernel ker f is the set of all elements sent to the identity, and it measures how far f is from injective: the kernel is trivial if and only if f is injective.",
-    "The \"mod 6\" map Z→Z/6 is a homomorphism of additive groups, with kernel the multiples of 6. The identity det(AB)=det(A)det(B) says that det is a homomorphism between multiplicative groups (the determinant is defined in 04 Linear Algebra, Lesson 04; we will double-check this claim when we get there).",
+    "Reduction modulo 6 is an additive homomorphism Z→Z/6Z with kernel 6Z. For invertible real matrices, det:GL(n,R)→R∖{0} is a multiplicative group homomorphism because det(AB)=det(A)det(B). All matrices do not form a multiplicative group: singular ones have no inverse. See 04 lesson 04 for determinants.",
     "Why is the set of even integers a subgroup of (Z,+), and why is the set of odd integers not?",
     "The even integers contain 0, even+even=even, and the negative of an even integer is still even — all the conditions are met. The odd integers are not closed: 1+1=2 is even. The subgroup test only requires a nonempty subset closed under the operation and under inverses; the identity element then comes along for free."
    ],
    [
     "Rings, Ideals, and Quotient Rings",
-    "A ring carries both addition and multiplication, with multiplication distributing over addition, as in Z and in polynomial rings. An ideal I is a subset that is a group under addition and \"absorbs multiplication from outside\" (rI⊆I); the set (n) of multiples of n is an ideal of Z. The quotient ring Z/nZ treats numbers \"differing by n\" as one and the same — exactly the algebraization of congruence arithmetic.",
+    "Here rings are commutative with an identity: addition is an abelian group; multiplication is associative, commutative and unital, and distributes over addition. Examples are Z and real polynomial rings. An ideal I is an additive subgroup with rI⊆I for every ring element r; nZ is an ideal of Z. The quotient Z/nZ identifies integers whose difference is a multiple of n. In noncommutative rings, left, right and two-sided ideals must be distinguished.",
     "In Z/6Z, [2]+[3]=[5], while [2]·[3]=[6]=[0]: two nonzero elements multiply to zero (zero divisors), so Z/6 is not a field.",
     "Why is Z/5 a field while Z/6 is not?",
     "A field requires every nonzero element to be invertible. In Z/5, [2]·[3]=[6]=[1], so every nonzero element has an inverse; in Z/6, [2]·[3]=[0], and if [2] were invertible it would follow that [3]=[0], a contradiction. The root cause is that 5 is prime and 6 is composite."
@@ -180,7 +180,7 @@
    ],
    [
     "Polynomial Division and the Remainder Theorem",
-    "Polynomials admit division with remainder, just as integers do: f(x)=(x−c)q(x)+r, where the remainder r is a constant. The Remainder Theorem: r=f(c) — substitute and you have the remainder. It follows that c is a root if and only if (x−c) divides f, and peeling off factors inductively shows that a polynomial of degree n has at most n roots.",
+    "Polynomials admit division with remainder, just as integers do: f(x)=(x−c)q(x)+r, where the remainder r is a constant. The Remainder Theorem: r=f(c) — substitute and you have the remainder. It follows that c is a root if and only if (x−c) divides f, and peeling off factors inductively shows that a polynomial of degree n has at most n roots. The root bound applies to a nonzero degree-n polynomial over a field such as R or C. It cannot be applied directly to the zero polynomial or to coefficient rings with zero divisors.",
     "Divide f(x)=x³−3x+2 by x−1: x³−3x+2=(x−1)(x²+x−2)=(x−1)²(x+1). This matches f(1)=1−3+2=0 and the zero remainder, and 1 is in fact a double root.",
     "Use the Remainder Theorem to find the remainder when x⁴−x+1 is divided by x+1, and decide whether x+1 is a factor.",
     "r=f(−1)=1+1+1=3≠0, so x+1 is not a factor. Substituting beats long division for finding a remainder — the Remainder Theorem turns a \"division problem\" into an \"evaluation problem\", and that is precisely the bridge between \"roots\" and \"factors\"."
@@ -238,7 +238,7 @@
    ],
    [
     "Quadratic Residues: The Arithmetic of Being a Square",
-    "a is a quadratic residue modulo p if x²≡a (mod p) has a solution. Exactly half of the nonzero elements mod p are residues: x²=(p−x)² gives each residue exactly two roots. Euler's criterion: a^((p−1)/2)≡1 signals a residue, while ≡−1 signals a nonresidue. The law of quadratic reciprocity: (p/q)(q/p)=(−1)^(((p−1)/2)((q−1)/2)) — whether two primes \"are squares of each other\" is unexpectedly symmetric, with only a sign to tell the two apart.",
+    "Let p be an odd prime and p not divide a. Here a is a nonzero quadratic residue modulo p if x²≡a (mod p) is solvable; zero is treated separately. Exactly half the nonzero classes are squares, since x and −x are distinct and give the same square. Euler's criterion gives a^((p−1)/2)≡1 for a residue and ≡−1 for a nonresidue. For distinct odd primes p,q, the Legendre symbol (p/q) is ±1 according as p is or is not a nonzero square modulo q; quadratic reciprocity says (p/q)(q/p)=(−1)^(((p−1)/2)((q−1)/2)).",
     "Squares mod 7: 1,4,2,2,4,1 (from 1² through 6²); the residues are {1,2,4} and the nonresidues {3,5,6}, three of each. 3 is a nonresidue mod 7: 3³=27≡6≡−1 (mod 7); by contrast, 7 is a residue mod 3 (7≡1=1²). Reciprocity turns such verdicts into a \"symbol game\".",
     "List all quadratic residues mod 11, and decide whether 11 is a residue mod 5.",
     "1² through 5² give 1,4,9,5,3 in turn, so the residue set is {1,3,4,5,9}. Since 11≡1 (mod 5) and 1 is plainly a square, 11 is a residue. Quadratic residues are the first step toward quadratic fields and deeper number theory (see the 03 branch page for the route), and they extend the congruence toolbox of the cryptography lesson in 14."
@@ -289,14 +289,14 @@
    ],
    [
     "Kernel, Image, and the Rank–Nullity Theorem",
-    "For a linear map A, the kernel ker A is the set of inputs mapped to zero, and the image im A is the set of all outputs. Rank–nullity theorem: dim ker A + dim im A equals the dimension of the domain. The kernel measures 'how much information is lost', the image measures 'where the map reaches', and the two trade off against each other.",
+    "For a linear map A, the kernel ker A is the set of inputs mapped to zero, and the image im A is the set of all outputs. Rank–nullity theorem: dim ker A + dim im A equals the dimension of the domain. The kernel measures 'how much information is lost', the image measures 'where the map reaches', and the two trade off against each other. The domain is assumed finite-dimensional.",
     "Let A have both rows equal to (1,1): the kernel is the line x+y=0 (one-dimensional) and the image is the line x=y (one-dimensional); 1+1=2 matches the domain R².",
     "What are the dimensions of the kernel and the image of the projection (x,y,z)→(x,y,0)? Verify the theorem.",
     "The kernel is the z-axis (dimension 1) and the image is the xy-plane (dimension 2); 1+2=3. The dimensions squeezed away plus the dimensions of the output exactly equal the original dimension."
    ],
    [
     "Eigenvalues and Diagonalization",
-    "Av=λv (v≠0) says that A does not change the direction of v and only scales it by λ; v is called an eigenvector and λ an eigenvalue. The eigenvalues are the roots of det(A−λI)=0; in the 2×2 case this is λ²−(trace)λ+det=0 — computable with nothing more than the quadratic formula from 02. With two independent eigenvectors as columns forming P, we get A=PDP⁻¹, and powers of A become powers of D: difference equations, vibrations, and the convergence of iterations are all read off from here.",
+    "Av=λv with v≠0 means A maps v into the line it spans. Positive λ scales in the same direction, negative λ reverses it, and λ=0 maps it to zero. The vector v is an eigenvector and λ an eigenvalue. Eigenvalues solve det(A−λI)=0, which in dimension two is λ²−tr(A)λ+det(A)=0. With two linearly independent eigenvectors as columns of P, a two-dimensional matrix has A=PDP⁻¹, so its powers reduce to powers of D, connecting recurrences, oscillations and iteration.",
     "A=[[3,1],[0,2]]: the characteristic polynomial is (3−λ)(2−λ), so λ=3,2. For λ=3, solving (A−3I)v=0 gives v=(1,0); for λ=2, v=(1,−1) — check: A(1,−1)=(2,−2)=2(1,−1).",
     "Find the eigenvalues of the 90° rotation matrix [[0,−1],[1,0]], and explain why it has no real eigenvectors.",
     "Trace 0 and determinant 1 give λ²+1=0, so λ=±i. A rotation preserves no real line direction, so over the reals there are no eigenvectors; the purely imaginary pair corresponds exactly to the oscillating solutions of the second-order equations in 11 — complex numbers here are not decoration but the algebraic notation for 'going in circles'."
@@ -306,11 +306,11 @@
     "The inner product u·v=Σuᵢvᵢ yields lengths ‖u‖=√(u·u) and perpendicularity u·v=0. The nearest point of a subspace is reached by orthogonal projection: the residual is perpendicular to the subspace. Least-squares data fitting is exactly a projection — the observation vector b is projected onto the space spanned by the predictor columns; the condition Aᵀ(b−Ax*)=0 expands into the normal equations AᵀAx*=Aᵀb.",
     "The least-squares line through the points (1,2), (2,3), (3,5) is y=1/3+1.5x (the closed form appears in Lesson 06 of 10). Geometrically: b=(2,3,5) is projected onto the plane spanned by (1,1,1) and (1,2,3), and the residual is perpendicular to that plane.",
     "Why must the residual be perpendicular to the whole 'fitting plane' rather than only to the predictor direction? Which notion of distance does 'closest' use?",
-    "By the Pythagorean theorem: writing b=p+e, when e is perpendicular to the plane, ‖e‖²=‖b‖²−‖p‖² is minimized — the perpendicular segment is the shortest distance from a point to a plane (Euclidean distance). If the residual were perpendicular only to the predictor direction but not to the constant direction, one could still move closer along the constant direction — not yet optimal. Projection turns 'best fit' into a geometric fact."
+    "Let p be the orthogonal projection of b onto the fitted subspace S, so e=b−p is perpendicular to S. For any q∈S, b−q=e+(p−q), hence ‖b−q‖²=‖e‖²+‖p−q‖²≥‖e‖², with equality only for q=p. This proves the nearest-point property in Euclidean distance. Orthogonality to the predictor column alone is insufficient: the residual must also be perpendicular to the constant column and every other fitted direction."
    ],
    [
     "A First Look at Tensors: Multilinear Forms",
-    "A bilinear form B(u,v) is linear in each variable separately (the inner product is the positive definite symmetric special case). A function that 'eats k vectors, returns a number, and is linear in each variable' is a k-linear form, i.e., a tensor; if swapping two variables only flips the sign, it is an alternating form. The alternating bilinear forms in two dimensions form a one-dimensional space: each is a multiple of det — the determinant is the unique form that is 'linear in each column, antisymmetric, and equal to 1 on the unit square'.",
+    "On a finite-dimensional real vector space V, a bilinear form is linear in each argument separately; the Euclidean inner product is a positive-definite symmetric example. A real-valued function of k vectors that is separately linear is a covariant tensor of order k; tensors also include other types. An alternating form vanishes when two inputs coincide and changes sign when two inputs are swapped. In dimension two, alternating bilinear forms form a one-dimensional space: each is a multiple of the determinant, uniquely normalized by value 1 on the standard ordered basis.",
     "Let B be alternating: B(u,u)=0 and B(u,v)=−B(v,u). Put c=B(e₁,e₂); linearity forces B(u,v)=c(u₁v₂−u₂v₁)=c·det[u v] — no matter how you build it, a two-dimensional alternating form cannot escape being a multiple of det.",
     "Verify that B(u,v)=u₁v₂−u₂v₁ is antisymmetric, and explain why 'signed area' must be antisymmetric and linear in each column.",
     "B(v,u)=u₂v₁−u₁v₂=−B(u,v). Swapping the two columns reverses orientation, so the sign must change; scaling an edge scales the area proportionally, which is linearity in each column. These three axioms determine det uniquely — a characterization that, unlike the 'cross-multiplying diagonals' formula, transfers to higher dimensions and to multilinear algebra (see the 04 branch page for the route)."
@@ -355,7 +355,7 @@
    [
     "Transformations and Invariants",
     "Translations, rotations, and reflections preserve all distances (rigid motions); similarity transformations preserve angles and ratios of lengths; affine transformations preserve parallelism and collinearity but no longer angles. To identify a class of transformations is to find what it preserves — invariants are the core method for classifying geometries (historically, Klein unified the geometries through exactly this viewpoint, leading to the lesson on non-Euclidean geometry in 17).",
-    "The shear matrix [[1,1],[0,1]] turns a square into a parallelogram: the area is unchanged (det=1) but the angles are not — area is an affine invariant, angles are not. Under a rotation matrix, vector lengths are unchanged.",
+    "The shear [[1,1],[0,1]] turns a square into a parallelogram. Its determinant is 1, so it preserves area while changing angles. A general invertible affine map multiplies areas by |det A|: diag(2,1) doubles them. Area itself is therefore not an affine invariant; ratios of areas are. Rotations preserve lengths and angles.",
     "Is a parallelogram still a parallelogram after an affine transformation? What about its angles?",
     "Yes. An affine map (an invertible linear part plus a translation) sends parallel lines to parallel lines, so both pairs of opposite sides remain parallel. The angles generally change — the shear is a counterexample. Affine geometry studies precisely the properties that remain beyond angles."
    ],
@@ -363,8 +363,8 @@
     "Circles and Angles: The Inscribed Angle Theorem",
     "An angle whose vertex lies on a circle and whose sides meet the circle again at two points is an inscribed angle. Inscribed angle theorem: inscribed angles subtending the same arc are equal, each being half the central angle of that arc. Corollaries: the inscribed angle over a diameter is a right angle; opposite angles of a cyclic quadrilateral are supplementary.",
     "If AB is a diameter and C lies on the circle, then ∠ACB=90°. Conversely: the midpoint of the hypotenuse of a right triangle is equidistant from all three vertices — the theorem that the median to the hypotenuse equals half the hypotenuse is essentially the statement 'the circumcenter sits at the midpoint of the hypotenuse'.",
-    "Take two points C and D on the same arc AB: why is ∠ACB=∠ADB? What is the locus of points that subtend a fixed angle over a fixed segment?",
-    "Both angles equal half the central angle of arc AB. Hence the points that subtend the angle θ over AB form two circular arcs — this is the principle behind locating by intersecting bearings: a fixed angle determines an arc, and intersecting arcs determine a point."
+    "Choose C,D on the same arc on one side of chord AB, distinct from A,B. Why is ∠ACB=∠ADB? What if C,D lie on opposite sides of the chord? What is the locus of points subtending a fixed angle θ with 0<θ<π at segment AB?",
+    "If C,D are on the same side of chord AB, the angles intercept the same arc not containing their vertices, so they are equal. On opposite sides, their intercepted arcs form the whole circle, so the angles are supplementary rather than generally equal. For 0<θ<π, the locus consists of two arcs symmetric about AB, excluding A,B. At θ=π/2 the arcs form the circle with diameter AB, minus its endpoints."
    ],
    [
     "Solving Triangles: The Laws of Sines and Cosines",
@@ -376,16 +376,16 @@
    [
     "Parametric Equations and Polar Coordinates",
     "A curve can be run through a parameter: x=f(t), y=g(t); in physics t is often time, and the velocity points along the tangent. Polar coordinates locate a point by 'distance + direction' (r,θ): x=r·cosθ, y=r·sinθ; circles, spirals, and rose petals take a single line in polar form.",
-    "The parametric form of a circle is x=R·cosθ, y=R·sinθ; eliminating the parameter gives x²+y²=R². Differentiating with respect to θ yields the tangent vector (−sinθ,cosθ), whose inner product with the radial direction (cosθ,sinθ) is zero — the tangent is perpendicular to the radius.",
+    "For R>0, the circle x=R cosθ, y=R sinθ satisfies x²+y²=R². Differentiation with respect to θ gives the tangent vector (−R sinθ,R cosθ), orthogonal to the radius vector (R cosθ,R sinθ). Only after normalization is the unit tangent (−sinθ,cosθ).",
     "Convert r=2cosθ to Cartesian coordinates and identify the curve.",
     "r²=2r·cosθ, i.e., x²+y²=2x; completing the square gives (x−1)²+y²=1 — the circle with center (1,0) and radius 1. The same circle looks simpler or messier in different coordinate systems — choosing coordinates is choosing a symmetry."
    ],
    [
     "Parallel Projection and the Cross-Ratio",
-    "Projective geometry starts from drawing: points are projected along lines of sight onto a canvas; lengths and angles change, but 'whether points are collinear' does not. Parallel lines meet at a 'point at infinity' on the projective plane — the point on the horizon where the two rails of a railway photograph meet. The cross-ratio (AC/BC)/(AD/BD) of four collinear points A,B,C,D is unchanged by any central projection — the first invariant of projective geometry.",
+    "Projective geometry begins with central projection: lengths and angles can change while collinearity is preserved. Parallel lines in the same direction meet at one point at infinity. For four distinct ordered points on a real projective line, in affine coordinates with nonzero denominators the cross-ratio is ((C−A)/(C−B))/((D−A)/(D−B)). These are directed differences, not arbitrary unsigned distances. Invertible projective transformations preserve the cross-ratio; permuting the ordered points can change it.",
     "For A=1, B=2, C=3, D=4 the cross-ratio is (2/1)/(3/2)=4/3. Project the whole line by t↦1/t: the four points become 1, 1/2, 1/3, 1/4, and the cross-ratio becomes (2/3)/(1/6)÷(3/4)/(1/4)=4÷3=4/3 — unmoved. All the distances changed, yet the cross-ratio recognizes the quadruple.",
     "Compute the cross-ratio for A=0, B=1, C=2, D=4; then for 1, 2, 4, 8. What does the difference between the two values mean?",
-    "(2/1)/(4/3)=3/2; and (3/2)/(7/6)=9/7. The cross-ratio is a 'projective fingerprint' of a quadruple of points: any projection preserves the value for one and the same quadruple, while different quadruples take different values. It plays the role in projective geometry that distance plays in Euclidean geometry (the projective direction on the 05 branch page)."
+    "The ordered quadruples have cross-ratios (2/1)/(4/3)=3/2 and (3/2)/(7/6)=9/7. Thus no invertible projective transformation sends the first quadruple to the second in the specified order. Different quadruples can have the same cross-ratio, for example after translating all four points. Distinct quadruples need not have distinct cross-ratios."
    ]
   ]
  ],
@@ -415,7 +415,7 @@
     "The arithmetic operations and composition carry differentiability along: product (uv)′=u′v+uv′, quotient (u/v)′=(u′v−uv′)/v², chain (f(g(x)))′=f′(g)·g′ — under composition, rates of change multiply. Basic derivatives: (xⁿ)′=nxⁿ⁻¹, (eˣ)′=eˣ, (ln x)′=1/x, (sin x)′=cos x. Mean Value Theorem: if f is continuous on [a,b] and differentiable on (a,b), then there exists c with f′(c)=[f(b)−f(a)]/(b−a) — the average rate of change actually occurs at some point.",
     "d/dt(100e^(0.1t))=10e^(0.1t): the derivative of the exponential plus the chain rule (the 0.1 sits in the inner layer). d/dt(x′(t)²)=2x′x″: a square on the outside, x′ on the inside — these are exactly the two rules behind E′=mx′x″+kxx′ in the energy lesson of 15 Mathematical Physics.",
     "Use the Mean Value Theorem to prove that a function whose derivative is identically zero is constant, and explain what this has to do with potential energy V being fixed only up to a constant.",
-    "For any x<y, the Mean Value Theorem gives f(y)−f(x)=f′(c)(y−x)=0, so f(x)=f(y). Hence all antiderivatives of V′=F differ only by an additive constant — the physicist's freedom to choose the zero of potential energy is rooted exactly here."
+    "For x<y in the same interval, the mean value theorem gives f(y)−f(x)=f′(c)(y−x)=0, so f is constant on that interval. The interval condition matters: different components of a disconnected domain can have different constants. If two potentials satisfy V₁′=V₂′=−F, then (V₁−V₂)′=0, so they differ by a constant on an interval. The conservative-force convention is F=−V′."
    ],
    [
     "Integration Accumulates Local Quantities",
@@ -447,14 +447,14 @@
    ],
    [
     "The Fundamental Theorem of Calculus",
-    "The theorem has two halves: (1) the variable-limit integral F(x)=∫ₐˣf(t)dt satisfies F′=f; (2) if F′=f, then ∫ₐᵇf=F(b)−F(a). It shows that differentiation and integration are inverse operations, replacing \"subdivide infinitely finely and sum\" with \"find an antiderivative and take the difference\".",
+    "Assume first that f is continuous on [a,b]. The first part of the fundamental theorem of calculus says F(x)=∫ₐˣ f(t)dt is differentiable in the interior and F′(x)=f(x). The second says that if G′=f, then ∫ₐᵇ f(x)dx=G(b)−G(a). Continuity is the sufficient hypothesis used here; an arbitrary integrand does not automatically give F′=f at every point. Jump points need separate analysis.",
     "∫₀²x dx: F(x)=x²/2 is an antiderivative, and F(2)−F(0)=2, matching the area of the triangle. Integrating velocity gives displacement, and differentiating brings velocity back — each half does its own job.",
     "What is ∫₋₁¹|x|dx? Using x²/2 as the antiderivative directly yields 0 — where is the mistake?",
     "An antiderivative of |x| is the piecewise function F(x)=−x²/2 (x<0), x²/2 (x≥0), and F(1)−F(−1)=1/2−(−1/2)=1. x²/2 is an antiderivative of x, not of |x|; once the integrand changes, a new antiderivative must be found, and handling it piecewise is the norm."
    ],
    [
     "A First Look at Partial Derivatives and the Gradient",
-    "z=f(x,y) maps two independent variables to one value; ∂f/∂x means freeze y and differentiate with respect to x alone (∂f/∂y likewise). The gradient ∇f=(∂f/∂x, ∂f/∂y) points in the direction of fastest ascent, and its length is the steepest slope. The two-variable chain rule: in u(x,t)=f(x−ct), regard s=x−ct as the intermediate variable; then ∂u/∂t=−c·f′(s) and ∂²u/∂t²=c²f″(s).",
+    "z=f(x,y) maps two independent variables to one value; ∂f/∂x means freeze y and differentiate with respect to x alone (∂f/∂y likewise). The gradient ∇f=(∂f/∂x, ∂f/∂y) points in the direction of fastest ascent, and its length is the steepest slope. The two-variable chain rule: in u(x,t)=f(x−ct), regard s=x−ct as the intermediate variable; then ∂u/∂t=−c·f′(s) and ∂²u/∂t²=c²f″(s). The steepest-direction statement requires differentiability at the point, not merely existence of partial derivatives. When ∇f=0 all first-order directional derivatives vanish, so there is no unique steepest direction.",
     "f(x,y)=x²y: ∂f/∂x=2xy and ∂f/∂y=x², so ∇f(1,2)=(4,1). For u=f(x−ct): ∂²u/∂t²=c²f″ and ∂²u/∂x²=f″, hence u_tt=c²u_xx — the verification of the wave equation lesson in 15 Mathematical Physics done in one step.",
     "Find the gradient of f(x,y)=x·e^y, and identify, at the point (1,0), the direction of fastest ascent and the steepest slope.",
     "∇f=(e^y, x·e^y), which at (1,0) is (1,1): ascent is fastest in the 45° direction, with slope ‖∇f‖=√2. \"Freezing one variable\" is the first move of multivariable calculus; the whole intuition of single-variable derivatives is carried over dimension by dimension."
@@ -491,7 +491,7 @@
    ],
    [
     "Metric Spaces",
-    "A metric space is a set plus a distance function d satisfying nonnegativity, symmetry, and the triangle inequality. Examples: Euclidean Rⁿ, the discrete metric, and the space of continuous functions under the sup metric d(f,g)=max|f−g|. Convergence, continuity, open sets, completeness — all are defined from d alone; this is the general language of analysis.",
+    "A metric space is a set X with a finite real-valued distance d:X×X→[0,∞), satisfying d(x,y)=0 if and only if x=y, symmetry, and the triangle inequality. Examples include Euclidean spaces and the discrete metric. On C([a,b]), continuous functions on a fixed compact interval, d(f,g)=max_{x∈[a,b]}|f(x)−g(x)| is also a metric; compactness ensures a finite maximum. The same max formula cannot be used indiscriminately on unbounded domains.",
     "The sequence of functions fₙ(x)=xⁿ converges pointwise on [0,1] to a discontinuous limit (0 for x<1, 1 for x=1); under the sup metric it converges to no continuous function — the sup metric catches a failure that pointwise convergence cannot see.",
     "Under the discrete metric (distinct points at distance 1), which sequences converge?",
     "Only the sequences eventually constant at some point: if xₙ→x while xₙ≠x occurs infinitely often, then d(xₙ,x)=1 does not tend to 0. Here every ball of radius less than 1 contains only its center, so every subset is open — keep the same set but change the metric, and the topology can be completely different."
@@ -505,10 +505,10 @@
    ],
    [
     "The Fundamental Group: Counting Holes with Loops",
-    "In a topological space, a loop based at x₀ is a continuous map from [0,1] into the space whose start and end are both x₀. Two loops can be multiplied by \"first walk one, then the other\"; continuous deformation (homotopy) does not change the product. The classes of loops under homotopy form the group π₁, whose identity is the loop contractible to a point. The circle has π₁=Z (counting the number of windings), and the plane has trivial π₁ (everything contractible) — the fundamental group translates \"holes\" into groups.",
+    "A loop based at x₀ is a continuous map from [0,1] into the space with both endpoints x₀. Concatenate loops and identify them by homotopies that keep both endpoints fixed at x₀ throughout. The classes form π₁(X,x₀); fixing the basepoint makes concatenation well-defined on classes. The identity is the constant-loop class and inverses traverse loops backward. The circle has fundamental group Z, while the plane has trivial fundamental group. This encodes ways of winding around obstacles algebraically.",
     "The plane with the origin removed: a loop winding twice around the origin cannot be continuously deformed into one winding three times (the deformation would have to sweep across the hole), and π₁(ℝ²∖{0})=Z. Homeomorphisms preserve the fundamental group: the line and the circle are not homeomorphic (one has trivial π₁, the other Z) — \"rubber-sheet geometry\" too has invariants you can count.",
     "What generates the fundamental group of the figure eight (two circles glued at one point)? Why is the \"hole structure\" of the plane with two points removed said to be more complicated than with one point removed?",
-    "There are two generators: loops around the left and right circles respectively; the group is the free product Z∗Z, which is nonabelian — left then right is not homotopic to right then left. Removing one point gives π₁=Z, removing two gives π₁=Z∗Z: the fundamental group does not merely count holes, it also records their arrangement — the gateway to algebraic topology (see the 07 branch page for the route)."
+    "The generators go around the left and right circles. The fundamental group is the free group F₂≅Z∗Z; with the basepoint fixed, left-then-right and right-then-left are not homotopic. Removing one or two points from the plane gives Z or F₂, respectively. The group records winding order, not the precise geometric placement of holes, which can be changed by a homeomorphism."
    ]
   ]
  ],
@@ -543,13 +543,13 @@
    [
     "Recurrence Relations",
     "The first-order geometric recurrence aₙ=raₙ₋₁ solves to aₙ=rⁿa₀. The Fibonacci type aₙ=aₙ₋₁+aₙ₋₂ yields a closed form via the characteristic equation t²=t+1 — the 'characteristic equation' is of the same origin as the matrix eigenvalues of Lesson 07 in 04, and it echoes the characteristic equations of the second-order ODEs in 11. Solving proceeds in three steps: compute the first terms, guess the form, verify by induction.",
-    "a₀=1, aₙ=3aₙ₋₁ gives aₙ=3ⁿ. For the Fibonacci numbers 1,1,2,3,5,8,… the successive ratios 1, 2, 1.5, 1.667, … tend to the golden ratio (1+√5)/2 — exactly the ratio of the two characteristic roots.",
+    "The recurrence a₀=1, aₙ=3aₙ₋₁ gives aₙ=3ⁿ. For F₀=0,F₁=1, the Fibonacci characteristic roots are φ=(1+√5)/2 and ψ=(1−√5)/2, with Fₙ=(φⁿ−ψⁿ)/√5. Since |ψ|<φ, Fₙ₊₁/Fₙ→φ. The limit is the dominant root, not the ratio of the two roots.",
     "What are the first four terms of a₀=2, aₙ=2aₙ₋₁+n? What structure do you observe?",
     "a₁=5, a₂=12, a₃=27, a₄=58. The successive differences 3, 7, 15, 31 nearly double: the solution is dominated by the homogeneous part c·2ⁿ, with the +n term a small perturbation. The solution of a linear recurrence is the homogeneous solution plus a particular solution."
    ],
    [
     "Trees and Connectivity",
-    "A tree is a connected acyclic graph; equivalent characterizations: a tree on n vertices has exactly n−1 edges; there is exactly one path between any two vertices; adding one more edge creates a unique cycle. Every connected graph has a spanning tree (cycle-breaking: while a cycle exists, delete one of its edges — connectivity survives).",
+    "In a finite undirected simple graph, a tree is connected and acyclic. Equivalent conditions include being connected with n−1 edges, or having exactly one simple path between any two vertices. The edge count n−1 alone is insufficient; connectedness or acyclicity is also needed. Every connected graph has a spanning tree: delete an edge from a cycle without disconnecting the graph until no cycles remain. Adding an edge between previously nonadjacent vertices of a tree creates exactly one cycle.",
     "Four cities need only 3 edges to be fully connected — that is a spanning tree; any extra edge merely creates a redundant loop. Each cycle-breaking deletion keeps the graph connected and lowers the edge count by one, and the process terminates at a tree.",
     "At least how many edges must a connected graph on 5 vertices have? What is its shape when it has exactly that many?",
     "At least 4. A connected graph with exactly 4 edges must be a tree: if it contained a cycle, deleting one edge of that cycle would leave it connected with only 3 edges, contradicting 'at least 4 to be connected'. The edge count n−1 draws the boundary of the trees precisely."
@@ -570,7 +570,7 @@
    ],
    [
     "Eulerian Circuits and Graph Coloring",
-    "An Eulerian circuit is a closed walk that traverses every edge exactly once: a connected graph has one if and only if every vertex has even degree (every entry must have an exit). A coloring assigns colors so that adjacent vertices differ; the fewest colors needed is written χ(G), and χ=2 (a bipartite graph) holds if and only if the graph has no odd cycle. Both read global structure off local constraints.",
+    "A finite connected undirected graph has an Euler circuit if and only if every vertex has even degree; the circuit uses each edge exactly once and returns to its start. For a loopless simple graph, adjacent vertices must receive different colors and χ(G) is the minimum number. A graph is bipartite if and only if it has no odd cycle, equivalently χ(G)≤2. Equality χ(G)=2 requires at least one edge; a nonempty edgeless graph needs only one color.",
     "The seven bridges of Königsberg: the four landmasses have degrees 3, 3, 3, 5, all odd, so no Eulerian circuit exists — graph theory explains the failure of the one-stroke drawing in a single sentence. The triangle has χ=3: its three vertices are pairwise adjacent, so two colors do not suffice.",
     "Prove that a graph with χ=2 contains no triangle; then exhibit a graph with χ=3 in which every vertex has even degree.",
     "If it contained a triangle, the three pairwise-adjacent vertices would force three colors, contradicting χ=2. The triangle has every vertex of degree 2 (even) while χ=3 — colorability and degree parity are two independent global properties."
@@ -603,7 +603,7 @@
     "Bayes' rule, P(A|B)=P(B|A)P(A)/P(B), flips 'the probability of the evidence given a cause' into 'the probability of the cause given the evidence'. P(A) is called the prior and P(A|B) the posterior; the denominator expands via the law of total probability, P(B)=ΣP(B|Aᵢ)P(Aᵢ) (requiring the {Aᵢ} to be pairwise exclusive and to cover all possibilities). A small base rate (a cause with a tiny prior) pulls the posterior down hard.",
     "A disease with 1% prevalence; a test with 99% sensitivity and a 5% false-positive rate. The probability of true disease given a positive test is 0.99×0.01/(0.99×0.01+0.99×0.05)≈1/6 — most positives are false positives, because the healthy population has a far larger base.",
     "Suppose the two tests are conditionally independent given the disease status (diseased / not). If the same person tests positive again on a repeat test, what does the probability of true disease become?",
-    "The numerator is 0.01×0.99²≈0.0098; adding 0.99×0.05²≈0.0025 to the denominator gives a posterior of about 0.8. 'Independent' here means conditionally independent given the disease status; if the two tests were merely unconditionally independent, the repeat would carry no new information and the posterior would not rise. With conditional independence the multiplied evidence drives the posterior up quickly — yet still short of 100%, since the prior and the false-positive rate keep pulling."
+    "Under conditional independence given disease status, the numerator is 0.01×0.99² and the denominator adds 0.99×0.05², giving a posterior about 0.798. These products use likelihoods conditional on each disease state. Independence of the marginal test outcomes alone neither justifies those products nor means the second test gives no additional information about disease. Dependence can change the posterior; the stated conditional-independence assumption matters."
    ],
    [
     "Random Variables and Expectation: Probability-Weighted Averages",
@@ -614,7 +614,7 @@
    ],
    [
     "Common Distributions: Binomial, Geometric, and Normal",
-    "Discrete: the binomial distribution Bin(n,p) counts the successes in n independent trials, P(X=k)=C(n,k)pᵏ(1−p)ⁿ⁻ᵏ, with E=np and Var=np(1−p); the geometric distribution counts the number of trials until the first success, P(T=k)=(1−p)^(k−1)p, with E=1/p. Continuous: the normal distribution N(μ,σ²) has the bell curve as its density, with about 68% and 95% of the mass within ±1σ and ±2σ; after standardizing, (X−μ)/σ, any distribution can be compared with the standard normal N(0,1) — the stage for the central limit theorem is thereby set.",
+    "Discrete: the binomial distribution Bin(n,p) counts the successes in n independent trials, P(X=k)=C(n,k)pᵏ(1−p)ⁿ⁻ᵏ, with E=np and Var=np(1−p); the geometric distribution counts the number of trials until the first success, P(T=k)=(1−p)^(k−1)p, with E=1/p. Continuous: the normal distribution N(μ,σ²) has the bell curve as its density, with about 68% and 95% of the mass within ±1σ and ±2σ; after standardizing, (X−μ)/σ, any distribution can be compared with the standard normal N(0,1) — the stage for the central limit theorem is thereby set. Standardization changes the mean and variance to 0 and 1 when they exist with positive variance; it does not make an arbitrary distribution normal. An exactly standard normal result requires X itself to be normal. The geometric distribution here has 0<p≤1 and counts trials starting at 1.",
     "Bin(10,0.5) (Interactive Lab 3): E=5, Var=2.5, and P(X≥8)=(45+10+1)/1024≈0.055. Waiting for the first six with a die: P(T=1)=1/6≈0.167, P(T=3)=(5/6)²×(1/6)≈0.116, and E=6.",
     "How does the probability of 'first success at trial k' change with k? After 'three rolls without a six', is the expected further wait still 6?",
     "P(T=k) decreases with k: a long wait means poor luck so far. But each roll remains an independent trial, and the distribution of the remaining wait is the same as at the start (memorylessness), so the expectation is still 6. Distributions upgrade 'the probability of one event' into 'the shape of an entire random phenomenon'."
@@ -628,14 +628,14 @@
    ],
    [
     "The Law of Large Numbers and the Central Limit Theorem",
-    "Law of large numbers: for independent, identically distributed variables with expectation μ, the sample mean (X₁+…+Xₙ)/n converges in probability to μ — the reason frequencies stabilize into probabilities. The central limit theorem goes further: whenever the expectation and variance are finite, the distribution of the standardized sum approaches the normal, and the limiting shape does not depend on the original distribution — the explanation for the ubiquity of the bell curve (the normal distribution is defined in Lesson 05).",
+    "Here X₁,X₂,… are independent and identically distributed. If E|X₁|<∞ with mean μ, the law of large numbers gives convergence in probability of the sample mean to μ. If additionally 0<σ²=Var(X₁)<∞, the central limit theorem says (X₁+…+Xₙ−nμ)/(σ√n) converges in distribution to N(0,1). Dependence, infinite variance and σ=0 are outside this version of the theorem.",
     "Die-roll averages tend to 3.5; for 100 rolls the fluctuation of the mean is on the order of σ/√n≈1.71/10. Averaging repeated measurements compresses random error: precision improves like √n.",
     "A fair coin is flipped 10,000 times. Roughly how far from 0.5 does the heads proportion land?",
     "The standard deviation of the proportion is √(0.25/10000)=0.005, so it usually falls within 0.5±0.01 (about ±2σ). The law of large numbers guarantees convergence; the central limit theorem supplies the 1/√n fluctuation scale — doubling the precision takes four times the data."
    ],
    [
     "Random Walks and Markov Chains",
-    "A stochastic process whose next step depends only on the current state, not on the earlier history, is a Markov chain; the symmetric ±1 random walk is the simplest example. Transition probabilities form a matrix (each row sums to 1), and k-step transitions are its k-th power — the very same matrix multiplication as in 04. Under repeated transitions the distribution approaches a stationary distribution, and the initial state is gradually 'forgotten'.",
+    "For a Markov chain, conditional on the current state, the next-state distribution does not depend on the earlier history; a fair ±1 random walk is an example. A time-homogeneous chain has transition matrix P with row sums 1 and k-step matrix Pᵏ. A finite irreducible aperiodic chain converges from any initial distribution to its unique stationary distribution. This is not true for every Markov chain: a deterministic two-state alternation keeps oscillating.",
     "A one-dimensional walk returns to the origin in 4 steps: two rights and two lefts give C(4,2)=6 paths, with probability 6/16=0.375. Pólya's theorem: one- and two-dimensional walks return to the origin with probability 1; in three dimensions only about 0.34 — the higher the dimension, the easier it is to get lost.",
     "A two-state sunny/rainy chain: sun→rain with probability 0.3, rain→sun with probability 0.4. In the long run, what fraction of days are sunny?",
     "The stationary distribution satisfies π_sunny=0.7π_sunny+0.4π_rainy and π_sunny+π_rainy=1, giving π_sunny=4/7≈57%. Starting from sun or from rain, the sunny fraction approaches this number within days — it is precisely the left eigenvector of the transition matrix for the eigenvalue 1 (eigenvalues: see Lesson 07 of 04)."
@@ -679,10 +679,10 @@
    ],
    [
     "Point Estimation and Confidence Intervals",
-    "A parameter is estimated with a statistic (such as the sample mean); unbiasedness means that the expectation of the estimator equals the true value. When the population is normal or the sample size is large enough (by the central limit theorem, see 09, Lesson 07) and σ is known, X̄±1.96σ/√n is a 95% confidence interval for μ (1.96 is a quantile of the normal distribution, see 09, Lesson 05). The correct reading is \"in repeated sampling, 95% of intervals of this kind cover μ\", not \"the probability that μ lies in this interval is 95%\" — μ is not random.",
+    "A statistic estimates a fixed unknown parameter; unbiasedness means its expectation equals that parameter. For independent identically distributed normal observations with known population standard deviation σ, X̄±1.96σ/√n has approximately 95% coverage. For nonnormal populations satisfying the central limit theorem conditions it is a large-sample approximation. Confidence describes coverage over repeated samples, not a 95% posterior probability for an already fixed μ.",
     "With n=25, sample mean 10, and σ=5: the interval is 10±1.96×5/√25=10±1.96, that is, (8.04, 11.96).",
     "What goes wrong if you plug in 1.96 directly when σ is unknown and the sample is small?",
-    "It understates the uncertainty: σ must instead be estimated by the sample standard deviation s (computed from the sample variance that divides by n−1, which corrects the systematic underestimate of the \"divide by n\" convention used in this lesson), and substituting s for σ brings extra variability, so the quantile should be replaced by a larger value from the t distribution; as n grows, t approaches the normal. The width of the interval is the price of reporting uncertainty honestly."
+    "With unknown σ, estimate variance by s²=Σ(Xᵢ−X̄)²/(n−1). For independent identically distributed normal observations, (X̄−μ)/(s/√n) has a t distribution with n−1 degrees of freedom, giving X̄±t_{0.975,n−1}s/√n. Using 1.96 in a small normal sample usually undercovers. For a small nonnormal sample, replacing the quantile by t alone does not guarantee 95% coverage."
    ],
    [
     "Hypothesis Testing",
@@ -693,17 +693,17 @@
    ],
    [
     "Least Squares Regression",
-    "Fit the line y=a+bx to the scatter of points (xᵢ,yᵢ), choosing a and b to minimize the sum of squared residuals Σ(yᵢ−a−bxᵢ)². The two normal equations give a closed form: b=Cov(x,y)/Var(x) (covariance: see 09, Lesson 06) and a=ȳ−bx̄. R² is the proportion of the variance explained by the regression. The geometric interpretation of least squares is \"projection onto the column space\": see 04, Lesson 08.",
+    "Fit the line y=a+bx to the scatter of points (xᵢ,yᵢ), choosing a and b to minimize the sum of squared residuals Σ(yᵢ−a−bxᵢ)². The two normal equations give a closed form: b=Cov(x,y)/Var(x) (covariance: see 09, Lesson 06) and a=ȳ−bx̄. R² is the proportion of the variance explained by the regression. The geometric interpretation of least squares is \"projection onto the column space\": see 04, Lesson 08. The slope formula requires Var(x)>0. With an intercept and nonconstant responses, R²=1−residual sum of squares/total sum of squares. This interpretation cannot be transferred indiscriminately to models without an intercept.",
     "Points (1,2),(2,3),(3,5): x̄=2, ȳ=10/3, Cov=1, Var(x)=2/3, giving b=1.5 and a=1/3, so the line is y=1/3+1.5x.",
     "Why minimize the \"squares\" instead of the absolute values?",
-    "Squares are differentiable and give a closed-form solution, and under Gaussian noise they are equivalent to maximum likelihood. Absolute values are more robust to outlying points but are not differentiable and have no closed form. Choosing the objective function is choosing how errors are priced; each of the two has its proper domain of application."
+    "Squared loss is smooth, and this linear model has a unique closed-form fit when the design matrix has full column rank. It also corresponds to maximum likelihood under independent homoscedastic Gaussian errors. Absolute loss is nondifferentiable at zero residual and usually more robust to extremes; general linear regression requires different optimization methods. It is false that absolute loss never has a closed-form solution: for a constant-only fit, any median minimizes it."
    ],
    [
     "Introduction to Bayesian Statistics",
     "Frequentists treat the parameter as a fixed but unknown quantity and reason through sampling distributions; Bayesians treat the parameter as a random variable: assign a prior distribution and update it with the data to obtain the posterior — posterior∝likelihood×prior. Bayes' rule in 09 is the single-event version; here the update operates on a whole distribution over the parameter θ. The prior is a subjective input written out in the open; it can be examined and subjected to sensitivity analysis — which is why it is both criticized and prized.",
     "For the heads probability θ of a coin: take the prior Beta(2,2) (centered, with a slight preference for fairness). After observing 8 heads and 2 tails, the posterior is Beta(10,4) with mean 10/14≈0.71 — ten observations pull the prior markedly toward the data.",
     "With prior Beta(1,1) (the uniform distribution) and 3 heads against 1 tail observed, what is the posterior mean? And what if a further 20 tosses give 15 heads and 5 tails?",
-    "The posterior is Beta(4,2) with mean 2/3≈0.67; after the additional data it is Beta(19,7) with mean 19/26≈0.73. The larger the sample, the less weight the prior carries — with large samples Bayesian estimates converge to the frequentist ones; the difference lies in small samples and in how uncertainty is expressed."
+    "From Beta(1,1), observing 3 heads and 1 tail gives Beta(4,2), mean 4/6=2/3. Adding 15 heads and 5 tails yields Beta(19,7), mean 19/26≈0.73. In this conjugate model, the relative weight of a fixed prior's pseudocounts decreases with sample size. General asymptotic agreement with frequentist methods needs model, identifiability and prior-support conditions; it is not guaranteed for arbitrary priors or models."
    ]
   ]
  ],
@@ -723,10 +723,10 @@
    ],
    [
     "Separable Equations: Pulling the Rate of Change Apart",
-    "When y′=g(x)h(y), write y′ as dy/dx and \"separate\": dy/h(y)=g(x)dx, then integrate both sides to solve (the step is justified by integration by substitution, see 06, Lesson 05). Exponential growth, the logistic equation, Newton's law of cooling, and radioactive decay are all instances — this is the first method that generalizes exponential growth.",
+    "When y′=g(x)h(y), write y′ as dy/dx and \"separate\": dy/h(y)=g(x)dx, then integrate both sides to solve (the step is justified by integration by substitution, see 06, Lesson 05). Exponential growth, the logistic equation, Newton's law of cooling, and radioactive decay are all instances — this is the first method that generalizes exponential growth. Before dividing by h(y), find equilibrium solutions with h(y)=0 so none are lost. Logarithmic antiderivatives generally use ln|·|, with signs determined on the solution interval.",
     "y′=y(1−y), y(0)=1/2: since 1/[y(1−y)]=1/y+1/(1−y), integrating gives ln[y/(1−y)]=x+C, and solving for y yields y=1/(1+Ae⁻ˣ); the initial value gives A=1, so the S-shaped curve is y=1/(1+e⁻ˣ).",
     "Solve Newton's law of cooling T′=−k(T−T₀); according to what law does the temperature difference evolve? (Used directly in the physics lessons of 15 Mathematical Physics.)",
-    "Integrating dT/(T−T₀)=−k dt gives ln(T−T₀)=−kt+C, hence T=T₀+(T(0)−T₀)e^(−kt): the temperature difference decays exponentially. \"Separation of variables\" puts each of the two entangled variables on its own side so that each can be integrated separately."
+    "Assume k>0 and constant ambient temperature T₀. If T(0)≠T₀, separation gives ln|T−T₀|=−kt+C and hence T=T₀+(T(0)−T₀)e^(−kt), valid both above and below ambient temperature. If T(0)=T₀, the equilibrium T≡T₀ must be retained separately rather than lost when dividing by T−T₀. The absolute temperature difference decays exponentially."
    ],
    [
     "Direction Fields and Initial Value Problems",
@@ -772,7 +772,7 @@
    ],
    [
     "Difference Equations and the Logistic Map",
-    "A discrete-time system xₙ₊₁=f(xₙ) is called a difference equation (a one-dimensional map): instead of flowing continuously, the state jumps step by step. The stability of an equilibrium x*=f(x*) is decided by whether |f′(x*)|<1. The logistic map xₙ₊₁=r xₙ(1−xₙ): for r≤1 it converges to 0; for 1<r<3 it converges to (r−1)/r; from r≈3 on, period-doubling sets in; for r>3.57 it enters chaos — fully deterministic and free of any random ingredient, yet extremely sensitive to initial conditions.",
+    "A discrete-time system xₙ₊₁=f(xₙ) evolves by iteration. A fixed point satisfies x*=f(x*), and |f′(x*)|<1 is sufficient for local attraction. The logistic map xₙ₊₁=rxₙ(1−xₙ) is usually studied for 0≤r≤4 and 0≤x₀≤1. For interior initial values, 0<r≤1 leads to 0, and 1<r<3 to (r−1)/r; endpoints 0 and 1 need separate treatment. Period-doubling begins at r=3, with an accumulation point near 3.56995. Beyond it, chaotic regimes coexist with periodic windows; not every r>3.57 is chaotic.",
     "r=2, x₀=0.3: 0.3→0.42→0.4872→0.4997→… converging to 0.5=(r−1)/r; at that point f′=2(1−2×0.5)=0, so it is superstable. With the same r and x₀=0.9: 0.9→0.18→0.2952→0.4161→… still converges to 0.5.",
     "For r=3.2, is the fixed point (r−1)/r=0.6875 stable? What is the long-run behavior likely to be?",
     "|f′|=|3.2×(1−2×0.6875)|=1.2>1, so the fixed point loses stability; the orbit approaches a cycle of period 2 (bouncing back and forth between two values). That period-2 cycle destabilizes into period 4 at r≈3.45, then 8, 16, … — period-doubling on the road to chaos. Even a deterministic system can \"look random\"."
@@ -780,9 +780,9 @@
    [
     "Ergodicity: Time Averages Equal Space Averages",
     "A system is ergodic if the long-time average along almost every orbit equals the average taken with respect to the invariant distribution: lim(1/T)∫₀ᵀ g(x(t))dt=∫g dμ. The physical picture: the long-run experience of one molecule in a cup of coffee ≈ a statistical snapshot of all the molecules — follow one orbit long enough, and there is no need to sweep the whole space. Ergodicity is weaker than mixing: ergodicity guarantees only that the averages agree, while mixing further demands that the system gradually forget its initial value.",
-    "Rotation of the circle x↦x+α (mod 1): when α is irrational the orbit is uniformly dense (equidistribution), the time average equals the average over the circle, and the system is ergodic; when α=p/q is rational the orbit consists of only q points, and the system is not ergodic. The Markov chain motto of 09 — \"any initial value → the stationary distribution\" — is precisely the discrete version of ergodicity.",
+    "Consider x↦x+α (mod 1) with uniform measure on the circle. If α is irrational, every starting point has an equidistributed orbit, and time averages of continuous observables equal circle averages. If α=p/q is rational, all orbits are periodic and the rotation is not ergodic for uniform measure. A finite irreducible Markov chain also has ergodic time averages, while convergence of its step-by-step distribution additionally needs aperiodicity. These two kinds of convergence are different.",
     "For an irrational rotation, why does the time average along a single orbit equal the average over the circle? What are the exceptions in \"almost every orbit\"?",
-    "The orbit spreads over the circle uniformly: sampling any continuous function along the orbit is equivalent to sampling from the uniform distribution (Weyl's equidistribution theorem). The exceptional set has measure zero (for example, periodic orbits starting from rational points) — the ergodic theorem holds for \"almost all\" initial values, and a few exceptions do not spoil the statistical conclusion."
+    "For irrational α and continuous observables, Weyl equidistribution gives equality of time and uniform space averages for every starting point, including rational ones. There are no periodic orbits from rational starts: returning after q steps would require qα to be an integer. The general ergodic theorem for integrable observables guarantees almost-everywhere convergence and permits a null exceptional set; that weaker guarantee should not be mistaken for an actual exception in this stronger example."
    ]
   ]
  ],
@@ -795,10 +795,10 @@
   [
    [
     "Floating Point: Why 0.1+0.2 ≠ 0.3",
-    "Computers represent numbers with finitely many binary digits; the binary expansion of 0.1 is an infinite repeating fraction, so storing it necessarily truncates — a fact about the representation, not a programming bug. Rounding errors accumulate across operations; subtracting two nearly equal numbers causes cancellation and loses many significant digits. Numerical conclusions should report their precision, and equality should be tested with a tolerance rather than exact comparison.",
+    "Floating-point numbers usually use a finite binary significand and an exponent. Since 0.1 has no finite binary representation, common IEEE 754 operations round to representable numbers rather than simply truncating. Subtracting nearby approximate values can amplify relative error already present in the inputs; not every subtraction itself incurs a large new rounding error. Compare approximate results with suitable absolute and relative tolerances, for example |a−b|≤atol+rtol·max(|a|,|b|), chosen for the problem scale.",
     "1−0.9999999: the true value is 10⁻⁷, but 0.9999999 itself already carries a representation error on the order of 10⁻¹⁶, and after the subtraction the relative error is amplified enormously. Comparing floating-point numbers should be written |a−b|<tolerance, not a==b.",
     "Summing 1/n for n=1 to 10000 — is it usually more accurate to add from small to large, or from large to small? Why?",
-    "Small to large is usually more accurate. Adding the big numbers first swamps the later small ones — every addition's rounding loses information; letting the small terms accumulate into a larger one before joining the sum loses less. In floating point, the order of operations is part of the algorithm."
+    "Small-to-large refers to term values: add 1/10000,1/9999,…,1, rather than increasing the index from 1 to 10000. For these positive terms, combining small values first usually reduces loss when tiny terms are added to a large partial sum. This is not a universal optimality guarantee for signed sequences. Pairwise or compensated summation can also reduce error; operation order is part of a floating-point algorithm."
    ],
    [
     "Why Bisection Is Reliable",
@@ -817,16 +817,16 @@
    [
     "Newton's Method",
     "To solve f(x)=0: at xₙ approximate f by its tangent; the tangent's zero becomes the next iterate: xₙ₊₁=xₙ−f(xₙ)/f′(xₙ). Near a simple root it converges quadratically (the number of correct digits roughly doubles per step), but it depends on a good initial guess, and it fails where the derivative is near zero or the iterates oscillate back and forth.",
-    "Computing √2 means solving x²−2=0: xₙ₊₁=(xₙ+2/xₙ)/2. Starting from 1 gives 1.5, 1.4167, 1.41422 — two steps reach the accuracy bisection needs a dozen steps for.",
+    "To compute √2, solve x²−2=0 with xₙ₊₁=(xₙ+2/xₙ)/2. Starting from x₀=1 gives x₁=1.5, x₂≈1.416667, x₃≈1.414215686. After the third update the absolute error is about 2.1×10⁻⁶, illustrating rapid error reduction near a simple root. Speed comparisons need a stated initial guess, interval and error criterion.",
     "What happens when iterating f(x)=x³−2x+2 from x₀=0? What does this show?",
     "With f′=3x²−2: x₁=0−2/(−2)=1, then x₂=1−1/1=0 — the iteration cycles between 0 and 1 forever. Newton's method comes with only a local convergence guarantee; globally it can oscillate without advancing. In practice, screen the initial guess, or mix with bisection as a safety net."
    ],
    [
     "Numerical Integration: Trapezoidal and Simpson's Rules",
-    "The trapezoidal rule treats f as a straight line: ∫≈(b−a)(f(a)+f(b))/2, with composite error O(h²). Simpson's rule fits a parabola through three points: (b−a)/6·[f(a)+4f(midpoint)+f(b)], with composite error O(h⁴) — at the same number of nodes, the accuracy jumps by an order of magnitude.",
+    "The trapezoidal rule treats f as a straight line: ∫≈(b−a)(f(a)+f(b))/2, with composite error O(h²). Simpson's rule fits a parabola through three points: (b−a)/6·[f(a)+4f(midpoint)+f(b)], with composite error O(h⁴) — at the same number of nodes, the accuracy jumps by an order of magnitude. These composite error orders require suitably bounded second and fourth derivatives, respectively, on a fixed integration interval. Composite Simpson quadrature normally also requires an even number of equal subintervals.",
     "∫₀¹1/(1+x)dx=ln2≈0.6931. Trapezoidal: (1+0.5)/2=0.75, an error of about 8%. Simpson: (1/6)(1+4×(2/3)+0.5)≈0.6944, an error of 0.2%.",
     "Is the trapezoidal rule exact for linear functions? Is Simpson's rule exact for cubics?",
-    "The trapezoidal rule is exact up to degree 1 (the area under a line is exactly a trapezoid). Simpson's rule is exact up to degree 3: its error term contains the fourth derivative, which vanishes for cubics. A quadrature rule's degree of exactness is the highest polynomial degree it integrates exactly — the yardstick for comparing rules."
+    "The trapezoid rule is exact for polynomials of degree at most 1, so its algebraic degree of precision is 1. Simpson's rule is exact through degree 3 and has degree of precision 3; its panel error involves a fourth derivative. Algebraic precision differs from composite convergence order: the respective errors are O(h²) and O(h⁴), under suitable smoothness assumptions."
    ],
    [
     "Interpolation: The Lagrange Polynomial",
@@ -837,10 +837,10 @@
    ],
    [
     "Numerical Linear Algebra: Condition Numbers and Stability",
-    "Errors in solving Ax=b come from more than rounding: the relative error of the input b can be amplified by as much as the condition number κ(A)=‖A‖·‖A⁻¹‖. A large κ is called ill-conditioned — the problem itself is hard, independent of the algorithm; the algorithm's stability is responsible for 'not ruining a good problem'. Practical points: use pivoting in elimination, and iterative methods (such as conjugate gradient) for large sparse matrices.",
+    "Errors in solving Ax=b come from more than rounding: the relative error of the input b can be amplified by as much as the condition number κ(A)=‖A‖·‖A⁻¹‖. A large κ is called ill-conditioned — the problem itself is hard, independent of the algorithm; the algorithm's stability is responsible for 'not ruining a good problem'. Practical points: use pivoting in elimination, and iterative methods (such as conjugate gradient) for large sparse matrices. Standard conjugate gradients require a real symmetric positive-definite matrix; sparsity alone is insufficient.",
     "A=[[1,1],[1,1.0001]], κ≈4×10⁴. The true solution for b=(2,2) is (2,0); perturbing b to (2,2.0001) changes the solution to (1,1) — a perturbation of b on the order of five parts in a hundred thousand completely changes the solution.",
     "Using the example above, estimate ‖Δb‖/‖b‖ and ‖Δx‖/‖x‖. By roughly what factor was the error amplified? Is it the same order of magnitude as κ?",
-    "‖Δb‖/‖b‖≈0.0001/2=5×10⁻⁵ and ‖Δx‖/‖x‖≈‖(−1,1)‖/‖(2,0)‖≈0.7: amplification of about 10⁴, the same order as κ≈4×10⁴. Also beware: a small residual ‖b−Ax‖ does not guarantee that x is near the true solution — for ill-conditioned problems, 'the check passes' and 'the answer is right' are two different things."
+    "Use the Euclidean 2-norm throughout: ‖Δb‖₂/‖b‖₂=0.0001/√8≈3.54×10⁻⁵ and ‖Δx‖₂/‖x‖₂=√2/2≈0.707. The amplification is about 2×10⁴, comparable to and below κ₂(A)≈4×10⁴. Do not mix norms between numerators, denominators or the two sides when checking the bound. A small residual need not imply a small solution error in an ill-conditioned problem."
    ]
   ]
  ],
@@ -867,8 +867,8 @@
    ],
    [
     "Convex Sets and Convex Functions",
-    "A convex set contains the segment joining any two of its points. A convex function satisfies f(λx+(1−λ)y)≤λf(x)+(1−λ)f(y): its graph lies below every chord. The golden property of convex optimization: a local minimum is automatically a global minimum — this is the one class of functions for which that can be said outright.",
-    "x² and eˣ are convex; x³ is convex on the negative half-axis and concave on the positive one, with x=0 an inflection point — not convex overall.",
+    "A convex set contains the line segment between any two of its points. A function on a convex domain is convex if f(λx+(1−λ)y)≤λf(x)+(1−λ)f(y) for 0≤λ≤1. A convex objective over a convex feasible set makes every local minimum global. Convexity is an important sufficient structure, not the only possible class with that property.",
+    "Both x² and eˣ are convex. For x³ the second derivative is 6x, so it is concave on the negative half-line and convex on the positive half-line, with an inflection at 0; it is not globally convex. Check derivative signs rather than relying only on a sketch.",
     "Prove that a local minimum of a convex function must be a global minimum.",
     "Suppose x* is a local minimum yet some y has f(y)<f(x*). Choose a small λ so that z=λy+(1−λ)x* lies in the neighborhood of x*; convexity gives f(z)≤λf(y)+(1−λ)f(x*)<f(x*), contradicting local minimality. Convexity pulls 'better far away' into 'better nearby'."
    ],
@@ -881,7 +881,7 @@
    ],
    [
     "Duality and KKT: Viewing the Optimum from the Other Side",
-    "Every linear program min cᵀx (constraints Ax≥b, x≥0) has a dual max bᵀy (constraints Aᵀy≤c, y≥0); weak duality says feasible solutions on either side bound each other, strong duality says the optimal values coincide. The optimal dual variable yᵢ is a 'shadow price': loosening the right-hand side of constraint i by one unit improves the objective by yᵢ. The first-order conditions for a nonlinear problem with inequality constraints are the KKT conditions: the objective's gradient is canceled by a multiplier combination of the constraint gradients, with the multipliers paired with complementary slackness — a generalization of the method of Lagrange multipliers, and the gateway to the calculus of variations and optimal control.",
+    "The dual of min cᵀx subject to Ax≥b,x≥0 is max bᵀy subject to Aᵀy≤c,y≥0. Weak duality bounds feasible objective values; when the primal is feasible with a finite optimum, strong duality makes the optimal values equal. Optimal multipliers describe local sensitivity; signs depend on constraint conventions and changes of optimal basis matter. Nonlinear KKT conditions comprise primal feasibility, dual feasibility, stationarity and complementary slackness. Necessity requires a constraint qualification. For differentiable convex problems, satisfying KKT is sufficient for global optimality; with Slater's condition, KKT characterizes optimality.",
     "The dual of max x+y s.t. x+2y≤4, x,y≥0 (Lesson 04) is min 4w s.t. w≥1, 2w≥1, w≥0, with optimum w=1 and value 4 — equal to the primal optimum 4. The same mountain, climbed from two sides.",
     "In the example above, loosen the right-hand side 4 to 4.5. Roughly how much does the optimal value change? Does it agree with the shadow price w=1?",
     "The optimal vertex moves from (4,0) to (4.5,0) and the value from 4 to 4.5 — an increment of 0.5=1×0.5, exactly w×Δb. Within the range where the constraint remains active, the shadow price forecasts the sensitivity exactly; reading the dual variable is reading 'what the constraint is worth'."
@@ -890,8 +890,8 @@
     "Game Theory: Nash Equilibrium",
     "A game = players, strategy sets, and payoff functions. A Nash equilibrium is a strategy profile with 'no profitable unilateral deviation': each player's choice is a best response to the others' strategies. A pure-strategy equilibrium may fail to exist (rock–paper–scissors), but Nash's theorem guarantees that every finite game has a mixed-strategy equilibrium. Equilibrium does not mean collective optimality: in the prisoner's dilemma the equilibrium is mutual defection, worse than mutual cooperation — the crack between individual and collective rationality.",
     "Prisoner's dilemma: both stay silent → 1 year each; one defects → the defector walks free and the other serves 10 years; both defect → 5 years each. Whatever the other does, defecting is lighter (0<1 and 5<10), so (defect, defect) is the unique equilibrium — 5 years each, worse than the 1 year each under mutual silence.",
-    "Matching pennies (isomorphic to rock–paper–scissors): what is each side's optimal mixed strategy? Why is the expected payoff 0?",
-    "Each randomizes heads/tails with probability 1/2 — any bias would be exploited by the opponent. A symmetric game with both sides best-responding forces an expected payoff of 0. Games with no pure-strategy stable point protect themselves by randomizing: the equilibrium concept shifts from 'optimal solution' to 'no one wants to deviate unilaterally' — the starting point of the mathematics of interactive decision-making (see the 13 branch page for the route)."
+    "Matching pennies: each player chooses heads or tails. If they match, A gets 1 and B gets −1; otherwise A gets −1 and B gets 1. Find the mixed-strategy equilibrium and expected payoffs. Does this game have the same number of strategies as rock-paper-scissors?",
+    "Independent fair randomization is an equilibrium: against a uniform opponent, either pure action has expected payoff 0, so no unilateral change improves it. A bias could be exploited by the opponent. Equilibrium expected payoffs are therefore 0. Matching pennies has two strategies per player and rock-paper-scissors has three, so the games are not isomorphic. Both illustrate mixed strategies, but symmetry alone does not make every game's payoff zero."
    ]
   ]
  ],
@@ -918,7 +918,7 @@
    ],
    [
     "Automata and Formal Languages",
-    "A finite automaton is the simplest model of computation: finitely many states, a transition table that says how the state changes as each character is read, and the state at the end decides acceptance or rejection. The languages it can recognize are called regular languages. Languages that require \"counting\" (such as aⁿbⁿ) exceed its power — with finitely many states it cannot remember an arbitrarily large n.",
+    "A finite automaton has finitely many states, updates its state for each input symbol, and accepts according to its final state. It recognizes precisely the regular languages. It can track finite-state information such as parity, but cannot recognize {aⁿbⁿ:n≥1}, which requires distinguishing unboundedly many prefix lengths. It is too broad to say automata cannot count at all.",
     "Recognizing \"binary strings containing an even number of 1s\": two states, even/odd; reading a 1 switches between them, reading a 0 stays put, and the accepting state is even. On input 1011 the machine passes even→odd→odd→even→odd and ends in the odd state, so it rejects (three 1s).",
     "Why can a finite automaton not recognize {aⁿbⁿ : n≥1}?",
     "Matching the b's requires remembering how many a's were seen; finitely many states can distinguish only finitely many prefixes, so as n grows without bound two different prefixes must fall into the same state, after which the machine gives the same verdict when either is followed by the same string of b's — yet aⁿbⁿ demands exactly that distinction. What is missing is the capacity for unbounded counting."
@@ -926,21 +926,21 @@
    [
     "Computability and P/NP",
     "Computable means that an algorithm exists which always halts and returns an answer; by the diagonal argument, the halting problem is not computable. P is the class of problems solvable in polynomial time, and NP is the class for which a proposed solution can be verified in polynomial time; P⊆NP is clear, but whether the two are equal is an open Millennium Problem. NP-complete problems (such as SAT) are the hardest members of NP: every NP problem can be reduced to them in polynomial time.",
-    "Whether a Sudoku puzzle has a solution lies in NP: a filled-in grid can be checked quickly, while whether an algorithm guaranteed to solve it quickly exists is unknown. By the Cook–Levin theorem, SAT became the first NP-complete problem.",
+    "Complexity concerns families with growing input size. Generalized Sudoku, whose board size can grow, has an NP-complete solvability decision problem. Fixed 9×9 Sudoku has only finitely many inputs, so it is not by itself an asymptotic hardness example. A proposed generalized solution is polynomially checkable; a general polynomial-time solving algorithm relates to P versus NP. SAT is NP-complete by the Cook–Levin theorem.",
     "Why does \"fast to verify\" not imply \"fast to solve\"?",
-    "Verifying only checks a given answer, while solving must find one inside an exponentially large space of candidates — as with a jigsaw puzzle: checking an assembled puzzle is easy, but assembling one from a jumbled pile is hard. Unless P=NP, this asymmetry is essential, and certain cryptographic constructions rely on precisely it."
+    "Verification checks one proposed candidate; solving must find a suitable one. A large candidate space alone is not a lower-bound proof, because an algorithm might exploit structure rather than enumerate it. For NP-complete problems no general polynomial-time algorithm or proof of its impossibility is known; P≠NP remains unproved. Cryptographic security typically requires specific average-case hardness assumptions, not merely P≠NP."
    ],
    [
     "RSA: How Number Theory Encrypts",
-    "Public-key encryption exploits one-way computation: multiplying two large primes is easy, while factoring the product back is far too slow to be feasible. RSA takes n=pq, φ(n)=(p−1)(q−1) (φ is multiplicative over coprime factors), chooses e, and finds d with ed≡1 (mod φ(n)) — finding d is exactly the extended Euclidean algorithm from the lesson on modular inverses in 03. Encryption is c=mᵉ mod n and decryption is m=cᵈ mod n; correctness is guaranteed by Euler's theorem (see 03, Lesson 04).",
+    "Classroom RSA uses distinct primes p,q, n=pq and φ(n)=(p−1)(q−1). Choose e coprime to φ(n) and use extended Euclid to find ed≡1 (mod φ(n)). A message representative satisfies 0≤m<n; encryption is c=mᵉ mod n and decryption is cᵈ mod n. Euler's theorem proves correctness for m coprime to n; for arbitrary m, prove it modulo p and q and combine by the Chinese remainder theorem. Factoring is one known attack route; RSA inversion has not been proved equivalent to factoring. This is deterministic raw RSA arithmetic; actual encryption schemes need specified encodings such as RSAES-OAEP.",
     "A toy version: p=3, q=11, n=33, φ=20; take e=7 and d=3 (21≡1 (mod 20)). For the message m=5: 5²=25, 5⁴≡31, 5⁷≡5⁴·5²·5≡31×25×5≡14 (mod 33); decryption gives 14³=2744≡5 (mod 33).",
     "Why does \"factoring n\" amount to \"breaking RSA\"? Which steps lead from n=pq to recovering d?",
-    "Factoring yields p and q; compute φ(n)=(p−1)(q−1), then solve ed≡1 (mod φ) for d. The whole secret sits behind the single door of \"factoring is hard\" — real systems use primes hundreds of digits long, making this step computationally infeasible. Every piece of the number theory course (primes, Euler, modular inverses) assembles here into one complete application."
+    "Factoring n yields p,q and hence φ(n); invert the public e modulo φ(n) to recover a private exponent d. Thus factoring is sufficient to recover a private key, not a proof that every attack must first factor n. Raw RSA's determinism, encoding errors and implementation flaws can also expose messages. The toy example connects primes, modular inverses, Euler and CRT; it is not a deployable encryption scheme."
    ],
    [
     "Error-Correcting Codes: From Repetition to Hamming",
-    "A channel flips bits. The idea of error correction: use only a subset of \"legal codewords\", so that when an illegal string arrives one seeks the nearest legal codeword. The repetition code {000,111} corrects 1 erroneous bit at a code rate of 1/3; the Hamming (7,4) code uses 4 data bits and 3 parity bits: the parity bits p₁, p₂, p₄ cover the parity of the positions {1,3,5,7}, {2,3,6,7}, {4,5,6,7} respectively. The receiver recomputes the three parities and assembles the three \"violated or not\" results into a binary number that points directly to the corrupted position.",
-    "Hamming (7,4): if the three parities of the received word are violated in the pattern (1,0,1), they spell out 101₂=5 — flip bit 5 and the word is restored. The code rate is 4/7, far better than the repetition code's 1/3.",
+    "An error-correcting code uses a subset of legal words and decodes by distance. The repetition code {000,111} corrects at most one flipped bit at rate 1/3. In the even-parity Hamming (7,4) code, parity positions 1,2,4 check {1,3,5,7}, {2,3,6,7}, {4,5,6,7}. If their violation flags are (s₁,s₂,s₄), the error position is s₁+2s₂+4s₄, or binary (s₄s₂s₁)₂. This guarantee assumes at most one bit error; a zero syndrome does not rule out multiple errors.",
+    "If (s₁,s₂,s₄)=(1,0,1), the error position is 1+0+4=5. To check bit order, use (1,1,0): the position is 1+2=3, binary 011, not 110 read as 6. Under a single-bit error, flipping that position restores the word. The information rate is 4/7.",
     "The repetition code receives 010: which codeword is decided on? Why is it powerless against two bits flipping at once?",
     "It is at distance 1 from 000 and distance 2 from 111, so decode to 000. If two bits are wrong (say 011), it is closer to 111 instead and the decision flips — error-correcting power is governed by the minimum distance between codewords: distance 3 corrects 1 error, and correcting t errors requires distance 2t+1. Coding theory is where information theory (Lesson 02) converges with linear algebra."
    ]
@@ -983,7 +983,7 @@
    ],
    [
     "The One-Dimensional Wave Equation",
-    "Small transverse vibrations of a string lead to ∂²u/∂t²=c²∂²u/∂x², with c=√(tension/linear density); u(x,t) is a function of two variables — for partial derivatives and the chain rule in two variables, see 06, Lesson 09. The general solution is u=f(x−ct)+g(x+ct): any shape propagates in both directions at speed c, and solutions may be superposed — the mathematical definition of a \"wave\".",
+    "Small transverse vibrations of a string lead to ∂²u/∂t²=c²∂²u/∂x², with c=√(tension/linear density); u(x,t) is a function of two variables — for partial derivatives and the chain rule in two variables, see 06, Lesson 09. The general solution is u=f(x−ct)+g(x+ct): any shape propagates in both directions at speed c, and solutions may be superposed — the mathematical definition of a \"wave\". This general solution is for the unforced one-dimensional equation on the whole real line with constant c>0 and sufficiently smooth profiles, twice differentiable for classical solutions. A finite string also needs boundary conditions; see lesson 07.",
     "An initial displacement f(x) released from rest evolves into u(x,t)=½[f(x−ct)+f(x+ct)]: the initial shape splits into two halves, each propagating to one side at speed c (the d'Alembert solution).",
     "Why does \"any waveform propagates while keeping its shape\" correspond exactly to this equation?",
     "For u=f(x−ct): u_tt=c²f″ and u_xx=f″, so u_tt=c²u_xx holds automatically, and likewise for g(x+ct); the equation is linear, so the sum of the two branches is again a solution. Conversely, the general solution of this equation is exactly the sum of two traveling waves — linear structure + second derivatives = shape-preserving propagation in both directions."
@@ -1007,7 +1007,7 @@
     "The force between two point charges is F=k q₁q₂/r², directed along the line joining them (like charges repel, unlike attract), structurally identical to universal gravitation. The inverse-square behavior is a geometric outcome: as the field crosses a sphere, the same amount is spread over 4πr². In the language of fields: a charge assigns an electric field E to each point, and a test charge feels the force qE; problems with multiple charges are linearized by the superposition principle — isomorphic to 04 Linear Algebra.",
     "Electron and proton: the ratio of electrostatic force to gravity is ≈ ke²/(Gmₚmₑ)≈10³⁹ — electricity overwhelms gravity, which is why matter is neutral as a whole. Two 1-coulomb opposite charges 1 meter apart attract with F=k·1·1/1²=9×10⁹ newtons — charges of macroscopic size reveal astonishing forces.",
     "Three equal charges sit at the vertices of an equilateral triangle: outline the reasoning for the force on a test charge at the center.",
-    "Each vertex contributes a force vector along the joining line, of magnitude kq/r²; the three vectors are symmetrically placed, so first fix the direction of the resultant by symmetry (along the axis of symmetry), then sum components. The superposition principle = linearity: compute each contribution separately, then add the vectors — the same logic as solving a system of linear equations."
+    "Let each vertex charge be q, the central test charge Q and each vertex distance r. The three forces have magnitude k|qQ|/r² and directions separated by 120°, so their vector sum is exactly zero. The central field is also zero. Choosing one symmetry axis does not give a nonzero force direction: a 120° rotation must leave the net vector unchanged, which only the zero in-plane vector satisfies. The quantity kq/r² is a field, not the force including Q."
    ],
    [
     "The Galilean Transformation and Relativity",
@@ -1062,24 +1062,24 @@
    ],
    [
     "Fitting, Extrapolation, and Overfitting",
-    "Within the data's range a model interpolates; outside it, the model extrapolates — and extrapolation leans on mechanistic assumptions, not on data. Too many parameters overfit: the training error is tiny while performance on new data collapses. The defenses are held-out validation data and comparison against simpler models.",
-    "Two points determine a line uniquely; switch to a quadratic fit and infinitely many parabolas pass through — when the number of points equals the number of parameters, a 'perfect fit' is the norm (as long as the x-values are distinct), yet it carries no constraining power. Zero training error is not evidence that a model is right.",
+    "Prediction inside the observed input range is interpolation in the broad predictive sense, while strict mathematical interpolation also requires passing through specified data points; regression allows residuals. Prediction outside the range is extrapolation and relies more heavily on mechanism assumptions. Overfitting means good training fit but poor generalization. Many parameters increase the risk, but parameters need not outnumber observations. Holdout validation, regularization and comparison with simpler models help diagnose it.",
+    "Two points with distinct x-coordinates determine one line but admit infinitely many quadratic or higher-degree polynomials through them. At n distinct nodes, exactly one polynomial of degree at most n−1 interpolates the values. This is a full-rank linear problem, not a theorem that arbitrary models with as many parameters as data points fit perfectly or uniquely. Zero training error alone proves neither a mechanism nor generalization.",
     "What is the relation between 'the first half of the data cannot distinguish exponential from logistic' and overfitting?",
-    "Both are a shortage of information: the former is structural (for N≪K the two models' predictions coincide, so the data cannot separate the mechanisms), while the latter is parameters outnumbering the data's constraints. The shared remedies: wider-ranging data, an independent validation set, and a preference for simpler mechanistic models. The default tool for fitting parameters is least squares — see Lesson 06 of 10."
+    "Both can reflect insufficient information, but identifiability and overfitting differ. When N≪K, exponential and logistic predictions are close: this is a practical identifiability difficulty in the observed range, not necessarily strict structural nonidentifiability. Overfitting concerns poor generalization and can occur with fewer parameters than observations. Broader observations, independent validation and simpler comparisons help; training error alone is insufficient."
    ],
    [
     "Spreading on Networks",
-    "An epidemic spreads along the contact network: nodes are susceptible/infected/removed (SIR); infection crosses each edge at rate β, and recovery happens at rate γ. Homogeneous mixing assumes everyone can contact everyone; a network model transmits only along edges — the degree distribution, clustering, and 'superspreaders' then decide the outcome. Friendship paradox: for a randomly chosen person, that person's friends have on average at least as many friends as the person does — monitoring 'friends' detects an outbreak earlier than monitoring random individuals.",
-    "Star network: once the hub is infected, a single round reaches every leaf — a 'superspreader' is a structural position, not merely a behavior. A chain-like (tree-shaped) contact network slows the spread into generations, with each generation's infection count branching like a family tree.",
+    "A network SIR model has susceptible, infected and removed nodes, with infection along edges and recovery at rate γ. Structure affects spread, but an infected hub does not necessarily infect every leaf. The friendship paradox is an aggregate sampling effect: choose an edge uniformly in a finite undirected network with at least one edge, then choose an endpoint. Nodes are sampled in proportion to degree, giving mean degree Σdᵢ²/Σdᵢ≥Σdᵢ/N by nonnegative degree variance. It does not say every person's friends have more friends. Choosing a person first and then a neighbor gives a different distribution that must be analyzed separately.",
+    "The hub of a star has many transmission routes, but whether each transmission succeeds depends on infection and recovery rates and elapsed time. One round need not infect every leaf. A chain has fewer routes; speed and final outbreak size also depend on the dynamics. Structure describes opportunities, not a replacement for a probability model.",
     "Why is 'immunizing the friends of a randomly chosen person' usually more effective than 'immunizing a randomly chosen person'? Explain with the friendship paradox and the handshaking lemma (Lesson 03 of 08).",
     "The friendship paradox says a randomly chosen friend has a higher average degree; cutting off high-degree nodes first pushes the effective transmission rate below the threshold faster. On networks the epidemic threshold depends on the first and second moments of the degree distribution — graph theory (08), probability (09), and dynamical systems (11) converge here."
    ],
    [
     "Feedback Loops: Positive, Negative, and Systems",
-    "The qualitative skeleton of systems science is the feedback loop: the output comes back to steer the input. Negative feedback suppresses deviation (thermostats, body temperature, price adjustment) and drives the system toward a target; positive feedback amplifies deviation (compound interest, word of mouth, bank runs) and accelerates the departure. Count the signs around the loop: an odd number of minus signs means negative feedback (self-stabilizing), an even number means positive feedback (self-reinforcing) — the same loop with different signs leads to utterly different fates.",
+    "Feedback sends output back to influence input. Negative feedback acts against a deviation; positive feedback reinforces it. Multiplying the signs around a loop identifies its feedback sign, not its stability. Excessive gain, delay or a discrete step can make negative feedback oscillate or diverge. Stability requires the actual equations: xₙ₊₁=−2xₙ reverses a deviation but doubles its magnitude each step.",
     "Thermostat: temperature below the set point → heating on → temperature recovers → heating off (a negative loop, oscillating mildly around the set point). Bank run: a rumor → a few withdrawals → the queue lengthens → more panic (a positive loop, until collapse). Newton's law of cooling in 11 is the continuous version of negative feedback: the larger the temperature difference, the faster the heat loss.",
     "Is market-price adjustment of supply and demand positive or negative feedback? Draw the loop and label the direction of deviation at each step.",
-    "Price above equilibrium → supply rises and demand falls → a surplus appears → the price falls back: negative feedback, tending toward equilibrium. The loop: price↑ → (supply↑ and demand↓) → surplus → price↓. Contrasted with the bank run, this is the divide between stabilizing and destabilizing mechanisms — the first step of modeling is writing these arrows as a causal diagram or as equations."
+    "Price above equilibrium can increase supply and reduce demand, creating a surplus that pushes price down: this is negative feedback by sign. Convergence depends on adjustment speed, supply and demand responses and delays; overcorrection can oscillate or diverge. Draw the signed loop, then analyze an explicit model's equilibria and stability. Counting negative signs alone is insufficient."
    ]
   ]
  ],
@@ -1120,15 +1120,15 @@
    ],
    [
     "Philosophy of Mathematics: Three Schools and Incompleteness",
-    "What is the foundation of mathematics? Logicism (Frege, Russell): mathematics reduces to logic. Formalism (Hilbert): mathematics is a symbolic calculus, and consistency is its license. Intuitionism (Brouwer): mathematics is mental construction, and the law of excluded middle is not universally valid. Gödel's incompleteness theorems: any consistent formal system containing arithmetic contains undecidable propositions and cannot prove its own consistency — the boundary of Hilbert's program was thereby drawn.",
+    "Logicism (Frege, Russell) sought to reduce mathematics to logic; formalism (Hilbert) emphasized formal systems and consistency proofs; intuitionism (Brouwer) emphasized constructions and restricted unrestricted excluded middle. Incompleteness has essential hypotheses: a consistent, effectively axiomatized system expressing enough basic arithmetic cannot decide every sentence in its language. The second theorem, with the usual provability-coding conditions, limits proving its own consistency internally. Not every consistent system is incomplete, nor is a sentence unprovable in every stronger system.",
     "Gödel encoded 'statements about proofs' as natural numbers (Gödel numbering) and then used the diagonal to construct 'this proposition is unprovable' — the same method as Cantor's diagonal (Lesson 07 of 01) and the halting problem (Lesson 04 of 14).",
     "How does 'axioms are chosen starting points' (Lesson 02) connect with the disagreements among the three schools? What does incompleteness show?",
-    "Formalism liberalizes the choice of axioms (consistency suffices), intuitionism restricts the admissible constructions, and logicism tries to reduce the choice itself to logic. Gödel showed that 'consistent' and 'complete' cannot be had together: no school receives a ticket covering all of mathematics — hence the humble side of the axiomatic method."
+    "The schools differ over mathematical objects and acceptable proofs; arbitrary consistent axioms alone do not capture those differences. Gödel's conclusion applies to effectively axiomatized theories strong enough for arithmetic: under those conditions, consistency and sentence-completeness cannot coexist. Without effective axiomatizability, true arithmetic is a consistent complete theory, but its axioms cannot be effectively enumerated. The theorem limits particular formal methods rather than mathematical proof itself."
    ],
    [
     "Reading Theorems, Writing Proofs: Mathematical Communication",
     "Reading a theorem in four steps: ① what are the hypotheses and the conclusion; ② where does the proof use each hypothesis; ③ drop a hypothesis and hunt for a counterexample; ④ produce an example of your own. Writing a proof runs in reverse: state the strategy first (contradiction/induction/construction), then give each step its reason, and close by returning to the conclusion. Educational research agrees: retelling to others and spaced redoing beat rereading by far — the 'closed-book recall' of this course was designed for exactly that.",
-    "Read 'a continuous function on a closed interval attains its maximum' (the compactness lesson in 07): where is continuity used (the counterexample of 1/x on an open interval, unbounded)? Where are closed and bounded used (Heine–Borel compresses an infinite cover into a finite one)? The three conditions each do their own job, and none can be dropped.",
+    "For a continuous real function on a nonempty closed bounded interval, isolate the hypotheses. Without continuity, set f(0)=0 and f(x)=1/x for x>0 on [0,1]; it is unbounded. Without closedness, f(x)=x on (0,1) never attains its supremum 1. Without boundedness, f(x)=x on [0,∞) has no maximum. Removing one key hypothesis at a time identifies its role.",
     "Rewrite 'the first n positive odd numbers sum to n²' from the induction lesson of 01 in the communication format 'strategy first, then steps'.",
     "Strategy: induction — the base case lays the foundation and the step passes it along. Steps: ① n=1: 1=1²; ② assume the first k terms sum to k²; ③ add the (k+1)-st odd number 2k+1 to get (k+1)²; ④ this holds for all n, each step using only definitions and the induction hypothesis. Stating 'which hypothesis was used where' lets the reader check — checkability is what separates mathematical communication from persuasion."
    ]

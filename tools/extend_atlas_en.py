@@ -10,6 +10,7 @@ Reads assets/course.en.json (titles/lesson counts) and assets/concepts.en.json.
 Never touches Chinese pages. Run after tools/build_course_en.py:
   python tools/extend_atlas_en.py
 """
+from site_common import PRINT_SCRIPT, script_source, concept_controls
 from pathlib import Path
 import csv
 import html
@@ -36,10 +37,7 @@ count = {'total': len(rows), 'major': len(major), 'middle': len(middle),
          'subject_leaf': len(leaves), 'general_leaf': len(general)}
 (root / 'assets/classification-audit.json').write_text(json.dumps(count, indent=2), encoding='utf-8')
 
-printjs = ("<script>'use strict';let printed=[];"
-           "addEventListener('beforeprint',()=>{printed=[...document.querySelectorAll('details:not([open])')];"
-           "printed.forEach(d=>d.open=true)});"
-           "addEventListener('afterprint',()=>{printed.forEach(d=>d.open=false);printed=[]});</script>")
+printjs = PRINT_SCRIPT
 
 
 def page(title, body, zh=None, module=False):
@@ -119,7 +117,7 @@ for(const major of majors){
  major.el.hidden=!majorVisible;major.el.open=!!q&&majorVisible;}
  document.getElementById('search-count').textContent=q?`Matched ${matched} leaf entries (including matches on parent class names)`:'All classes shown; expand level by level';}
 input.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(filter,120)});
-function revealHash(){if(!location.hash)return;let target;try{target=document.getElementById(decodeURIComponent(location.hash.slice(1)))}catch(e){return}if(target){for(let p=target.parentElement;p;p=p.parentElement)if(p.tagName==='DETAILS')p.open=true;if(target.tagName==='DETAILS')target.open=true;requestAnimationFrame(()=>target.scrollIntoView());}}
+function revealHash(){if(!location.hash)return;let target;try{target=document.getElementById(decodeURIComponent(location.hash.slice(1)))}catch(e){return}if(target){if(input.value){input.value='';clearTimeout(timer);filter();}for(let p=target.parentElement;p;p=p.parentElement)if(p.tagName==='DETAILS')p.open=true;if(target.tagName==='DETAILS')target.open=true;requestAnimationFrame(()=>target.scrollIntoView());}}
 window.addEventListener('hashchange',revealHash);revealHash();
 </script>'''
 (root / 'reference/classification.en.html').write_text(
@@ -314,7 +312,7 @@ cp = (f'<header><p class="tag">CONCEPT CHECKLIST</p><h1>Core Concept Self-Check 
       'you can do it, and revisit after 1 day, 3 days, and 7 days to redo. Ticks are stored '
       'only in this browser (localStorage); nothing is uploaded or written to the '
       'repository.</p><p id="total" aria-live="polite"></p>'
-      '<button id="reset" type="button">Clear all check marks</button></header>')
+      f'{concept_controls("en")}</header>')
 for folder, title, subs, pre, source, lessons in course:
     n = concepts[folder]
     assert len(n) == len(lessons), f'{folder}: concept entry count disagrees with lesson count'
@@ -331,23 +329,9 @@ for folder, title, subs, pre, source, lessons in course:
                f'<span class="muted" data-count></span></h3><ul>{items}</ul></div>')
     cp += '</section>'
 cp += r'''<footer><p>The list covers the __N__ authored lessons; the higher goals of L1–L4 are in the <a href="curriculum.en.html">staged curriculum overview</a>. A tick is a self-assessment snapshot, not mastery: the standard is whether you can redo the item closed-book, state its conditions, and give an example of your own.</p></footer>
-<script>
-'use strict';
-const KEY='math-concepts-en-v1';let state={};
-try{state=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
-const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}};
-function refresh(){let total=0,done=0;
-for(const sec of document.querySelectorAll('[data-module]')){let sd=0,st=0;
-for(const d of sec.querySelectorAll('.concept')){let ld=0,lt=0;
-for(const b of d.querySelectorAll('input')){b.checked=!!state[b.id];total++;st++;lt++;if(b.checked){done++;sd++;ld++}}
-d.querySelector('[data-count]').textContent=ld+'/'+lt}
-sec.querySelector('[data-count]').textContent=sd+'/'+st}
-document.getElementById('total').textContent='Total progress: '+done+' / '+total+' items'}
-for(const b of document.querySelectorAll('.concept input'))b.addEventListener('change',()=>{state[b.id]=b.checked;save();refresh()});
-document.getElementById('reset').addEventListener('click',()=>{if(confirm('Clear all check marks?')){state={};save();refresh()}});
-refresh();
-</script>'''
+<script defer src="../assets/concepts.en.js"></script>'''
 cp = cp.replace('__N__', str(n_lessons))
+(root / 'assets/concepts.en.js').write_text(script_source('concepts', 'en'), encoding='utf-8')
 (root / 'reference/concepts.en.html').write_text(
     page('Core Concept Self-Check List · Understanding Mathematics', cp, zh='concepts.html'),
     encoding='utf-8')

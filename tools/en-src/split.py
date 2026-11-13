@@ -7,7 +7,7 @@ Usage:
 import json, re, sys
 from pathlib import Path
 
-root = Path(__file__).resolve().parents[2]
+root = Path(__file__).resolve().parents[3]
 ZH_COURSE = root / 'assets/course.json'
 ZH_CONCEPTS = root / 'assets/concepts.json'
 
